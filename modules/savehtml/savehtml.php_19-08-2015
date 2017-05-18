@@ -1,0 +1,55 @@
+<?php
+require_once ('config/db.php');
+class SaveHtml extends Db{
+	 
+	 var $db, $url;
+function __construct(){
+		$this->db=$this->dbconnection();
+		$this->url = $this->siteurl();		
+		 
+	 }
+function savehtml($data){
+	$app_id=$data['app_id'];
+	$autherId=$data['autherId'];
+	$linkTo=$data['linkTo'];
+	$layoutType=$data['layoutType'];
+	$html=$data['html'];
+	$screen_id=$data['screen_id'];
+	$title =$_POST['title'];
+$banner_html =$_POST['banner_html'];
+$navigation_html =$_POST['navigation_html'];
+	
+	$curl = curl_init();
+	curl_setopt_array($curl, array(
+			CURLOPT_RETURNTRANSFER => 1,
+			CURLOPT_URL => $this->url.'API/appHtml.php/saveData',
+			CURLOPT_USERAGENT => 'Codular Sample cURL Request',
+			CURLOPT_POST => 1,
+			CURLOPT_POSTFIELDS => array(
+				'app_id' =>$app_id,
+				'autherId' => $autherId,
+				'linkTo' => $linkTo,
+				'layoutType' => $layoutType,
+				'html' => $html,
+					'screen_id' => $screen_id,
+				'title' => $title,
+				'banner_html' => $banner_html,
+				'navigation_html' => $navigation_html
+			)
+		));
+		// Send the request & save response to $resp
+		$resp = curl_exec($curl);
+		$results=json_decode($resp);
+		// Close request to clear up some resources
+		curl_close($curl);
+		$result=$this->check_user_exist($_SESSION['username'],$_SESSION['custid']);
+		echo $result['id'].'##'.$_SESSION['appid'].'##'."success";
+}
+function check_user_exist($email,$custid){
+	$sql ="select id,first_name,avatar from author where custid=$custid";
+	$stmt=$this->db->prepare($sql);
+	$stmt->execute();
+	$results=$stmt->fetch(PDO::FETCH_ASSOC);
+	return $results;
+}
+ }

@@ -1,0 +1,13 @@
+[17-Jul-2015 14:13:25 UTC] PHP Fatal error:  Using $this when not in object context in /home/pulpstrategist/public_html/frameworkphp/modules/myapp/deleteapp.php on line 26
+[17-Jul-2015 14:14:45 UTC] PHP Fatal error:  Using $this when not in object context in /home/pulpstrategist/public_html/frameworkphp/modules/myapp/deleteapp.php on line 26
+[17-Jul-2015 14:20:57 UTC] PHP Fatal error:  Using $this when not in object context in /home/pulpstrategist/public_html/frameworkphp/modules/myapp/deleteapp.php on line 27
+[17-Jul-2015 14:34:57 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`app_design_new`.`app_navigation_drawer`, CONSTRAINT `app_navigation_drawer_ibfk_1` FOREIGN KEY (`app_id`) REFERENCES `app_data` (`id`))' in /home/pulpstrategist/public_html/frameworkphp/modules/myapp/deleteapp.php:35
+Stack trace:
+#0 /home/pulpstrategist/public_html/frameworkphp/modules/myapp/deleteapp.php(35): PDOStatement->execute()
+#1 {main}
+  thrown in /home/pulpstrategist/public_html/frameworkphp/modules/myapp/deleteapp.php on line 35
+[17-Jul-2015 14:42:55 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`app_design_new`.`app_navigation_drawer`, CONSTRAINT `app_navigation_drawer_ibfk_1` FOREIGN KEY (`app_id`) REFERENCES `app_data` (`id`))' in /home/pulpstrategist/public_html/frameworkphp/modules/myapp/deleteapp.php:34
+Stack trace:
+#0 /home/pulpstrategist/public_html/frameworkphp/modules/myapp/deleteapp.php(34): PDOStatement->execute()
+#1 {main}
+  thrown in /home/pulpstrategist/public_html/frameworkphp/modules/myapp/deleteapp.php on line 34

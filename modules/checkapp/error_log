@@ -1,0 +1,10 @@
+[15-Jul-2015 18:11:53 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[42000]: Syntax error or access violation: 1065 Query was empty' in /home/pulpstrategist/public_html/frameworkphp/modules/checkapp/pagehtml.php:24
+Stack trace:
+#0 /home/pulpstrategist/public_html/frameworkphp/modules/checkapp/pagehtml.php(24): PDOStatement->execute()
+#1 {main}
+  thrown in /home/pulpstrategist/public_html/frameworkphp/modules/checkapp/pagehtml.php on line 24
+[16-Jul-2015 07:53:29 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'screen_id' in 'where clause'' in /home/pulpstrategist/public_html/frameworkphp/modules/checkapp/pagehtml.php:25
+Stack trace:
+#0 /home/pulpstrategist/public_html/frameworkphp/modules/checkapp/pagehtml.php(25): PDOStatement->execute()
+#1 {main}
+  thrown in /home/pulpstrategist/public_html/frameworkphp/modules/checkapp/pagehtml.php on line 25

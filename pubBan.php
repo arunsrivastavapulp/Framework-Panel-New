@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="css/custom-style.css" rel="stylesheet" type="text/css" />
+<link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="css/colpick.css">
+<link rel="stylesheet" href="css/jquery.mCustomScrollbar.css">
+<link rel="stylesheet" href="css/style_old.css">
+<link rel="stylesheet" href="css/intlTelInput.css">
+<link rel="stylesheet" type="text/css" href="css/ImageSelect.css">
+<link rel="stylesheet" type="text/css" href="css/chosen.css">
+<link href='http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+<script src="js/jquery.min.js"></script>
+
+<title>Untitled Document</title>
+</head>
+
+<body>
+<?php
+require_once('includes/header.php');
+require_once('includes/leftbar.php');
+?>
+<section class="clear framework">
+ 
+  <section class="main">
+    <section class="right_main post_publish">
+    	<div class="right_inner">
+        	<div class="how_publish">
+            	<div class="how_publish_left">
+	            	<h1>Publish</h1>
+                    <h2>Please fill in important details:</h2>
+                </div>
+                <div class="clear"></div>
+                <div class="how_publish_body">
+                	<div class="how_publish_body_left">
+                    	<div class="publish_content">
+                            <h2>Upload Banners</h2>
+                            <div class="upload_banner">
+                            	<h3>Android</h3>
+                                <div class="banner_box">
+                                	<div class="banner_label_row">
+                                    	<div class="banner_label">
+                                        	<div class="banner_label_inner">
+                                            	<img src="images/uploadbanner1.jpg">
+                                                <span>Banner</span>
+                                            </div>
+                                        </div>
+                                    	<div class="banner_label">
+                                        	<div class="banner_label_inner">
+                                            	<img src="images/uploadbanner2.jpg">
+                                                <span>Hero Banner</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                	<div class="banner_label_row">
+                                    	<div class="banner_label">
+                                        	<div class="banner_label_inner">
+                                            	<img src="images/uploadbanner3.jpg">
+                                                <span>Cover Image</span>
+                                            </div>
+                                        </div>
+                                    	<div class="banner_label">
+                                        	<div class="banner_label_inner">
+                                            	<img src="images/uploadbanner4.jpg">
+                                                <span>Web Banner</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <h2>Screenshots:</h2>
+                            <div class="screenshot_btn_box">
+                            	<a href="#">Auto Generate Screenshots</a>
+                            	<a href="#">Take Screenshots</a>
+                            </div>
+                            <div class="upload_banner">
+                            	<h3>Upload Screenshots:</h3>
+                                <div class="banner_box">
+                                	<div class="banner_label_row">
+                                    	<div class="banner_label">
+                                        	<div class="banner_label_inner">
+                                            	<img src="images/uploadbanner5.jpg">
+                                            </div>
+                                        </div>
+                                    	<div class="banner_label">
+                                        	<div class="banner_label_inner">
+                                            	<img src="images/uploadbanner5.jpg">
+                                            </div>
+                                        </div>
+                                        <div class="banner_label">
+                                        	<div class="banner_label_inner">
+                                            	<img src="images/uploadbanner5.jpg">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="screenshot_btn_box">
+                                    <a href="#">Add more Screenshots</a>
+                                </div>
+                            </div>
+                            <div class="promo_video">
+                            	<div class="promo_video_label">
+                                	<label>Promo Video</label>
+                                </div>
+                            	<div class="promo_video_text">
+                                	<input type="text" placeholder="YouTube video. Please enter a URL">
+                                </div>
+                            </div>
+                            <a href="#" class="make_app_next">Save &amp; Continue</a>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                    <div class="how_publish_body_right">
+                    	<div class="common_publish_right_box">
+		                    <h2>Let us help you!</h2>
+                            <p>Need any help at any point Let us guide you till the end.</p>
+                            <a href="#">Give a Call</a>
+                            <div class="clear"></div>
+                        </div>
+                    	<div class="common_publish_right_box">
+		                    <h2>Need More Help?</h2>
+                            <p>For better view on the topic visit developer console.</p>
+                            <a href="#">Go to Developer Console</a>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+  </section>
+</section>
+<script>window.jQuery || document.write('<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"><\/script>')</script> 
+<script src="js/jquery.mCustomScrollbar.concat.min.js"></script> 
+<script>
+	(function($){
+		$(window).load(function(){
+			$("#content-1").mCustomScrollbar();
+			$("#content-2").mCustomScrollbar();
+			
+			
+		});
+	})(jQuery);
+</script>
+	<script src="js/chosen.jquery.js"></script>
+    <script src="js/ImageSelect.jquery.js"></script>
+    <script>
+    $(".my-select").chosen();
+    </script>
+</body>
+</html>

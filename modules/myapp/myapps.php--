@@ -1,0 +1,66 @@
+<?php
+require_once ('config/db.php');
+class MyApps extends Db{
+	 
+	 var $db;
+function __construct(){
+		$this->db=$this->dbconnection();	 
+		 
+	 }
+
+function check_user_exit($email){
+	$sql ="select id,first_name from author where email_address='$email'";
+	$stmt=$this->db->prepare($sql);
+	$stmt->execute();
+	$results=$stmt->fetch(PDO::FETCH_ASSOC);
+	return $results;
+}	
+function get_all_apps($author_id,$type,$page){
+			$num_rec_per_page=6;	
+		if (isset($page)&& $page>0){ $page  = $page; } else { $page=1; }; 
+		$start_from = ($page-1) * $num_rec_per_page;
+	$sql ="select * from app_data where author_id='$author_id' and published=$type order by id DESC limit $start_from, $num_rec_per_page";
+	$stmt=$this->db->prepare($sql);
+	$stmt->execute();
+	$results=$stmt->fetchAll(PDO::FETCH_ASSOC);
+	return $results;
+	
+}
+ function count_my_apps($author_id,$type){
+	 $sql ="select * from app_data where author_id='$author_id' and published=$type order by id DESC";
+	$stmt=$this->db->prepare($sql);
+	$stmt->execute();
+	$results=$stmt->fetchAll(PDO::FETCH_ASSOC);
+	return count($results);
+	 
+ }
+ function ajax_more_apps($data){
+	$page=$data['page']; 
+	$type=$data['type']; 
+	$user_id=$data['user_id']; 
+	$results=$this->get_all_apps($user_id,$type,$page);
+	$cnt=$this->count_my_apps($user_id,$type);
+	$str='';
+	foreach($results as $val){
+		if($val['published']==1){
+			$download='<div class="apps_box_download">
+                            <a href="myapps2.php?appid='.$val['id'].'"><img src="images/app_download.png"></a>
+                        </div>';
+		}
+		else{
+			$download='';
+		}
+				$str.='<div class="apps_box">
+                        <a href="myapps2.php?appid='.$val['id'].'"><img src="images/myapp1.jpg"></a>
+                        <div class="apps_box_name">
+                            <h2><a href="myapps2.php?appid='.$val['id'].'">'.$val['summary'].'<span></span></a></h2>
+                            <p><a href="myapps2.php?appid='.$val['id'].'">Baloota <span></span></a></p>
+                        </div>'.$download.'                      
+                        <div class="clear"></div>
+                    </div>';	
+					
+				}
+				echo  $str."##".$cnt;
+ }
+ 
+ }

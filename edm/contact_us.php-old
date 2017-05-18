@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<table cellpadding="0" cellspacing="0" width="650" align="center" >
+	<tr>
+    	<td>
+        	<img src="{base_url}edm/images/Anyone-top.png" />
+        </td>
+    </tr>
+    <tr>
+    	<td>
+        	<table cellpadding="0" cellspacing="0" width="600" align="center" >
+            	<tr>
+                	<td style="padding-top:35px">
+                      <p style="color:#4f4f4e; margin:0;padding:0; font-size:17px; line-height:20px; font-family:Arial, Helvetica, sans-serif;">Dear {customer_name},</p><br/>
+                      <p style="color:#6a6a6a; margin:0;padding:0; font-size:16px; line-height:28px;font-family:Arial, Helvetica, sans-serif;">
+                      	Thank you for contacting us! You have taken the first step towards getting your very own instant, affordable, stunning and intuitive mobile app for iOS and Android! Isn't that great? But this is just the beginning; you also get a free 30 day trial, and some fantastic extras, too. 
+                      </p>
+                      <p style="color:#4f4f4e; margin:0;padding:0; font-size:14px; line-height:20px;font-family:Arial, Helvetica, sans-serif;">&nbsp;</p>
+                      <p style="color:#6a6a6a; margin:0;padding:0; font-size:16px; line-height:28px;font-family:Arial, Helvetica, sans-serif;">
+                      	<a href="{base_url}">Instappy</a> is brilliantly simple, and is loaded with exclusive features that are available at affordable prices. No more development efforts, no more coding, and no fat bills! Instappy is very affordable and is built for ensuring the success of businesses just like yours.
+                      </p>
+					  <p style="color:#4f4f4e; margin:0;padding:0; font-size:14px; line-height:20px;font-family:Arial, Helvetica, sans-serif;">&nbsp;</p>
+                      <p style="color:#6a6a6a; margin:0;padding:0; font-size:16px; line-height:28px;font-family:Arial, Helvetica, sans-serif;">
+                      	It is no secret that smart businesses and entrepreneurs want to get the maximum value for their money, and have less time to achieve this. Well, this is why you can start building your app for free with Instappy! While our team connects with you, take a look at the real success stories of smart businesses and entrepreneurs. <a href="{blog_url}">{blog_url}</a>
+                      </p>
+					  <p style="color:#4f4f4e; margin:0;padding:0; font-size:14px; line-height:20px;font-family:Arial, Helvetica, sans-serif;">&nbsp;</p>
+                      <p style="color:#6a6a6a; margin:0;padding:0; font-size:16px; line-height:28px;font-family:Arial, Helvetica, sans-serif;">
+                      	The Instappy team is here to help you succeed in your mobile presence by opening up the world of mobile commerce for your business! We shall connect with you at the earliest on the contact details provided by you.
+                      </p>
+					  <p style="color:#4f4f4e; margin:0;padding:0; font-size:14px; line-height:20px;font-family:Arial, Helvetica, sans-serif;">&nbsp;</p>
+                      <p style="color:#6a6a6a; margin:0;padding:0; font-size:16px; line-height:28px;font-family:Arial, Helvetica, sans-serif;">
+                      	Congratulations again on joining the Instappy family! Move closer to better brand recognition, increase revenue from your customers, connect in a better way, and engage meaningfully with your customers, while enjoying an easier outreach to a new consumer base.
+                      </p>
+                      <p style="color:#4f4f4e; margin:0;padding:0; font-size:14px; line-height:30px;font-family:Arial, Helvetica, sans-serif;">&nbsp;</p>
+                    </td>
+                </tr>
+                <tr>
+                	<td>
+                        <p style="color:#4f4f4e; margin:0;padding:0; font-size:14px; line-height:20px;font-family:Arial, Helvetica, sans-serif;">&nbsp;</p>
+                        <p style="color:#6a6a6a; margin:0;padding:0; font-size:16px; line-height:28px;font-family:Arial, Helvetica, sans-serif;">See you!</p>
+                        <p style="color:#6a6a6a; margin:0;padding:0; font-size:16px; line-height:28px;font-family:Arial, Helvetica, sans-serif;">Instappy Team</p>
+                        <p style="color:#4f4f4e; margin:0;padding:0; font-size:14px; line-height:20px;font-family:Arial, Helvetica, sans-serif;">&nbsp;</p> 
+                    </td>
+                </tr>
+                <tr>
+            </table>
+        	
+        </td>
+    </tr>
+    <tr>
+    	<td>
+        	<img src="{base_url}edm/images/Anyone-footer.png" />
+        </td>
+    </tr>
+</table>
+</body>
+</html>

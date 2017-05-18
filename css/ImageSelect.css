@@ -1,0 +1,20 @@
+/* Tag image */
+
+/* Image for Single mode */
+.chose-image-small {
+	vertical-align: middle;
+	margin: -3px 0 0 0;
+	padding: 0 7px 0 0;
+}
+
+/* Images appended to the li(s) */
+.chose-image-list {
+	vertical-align: middle;
+	margin: -3px 0 0 0;
+	padding: 0 3px 0 0;
+}
+
+/* Grey-out image for Multi mode */
+div.chosen-container-multi .result-selected img {
+	opacity: 0.3;
+}

@@ -1,0 +1,47 @@
+<?php
+require_once ('config/db.php');
+class SaveHtml extends Db{
+	 
+	 var $db;
+function __construct(){
+		$this->db=$this->dbconnection();	 
+		 
+	 }
+function savehtml($data){
+	$app_id=$data['app_id'];
+	$autherId=$data['autherId'];
+	$linkTo=$data['linkTo'];
+	$layoutType=$data['layoutType'];
+	$html=$data['html'];
+	$screen_id=$data['screen_id'];
+	$curl = curl_init();
+	curl_setopt_array($curl, array(
+			CURLOPT_RETURNTRANSFER => 1,
+			CURLOPT_URL => 'http://ec2-52-10-50-94.us-west-2.compute.amazonaws.com/framework/testingApi/appHtml.php/saveData',
+			CURLOPT_USERAGENT => 'Codular Sample cURL Request',
+			CURLOPT_POST => 1,
+			CURLOPT_POSTFIELDS => array(
+				'app_id' =>$app_id,
+				'autherId' => $autherId,
+				'linkTo' => $linkTo,
+				'layoutType' => $layoutType,
+				'html' => $html,
+				'screen_id' => $screen_id
+			)
+		));
+		// Send the request & save response to $resp
+		$resp = curl_exec($curl);
+		$results=json_decode($resp);
+		// Close request to clear up some resources
+		curl_close($curl);
+		$result=$this->check_user_exit($_SESSION['username']);
+		echo $result['id'].'##'.$_SESSION['appid'].'##'."success";
+}
+ function check_user_exit($email){
+	$sql ="select id,first_name,avatar from author where email_address='$email'";
+	$stmt=$this->db->prepare($sql);
+	$stmt->execute();
+	$results=$stmt->fetch(PDO::FETCH_ASSOC);
+	return $results;
+}
+ }

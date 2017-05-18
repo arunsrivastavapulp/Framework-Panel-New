@@ -1,0 +1,13 @@
+<?php
+$totalPrice='';
+$total_saving='';
+session_start();
+if(isset($_POST['totalPrice'])){
+$_SESSION['totalPrice']=$_POST['totalPrice'];
+ }
+ 
+ if(isset($_POST['total_saving'])){
+$_SESSION['total_saving']=$_POST['total_saving'];
+
+ }
+ ?>

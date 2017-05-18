@@ -1,0 +1,50 @@
+<html>
+    <head>
+        <title> Paypal kit</title>
+    </head>
+    <body>
+    <center>       
+        <?php
+        session_start();
+        error_reporting(0);
+
+        if (isset($_SESSION['totalPrice'])) {
+            $totalPrice = $_SESSION['totalPrice'];
+        }
+
+        if (isset($_POST)) {
+
+            if ($_POST['amount'] != $totalPrice) {
+                $_POST['amount'] = $totalPrice;
+                ?>
+                <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" name="redirect">
+                    <input type="hidden" name="cmd" value="_xclick">
+                    <input type="hidden" name="hosted_button_id" value="AUQXPCZYGBFGA">
+                    <!-- Identify your business so that you can collect the payments. -->
+                    <input type="hidden" name="business" value="<?php echo $_POST['business'];?>">
+                    <!-- Specify details about the item that buyers will purchase. -->
+                    <input type="hidden" name="item_name" value="Apps">
+                    <input type="hidden" name="amount" value="<?php echo $totalPrice; ?>">
+                    <input type="hidden" name="currency_code" value="USD">
+                </form>
+                <script language='javascript'>document.redirect.submit();</script>
+                <?php } else {
+                ?>
+                <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" name="redirect">
+                    <input type="hidden" name="cmd" value="_xclick">
+                    <input type="hidden" name="hosted_button_id" value="AUQXPCZYGBFGA">
+                    <!-- Identify your business so that you can collect the payments. -->
+                    <input type="hidden" name="business" value="<?php echo $_POST['business'];?>">
+
+                    <!-- Specify details about the item that buyers will purchase. -->
+                    <input type="hidden" name="item_name" value="Apps">
+                    <input type="hidden" name="amount" value="<?php echo $totalPrice; ?>">
+                    <input type="hidden" name="currency_code" value="USD">
+                </form>
+                <script language='javascript'>document.redirect.submit();</script>
+            <?php }
+            }
+            ?>
+    </center>
+</body>
+</html>
