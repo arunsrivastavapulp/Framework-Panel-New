@@ -21,16 +21,52 @@ require_once('modules/login/resellerCheck.php');
 <?php
 if($res !=0)
 {
+		$to = "prem@pulpstrategy.com";
+		$subject = "Reseller Link Verification ";
+		$htmlcontent = "<html>
+		<body>
+		<p>Hi Strategist,</p>		
+		<p>First Name :: " . $res['first_name']. "</p>
+		<p>Email :: " . $res['email_address'] . "</p>
+		<p>Phone No :: " . $res['phone_country_code'] . " - ".$res['phone_no']."</p>
+		<p>Best Regards,<br />
+		Team Instappy</p>
+		</body>
+		</html>
+		";
+            $body = $htmlcontent;
+            
+            $formemail = 'noreply@instappy.com';
+            $key = 'f894535ddf80bb745fc15e47e42a595e';
+            
+            $curl = curl_init();
+            curl_setopt_array($curl, array(
+                CURLOPT_RETURNTRANSFER => 1,
+                CURLOPT_URL => 'https://api.falconide.com/falconapi/web.send.rest',
+                CURLOPT_POST => 1,
+                CURLOPT_POSTFIELDS => array(
+                    'api_key' => $key,
+                    'subject' => $subject,
+                    'fromname' => 'Instappy',
+                    'from' => $formemail,
+                    'content' => $body,
+                    'recipients' => $to
+                )
+            ));
+            $head = curl_exec($curl);
+
+            curl_close($curl);
 ?>
 Thank you for verifying your E-mail.<br/><br/>
-
+<meta http-equiv="refresh" content="5; url=<?php echo $basicUrl; ?>" />
 
 <?php
 }
 else
 {
 ?>
-Not a valid token
+Link has expired.
+<meta http-equiv="refresh" content="5; url=<?php echo $basicUrl; ?>" />
 <?php
 }
 ?>

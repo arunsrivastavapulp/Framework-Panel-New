@@ -37,7 +37,7 @@ if ($checkcountry == "IN") {
         <div class="right_inner">
             <div class="myorders">
                 <p class="head">My Orders:</p>
-                <p class="rightbutton"><a href="payment_details.php">My Cart</a></p>
+                <p class="rightbutton"><a ia-track="IA101000217" href="payment_details.php">My Cart</a></p>
                 <div class="clear"></div>
                 <div class="cartTable">
                     <ul class="cartHead">
@@ -64,9 +64,9 @@ if ($checkcountry == "IN") {
                             <ul class="cartrow">
                                 <li><?php echo $x; ?></li>
                                 <?php if ($value['invoicepdf'] != '') { ?>
-                                    <li><a href="<?php echo $basicUrl . 'pdf/' . $value['authorid'] . '/' . $value['invoicepdf']; ?>" target="_blank"><?php echo $value['order_id']; ?></a></li>
+                                    <li><a ia-track="IA101000216" href="<?php echo $basicUrl . 'pdf/' . $value['authorid'] . '/' . $value['invoicepdf']; ?>" target="_blank"><?php echo $value['order_id']; ?></a></li>
                                 <?php } else { ?>
-                                    <li><a onclick="popopen()" target="_blank"><?php echo $value['order_id']; ?></a></li>
+                                    <li><a ia-track="IA101000216" onclick="popopen()" target="_blank"><?php echo $value['order_id']; ?></a></li>
                                 <?php }
                                 ?>                                
                                 <li><?php echo $value['AppNames']; ?></li>
@@ -105,6 +105,7 @@ if ($checkcountry == "IN") {
     </section>
 </section>
 </section>
+<script type="text/javascript" src="js/trackuser.jquery.js?v=1.1"></script>
 </body>
 <script>
 

@@ -525,19 +525,19 @@ $sel_app_icon = $apps_img->get_selected_app_icon($_SESSION['appid']);
                     <div class="how_publish_body_right">
                         <div class="common_publish_right_box">
 
-                            <a href="ios-app-publish.php">Publish For IOS</a>
+                            <a ia-track="IA101000202" href="ios-app-publish.php">Publish For IOS</a>
                             <div class="clear"></div>
                         </div>
                         <div class="common_publish_right_box">
                             <h2>Let us help you !</h2>
                             <p>Need any help at any point, Let us guide you till the end.</p>
-                            <a href="support.php" target="_blank">Support</a>
+                            <a ia-track="IA10100071" href="support.php" target="_blank">Support</a>
                             <div class="clear"></div>
                         </div>
                         <div class="common_publish_right_box">
                             <h2>Don't have a Developer Account?</h2>
                         <!-- <p>For better view on the topic visit Devloper Console.</p> -->
-                            <a href="https://play.google.com/apps/publish/signup/" target="_blank">Create a Developer Account</a>
+                            <a ia-track="IA101000203" href="https://play.google.com/apps/publish/signup/" target="_blank">Create a Developer Account</a>
                             <div class="clear"></div>
                         </div>
                     </div>
@@ -1298,5 +1298,6 @@ $sel_app_icon = $apps_img->get_selected_app_icon($_SESSION['appid']);
         return true;
     }
 </script>
+<script type="text/javascript" src="js/trackuser.jquery.js?v=1.1"></script>
 </body>
 </html>

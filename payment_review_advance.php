@@ -162,15 +162,21 @@ $apps = new MyApps();
 										<?php 										
 										$last_payment_details=$apps->last_done_payment($app_id);
 										$order_details=$apps->order_details($app_part->master_payment_id);
+                                                                                if($currency==1){
 										$amount=round($app_part->part_amount,2) + round($app_part->part_amount * ($service_tax/100),2);
+                                                                                } else{
+                                                                                    $amount=round($app_part->part_amount,2);
+                                                                                }
 										$order_id=$order_details->order_id;
 										$_SESSION['totalPrice']=$amount;
 										$_SESSION['orderid']=$order_id;
 										?>
-										<label>Plan Amount</label>
+										<label>Part Amount</label>
 										<p class="total_cost"><?php echo $currencyIcon; ?> <?php echo round($app_part->part_amount,2); ?></p> 
+                                                                                <?php if($currency==1){?>
 										<label>Service Tax</label>
 										<p class="total_cost"><?php echo $currencyIcon; ?> <?php echo round($app_part->part_amount * ($service_tax/100),2); ?></p> 
+                                                                                <?php }?>
 										<label>Total cost</label>
 										<p class="total_cost"><?php echo $currencyIcon; ?> <?php echo $amount; ?></p>                            
 										<?php if ($currency == 1) { ?>

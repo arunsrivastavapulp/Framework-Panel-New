@@ -1,5 +1,6 @@
 <?php
-$currentTimeout= ini_get('session.gc_maxlifetime');
+
+$currentTimeout = ini_get('session.gc_maxlifetime');
 
 // Change session timeout value for a particular page load  - 1 month = ~2678400 seconds
 ini_set('session.gc_maxlifetime', 2678400);
@@ -10,21 +11,15 @@ if (isset($_POST['username'])) {
     $login = new Login();
     if ($_POST['type'] == 'login')
         $login->check_login($_POST);
-    if ($_POST['type'] == 'register'){
-		// $original_captch=$_SESSION['random_number'];
-		// $get_captch=trim($_POST['captcha_code']);
-		// if($get_captch!=$original_captch){
-			// echo "401";
-		// }
-		// else{
+    if ($_POST['type'] == 'register') {
+
         $login->user_register($_POST);
         $login->signuprequest($_POST);
-		//}
-	}
-		
-		if ($_POST['type'] == 'autoLogin')
+    }
+
+    if ($_POST['type'] == 'autoLogin')
         $login->check_autologin($_POST);
-	
+
 
     if ($_POST['type'] == 'fb') {
         $fid = $_POST['userFbId'];
@@ -56,7 +51,7 @@ if (isset($_POST['check']) && $_POST['check'] == 'login') {
         $login = new Login();
         $results = $login->check_user_exist($_SESSION['username'], $_SESSION['custid']);
         //echo $results['id'] . '##' . $_SESSION['appid'];
-		echo $results['id'] . '##' . $_SESSION['appid'] . '##' . $results['eflag'] . '##' . $results['mflag'].'##'.$_SESSION['cust_reseller_id']."##".$_SESSION['is_reseller'];
+        echo $results['id'] . '##' . $_SESSION['appid'] . '##' . $results['eflag'] . '##' . $results['mflag'];
     }
     exit;
 }
@@ -82,19 +77,19 @@ if (isset($_POST['user_id'])) {
 if (isset($_POST['check']) && $_POST['check'] == 'mail_confirm') {
     require_once('modules/login/login-check.php');
     $login = new Login();
-    $login->email_confirmed($_SESSION['custid'],$_POST['check']);
+    $login->email_confirmed($_SESSION['custid'], $_POST['check']);
     exit;
 }
 if (isset($_POST['check']) && $_POST['check'] == 'mob_confirm') {
     require_once('modules/login/login-check.php');
     $login = new Login();
-    $login->email_confirmed($_SESSION['custid'],$_POST['check']);
+    $login->email_confirmed($_SESSION['custid'], $_POST['check']);
     exit;
 }
 if (isset($_POST['check']) && $_POST['check'] == 'mobile_confirm') {
     require_once('modules/login/login-check.php');
     $login = new Login();
-    $login->email_confirmed($_SESSION['custid'],$_POST['check']);
+    $login->email_confirmed($_SESSION['custid'], $_POST['check']);
     exit;
 }
 if (isset($_POST['type']) && $_POST['type'] == 'resend') {

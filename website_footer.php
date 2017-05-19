@@ -5,31 +5,31 @@
     <div class="link_box">
       <h2>Support</h2>
       <ul>
-        <li><a href="faq.php">FAQs</a></li>
-        <li><a href="languages.php">Create in 20+ languages</a></li>
-        <li><a href="blog/">Blog</a></li>
-        <li><a href="terms-of-service.php">Terms of Service</a></li>
+        <li><a href="faq.php" ia-track="IA10100011">FAQs</a></li>
+        <li><a href="languages.php" ia-track="IA10100012">Create in 20+ languages</a></li>
+        <li><a href="blog/" ia-track="IA1010009">Blog</a></li>
+        <li><a href="terms-of-service.php" ia-track="IA10100014">Terms of Service</a></li>
       </ul>
     </div>
     <div class="link_box">
       <ul>
-        <li><a href="contact-us.php">Contact Us</a></li>
-        <li><a href="press">Press & Media</a></li>
-        <li><a href="privacy-policy.php">Privacy Policy</a></li>
-        <li><a href="careers.php">Careers</a></li>
+        <li><a href="contact-us.php" ia-track="IA10100010">Contact Us</a></li>
+        <li><a href="press" ia-track="IA10100016">Press & Media</a></li>
+        <li><a href="privacy-policy.php" ia-track="IA10100017">Privacy Policy</a></li>
+        <li><a href="careers.php" ia-track="IA10100018">Careers</a></li>
       </ul>
     </div>
     
     <!--footer_right_start -->
     <div class="footer_right">
-      <div class="footer_wizard"> <img src="images/in-wizard.png" /><br />
-      	<div class="icon_wizard"><a href="https://play.google.com/store/apps/details?id=com.pulp.wizard" target="_blank"><img src="images/fot-andr.png" /></a></div>
-        <div class="icon_wizard"><a href="https://itunes.apple.com/us/app/instappy/id1053874135?mt=8" target="_blank"><img src="images/fot-apple.png" /></a></div>
+      <div class="footer_wizard"> <img src="images/in-wizard.png" alt="Android App Builder - Instappy Wizard" title="Android App Builder - Instappy Wizard" /><br />
+      	<div class="icon_wizard"><a href="https://play.google.com/store/apps/details?id=com.pulp.wizard" target="_blank"><img src="images/fot-andr.png"  alt="Android App Creator" title="Android App Creator" /></a></div>
+        <div class="icon_wizard"><a href="https://itunes.apple.com/us/app/instappy/id1053874135?mt=8" target="_blank"><img src="images/fot-apple.png"  alt="iPhone App Maker" title="iPhone App Maker" /></a></div>
       </div>
       <span><img src="images/fot-border.png" /></span>
       <div class="footer_retail"> <img src="images/in-retail.png" /><br />
-<div class="icon_wizard"><a href="https://play.google.com/store/apps/details?id=com.pulp.catalog" target="_blank"><img src="images/fot-andr.png" /></a></div>
-        <div class="icon_wizard"><a href="https://itunes.apple.com/in/app/instappy-retail-wizard/id1055349052?mt=8" target="_blank"><img src="images/fot-apple.png" /></a></div> </div>
+<div class="icon_wizard"><a href="https://play.google.com/store/apps/details?id=com.pulp.catalog" target="_blank"><img src="images/fot-andr.png" alt="Android App Creator" title="Android App Creator"/></a></div>
+        <div class="icon_wizard"><a href="https://itunes.apple.com/in/app/instappy-retail-wizard/id1055349052?mt=8" target="_blank"><img src="images/fot-apple.png" alt="iPhone App Maker" title="iPhone App Maker"/></a></div> </div>
       <div class="clear"></div>
 <p class="">Instappy Wizard and Instappy Retail Wizard are awesome Instappy tools which give you a live preview of your app while you are creating it. Every time you update your app, Wizard lets you see the change in real time. Simply log-in using your unique customer ID and app details and start testing out your native app.
 </p>
@@ -45,7 +45,7 @@
       <li class="pint"><a href="https://www.pinterest.com/instappy/" target="_blank"><i class="fa fa-pinterest"></i></a></li>
       <li class="ytb"><a href="https://www.youtube.com/channel/UC2TWzMwlUiFs6pyCm3Q679g?view_as=public " target="_blank"><i class="fa fa-youtube-square"></i></a></li>
     </ul>
-    © Instappy.com. 2016 Pulp Strategy. All Rights Reserved</div>
+    © Instappy.com. <?php echo date("Y") ?> Pulp Strategy. All Rights Reserved</div>
 </div>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> 
@@ -451,5 +451,6 @@ type="text/javascript";e.parentNode.insertBefore($,e)})(document,"script");
    });
  </script>-->
 
+<script type="text/javascript" src="js/trackuser.jquery.js?v=1.1"></script>
 <?php include 'foot-meta.php'; ?>
 </body></html>

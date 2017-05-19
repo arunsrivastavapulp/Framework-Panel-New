@@ -12,9 +12,12 @@ session_start();
         $curl2 = curl_init();
         curl_setopt_array($curl2, array(
             CURLOPT_RETURNTRANSFER => 1,
+              CURLOPT_CONNECTTIMEOUT => 10,
+            CURLOPT_TIMEOUT    =>10,
             CURLOPT_URL => $url
         ));
         $head2 = curl_exec($curl2);
+        print_r($head2);
         curl_close($curl2);
         
-?>
+?> 

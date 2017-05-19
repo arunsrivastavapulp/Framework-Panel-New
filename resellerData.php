@@ -4,6 +4,7 @@ require_once('config/db.php');
 date_default_timezone_set("Asia/Kolkata");
 $db = new DB();
 $OpCartUrl=$db->catalogue_url();
+$siteurl=$db->siteurl();
 
 $first_name = $_REQUEST['first_name'];
 $last_name = $_REQUEST['last_name']; 
@@ -18,17 +19,17 @@ $information = $_REQUEST['information'];
 $ip_address = $_REQUEST['ip_address'];
 
 
-
+if($first_name!='' && $last_name!='' && $email_address!='' && $country_code!='' && $mobile_number!='' && $organization_name!='' && $website!='' && $number_of_app!='' && $interest!='' && $information!='' && $ip_address!='') {
 
 
 
  
 	$mysqli = $db->dbconnection();
-	 $insertQuery = "INSERT INTO reseller (first_name,last_name, email_address, country_code, mobile_number, organization_name,website,number_of_app,interest,ip_address,information,created) VALUES ('".$db->xss_clean($first_name)."','".$db->xss_clean($last_name)."','".$db->xss_clean($email_address)."', '".$db->xss_clean($country_code)."', '".$db->xss_clean($mobile_number)."','".$db->xss_clean($organization_name)."', '".$db->xss_clean($website)."','".$db->xss_clean($number_of_app)."','".$db->xss_clean($interest)."','".$db->xss_clean($ip_address)."', '".$db->xss_clean($information)."',NOW())";
+	$insertQuery = "INSERT INTO reseller (first_name,last_name, email_address, country_code, mobile_number, organization_name,website,number_of_app,interest,ip_address,information,created)	VALUES 	('".$db->xss_clean($first_name)."','".$db->xss_clean($last_name)."','".$db->xss_clean($email_address)."', '".$db->xss_clean($country_code)."', '".$db->xss_clean($mobile_number)."','".$db->xss_clean($organization_name)."', '".$db->xss_clean($website)."','".$db->xss_clean($number_of_app)."','".$db->xss_clean($interest)."','".$db->xss_clean($ip_address)."', '".$db->xss_clean($information)."',NOW())";
 	$stmtPrepared = $mysqli->prepare($insertQuery);
 	$success = $stmtPrepared->execute(); 
-	$cr_date=date("Y-d-m h:i:s");
-	$up_date=date("Y-d-m h:i:s");
+	$cr_date=date("Y-m-d h:i:s");
+	$up_date=date("Y-m-d h:i:s");
 	$stamp = date("Ymdhis");
 	$cust_id = strtotime($stamp);
 	
@@ -80,17 +81,17 @@ $resellerSign="insert into `reseller_signup`
 	'', 
 	'', 
 	'', 
+	'', 
+	'', 
 	'".$db->xss_clean($_POST['country_code'])."', 
 	'".$db->xss_clean($_POST['mobile_number'])."', 
 	'', 
+	'".$db->xss_clean($_POST['organization_name'])."',  
 	'', 
 	'', 
 	'', 
 	'', 
-	'', 
-	'', 
-	'', 
-	'', 
+	'".$db->xss_clean($_POST['website'])."', 
 	'', 
 	'', 
 	'', 
@@ -182,14 +183,14 @@ $resellerSign="insert into `reseller_signup`
 	'', 
 	'', 
 	'', 
+	'".$db->xss_clean($_POST['organization_name'])."',   
 	'', 
 	'', 
 	'', 
 	'', 
-	'', 
-	'', 
+	'".$db->xss_clean($_POST['country_code'])."', 
 	'".$db->xss_clean($_POST['mobile_number'])."', 
-	'', 
+	'".$db->xss_clean($_POST['website'])."',
 	'".$cust_id."', 
 	'', 
 	'', 
@@ -211,9 +212,13 @@ $resellerSign="insert into `reseller_signup`
 
 $stmtPrepared = $mysqli->prepare($InsertAuthor);
 	$success_reseller = $stmtPrepared->execute(); 
-
+$lastId_success_author_sign = $mysqli->lastInsertId();
 	
-	if ($success) {
+	$reseller_update_query="update reseller_signup set own_author_id=$lastId_success_author_sign where id=$lastId_success_reseller_sign";
+	$stmtPrepared = $mysqli->prepare($reseller_update_query);
+	 $stmtPrepared->execute(); 
+	
+	 if ($lastId_success_author_sign) {
 	
 	//client email start
 	/*echo	$csubject = "Thank you for reaching out to the Instappy team!";
@@ -250,37 +255,44 @@ $stmtPrepared = $mysqli->prepare($InsertAuthor);
 
 
 	$csubject = "Thank you for reaching out to the Instappy team!";
-        //$basicUrl = $db->siteurl();
-       //  $verificationURL="http://52.41.29.218/crm_reseller/verifyreseller";
+        $basicUrl = $db->siteurl();
+        $verificationURL=$siteurl."verify-mail.php?vtoken=".$verification_token;
+        
+        $chtmlcontent = file_get_contents('edm/reseller_signup.php');
+        $chtmlcontent = str_replace('{cust_name}', ucwords($first_name) . ",", $chtmlcontent);
+        $chtmlcontent = str_replace('{cust_id}', $cust_id . ",", $chtmlcontent);
+        $chtmlcontent = str_replace('{base_url}', $basicUrl, $chtmlcontent);
+        $chtmlcontent = str_replace('{verify_link}', $verificationURL, $chtmlcontent);
 	   
-	   $verificationURL="http://52.42.166.139/verify-mail.php?vtoken=".$verification_token;
+	   
        
-		//$to = "harsh@pulpstrategy.com";
+//		$email_address = $_POST['email_address'];
 		//$to = "ravi.tiwari@pulpstrategy.com";
-		//$subject = "Reseller";
-		$htmlcontent = "<html>
-		<body>
-		<p>Hi " . $first_name.' '.$last_name. ",</p>		
 		
-		<p>Email :: " . $email_address . "</p>
-		<p>Phone No :: " . $country_code . " - ".$mobile_number."</p>
-		<p>Organisation Name :: " . $organization_name . "</p>
-		<p>Website :: " . $website . "</p>
-		<p>How many apps are you looking to bulid :: " . $number_of_app . "</p>
-		<p>What best defines your organizations interest in mobile apps:: " . $interest . "</p>
-		<p>Message :: " . $information . "</p>
-        <p>Please click/copy below link to validate</p>
-		<p>".$verificationURL."</p>
-		<p>Best Regards,<br />
-		Team Instappy</p>
-		</body>
-		</html>
-		";
-            $body = $htmlcontent;
+//		$htmlcontent = "<html>
+//		<body>
+//		<p>Hi " . $first_name.' '.$last_name. ",</p>		
+//		
+//		<p>Email :: " . $email_address . "</p>
+//		<p>Phone No :: " . $country_code . " - ".$mobile_number."</p>
+//		<p>Organisation Name :: " . $organization_name . "</p>
+//		<p>Website :: " . $website . "</p>
+//		<p>How many apps are you looking to bulid :: " . $number_of_app . "</p>
+//		<p>What best defines your organizations interest in mobile apps:: " . $interest . "</p>
+//		<p>Message :: " . $information . "</p>
+//        <p>Please click/copy below link to validate</p>
+//		<p>".$verificationURL."</p>
+//		<p>Best Regards,<br />
+//		Team Instappy</p>
+//		</body>
+//		</html>
+//		";
+//            $body = $htmlcontent;
 
         $cformemail = 'noreply@instappy.com';
         $key = 'f894535ddf80bb745fc15e47e42a595e';
- 
+        $cc = "instappy@pulpstrategy.com";
+//        $cc = "nitin@pulpstrategy.com";
         $curl1 = curl_init();
         curl_setopt_array($curl1, array(
             CURLOPT_RETURNTRANSFER => 1,
@@ -291,8 +303,9 @@ $stmtPrepared = $mysqli->prepare($InsertAuthor);
                 'subject' => $csubject,
                 'fromname' => 'Instappy',
                 'from' => $cformemail,
-                'content' => $body,
-                'recipients' => $email_address
+                'content' => $chtmlcontent,
+                'recipients' => $email_address,
+                'recipients_cc' => $cc,
             )
         ));
         $customerhead = curl_exec($curl1);
@@ -303,8 +316,7 @@ $stmtPrepared = $mysqli->prepare($InsertAuthor);
 	//to Instappy Team
 	 
 		$to = "contact@instappy.com";
-		//$to = "harsh@pulpstrategy.com";
-		//$to = "ravi.tiwari@pulpstrategy.com";
+//		$to = "nitin@pulpstrategy.com,pulpyqa@gmail.com";
 		$subject = "Reseller";
 		$htmlcontent = "<html>
 		<body>
@@ -327,8 +339,8 @@ $stmtPrepared = $mysqli->prepare($InsertAuthor);
             $body = $htmlcontent;
             
             $formemail = 'noreply@instappy.com';
-            $key = 'f894535ddf80bb745fc15e47e42a595e';
-            
+//            $key = 'f894535ddf80bb745fc15e47e42a595e';
+//            $cc = "instappy@pulpstrategy.com";
             $curl = curl_init();
             curl_setopt_array($curl, array(
                 CURLOPT_RETURNTRANSFER => 1,
@@ -340,19 +352,21 @@ $stmtPrepared = $mysqli->prepare($InsertAuthor);
                     'fromname' => 'Instappy',
                     'from' => $formemail,
                     'content' => $body,
-                    'recipients' => $to
+                    'recipients' => $to,
+                    'recipients_cc' => $cc,
                 )
             ));
             $head = curl_exec($curl);
 
             curl_close($curl);
-			
+            
+
 			//to Instappy Team end
 
         } 
 		
-		$data=array('company'=>'  ', 'address_1'=>$db->xss_clean($_POST['Address']),'city'=>'  ','postcode'=>'  ','country_id'=>'  ','zone_id'=>'  ','confirm'=>$_POST['password_n'],'password'=>$_POST['password_n'],'appid'=>'  ','paypal'=>$db->xss_clean($email_address),'firstname'=>$db->xss_clean($_POST['first_name']),'lastname'=>$db->xss_clean($_POST['last_name']),'email'=>$db->xss_clean($email_address),'telephone'=>$db->xss_clean($mobile_number),'username'=>$db->xss_clean($email_address));
-		
+		$data=array('company'=>'  ', 'address_1'=>'NULL'  ,'city'=>'NULL','postcode'=>'  ','country_id'=>'  ','zone_id'=>'  ','confirm'=>$_POST['password_n'],'password'=>$_POST['password_n'],'appid'=>'  ','paypal'=>$db->xss_clean($email_address),'firstname'=>$db->xss_clean($_POST['first_name']),'lastname'=>$db->xss_clean($_POST['last_name']),'email'=>$db->xss_clean($email_address),'telephone'=>$db->xss_clean($mobile_number),'username'=>$db->xss_clean($email_address));
+
 		$curl = curl_init();
 		// Set some options - we are passing in a useragent too here
 		curl_setopt_array($curl, array(
@@ -364,7 +378,7 @@ $stmtPrepared = $mysqli->prepare($InsertAuthor);
 		));
 		// Send the request & save response to $resp
 		$resp = curl_exec($curl);
-		print_r($resp);
+//		print_r($resp);
 		// Close request to clear up some resources
 		curl_close($curl);
 		$output=json_decode($resp);		
@@ -375,10 +389,12 @@ $stmtPrepared = $mysqli->prepare($InsertAuthor);
 		
 	}
 	else if($output->response->code==200){
-		echo "success";
+		echo 1;
 	}
 	else{
 		echo "Opps something went wrong.please try again later.";
-	}
-
+        } 
+} else{
+    echo 0;
+}
 ?>

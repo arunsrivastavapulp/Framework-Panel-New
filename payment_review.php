@@ -179,27 +179,15 @@ $palnprice = $mypricing->getallappsplan($custid);
                                                             $catname = $appName['category_name'];
                                                         }
                                                         ?></h2>
-                                                    <h3>Category : <?php 
-																			$jumpto = $appName['jump_to'];
-			$jumptoapp = $appName['jump_to_app_id'];
-
-if($jumpto == 1 && $jumptoapp != 0)
-						{
-							
-							echo  'Content and M-Store';
-						}
-						else
-						{
-							echo $catname;
-						}
-													 ?></h3>
+                                                    <h3>Category : <?php echo $catname; ?></h3>
                                                 </div>
                                                 <div class="clear"></div>
                                             </li>
                                             <li>
 												<?php 
 													$planid = $mypricing->getplan($value['plan_id']);
-													if($value['is_custom']==0 && $value['app_customization']==0 ){?>
+                                            if ($value['is_custom'] == 0 && $value['app_customization'] == 0) {
+                                                ?>
 													<?php													
 														$years = (int) ($planid['validity_in_days'] / 365);
 														
@@ -211,18 +199,24 @@ if($jumpto == 1 && $jumptoapp != 0)
 															$selected2 = 'selected';
 														}
 													?>
-													<select class="years_click" id="timePeriod_<?php echo $x; ?>">
+													<select class="years_click" id="timePeriod_<?php echo $x; ?>" disabled="disabled">
 														<option value='1' <?php echo $selected1 ?>>1 Year</option>
 														<!--<option value='2' <?php //echo $selected2 ?>>2 Years</option>-->
 													</select>
 													<input type="hidden" name="plan_custom" id="plan_custom_<?php echo $x; ?>" value="0">
 												<?php }?>
 												<?php if($value['is_custom']==1){?>	
-													<?php if($mypricing->custom_pkg('pkg_time',$value['app_id'])>1) echo '<input type="hidden" name="timePeriod_'.$x.'" id="timePeriod_'.$x.'" value="'.$mypricing->custom_pkg('pkg_time',$value['app_id']).'">'.$mypricing->custom_pkg('pkg_time',$value['app_id'])." Days"; else echo '<input type="hidden" name="timePeriod_'.$x.'" id="timePeriod_'.$x.'" value="'.$mypricing->custom_pkg('pkg_time',$value['app_id']).'">'.$mypricing->custom_pkg('pkg_time',$value['app_id'])." Day";?> 
+                                                <?php
+                                                if ($mypricing->custom_pkg('pkg_time', $value['app_id']) > 1)
+                                                    echo '<input type="hidden" name="timePeriod_' . $x . '" id="timePeriod_' . $x . '" value="' . $mypricing->custom_pkg('pkg_time', $value['app_id']) . '">' . $mypricing->custom_pkg('pkg_time', $value['app_id']) . " Days";
+                                                else
+                                                    echo '<input type="hidden" name="timePeriod_' . $x . '" id="timePeriod_' . $x . '" value="' . $mypricing->custom_pkg('pkg_time', $value['app_id']) . '">' . $mypricing->custom_pkg('pkg_time', $value['app_id']) . " Day";
+                                                ?> 
 													<input type="hidden" name="plan_custom" id="plan_custom_<?php echo $x; ?>" value="1">
 													
 												<?php }?>
-												<?php if($value['app_customization']==1){
+                                            <?php
+                                            if ($value['app_customization'] == 1) {
 													$years = (int) ($planid['validity_in_days'] / 365);
 													
 													$totalSaving = $planid['total_saving'];
@@ -239,7 +233,102 @@ if($jumpto == 1 && $jumptoapp != 0)
                                                 
                                                <!-- <span class="discount">15% Off</span> -->
                                             </li>
-                                            <li><?php echo $currencyIcon; ?> <div id="finalPrice_<?php echo $x; ?>" class="finalPrice"><?php echo round($value['total_amount'], 2); ?></div>
+                                        <?php
+                                        if($value['is_partpayment']==0){
+                                        if ($value['crm_discount'] > 0) {
+                                            $priceS = 0;
+                                            $priceI = 0;
+                                            $priceIS = $mypricing->getallappsIS($value['id']);
+                                            foreach ($priceIS as $key2 => $values2) {
+                                                $iconid = $mypricing->geticonPrice();
+                                                $splashscreenid = $mypricing->getsplashscreen();
+                                                if ($values2['payment_type_id'] == $splashscreenid) {
+                                                    $splash_custom = $values2['is_custom'];
+                                                    $splasscreen = $mypricing->getsplashscreenCurrency($values2['payment_type_value'], $value['app_id'], $values2['is_custom']);
+                                                    if ($currency == 1) {
+                                                        $priceS = $splasscreen['price'];
+                                                    } else {
+                                                        $priceS = $splasscreen['price_in_usd'];
+                                                    }
+                                                } if ($values2['payment_type_id'] == $iconid) {
+                                                    $icon_custom = $values2['is_custom'];
+                                                    $geticonlinkAD = $mypricing->geticonlink($value['app_id']);
+                                                    $iconPrice = $mypricing->geticonCurrency($geticonlinkAD['app_image'], $values2['is_custom'], $values2['payment_type_value']);
+                                                    if ($currency == 1) {
+                                                        $priceI = $iconPrice['price'];
+                                                    } else {
+                                                        $priceI = $iconPrice['price_in_usd'];
+                                                    }
+                                                }
+                                            }
+                                            $appIconSS = $priceS + $priceI;
+                                            $appIconSSDisc = $appIconSS - ($appIconSS * $value['crm_discount'] / 100);
+                                            $total_amountIS = $value['total_amount'];
+                                            $totalAmountWithoutDiscount = $total_amountIS - $appIconSSDisc;
+                                            $totalwithISS = $appIconSSDisc + $total_amountIS;
+                                        } else {
+                                            $priceS = 0;
+                                            $priceI = 0;
+                                            $priceIS = $mypricing->getallappsIS($value['id']);
+                                            foreach ($priceIS as $key2 => $values2) {
+                                                $iconid = $mypricing->geticonPrice();
+                                                $splashscreenid = $mypricing->getsplashscreen();
+                                                if ($values2['payment_type_id'] == $splashscreenid) {
+                                                    $splash_custom = $values2['is_custom'];
+                                                    $splasscreen = $mypricing->getsplashscreenCurrency($values2['payment_type_value'], $value2['is_default_splash'], $values2['is_custom']);
+                                                    if ($currency == 1) {
+                                                        $priceS = $splasscreen['price'];
+                                                    } else {
+                                                        $priceS = $splasscreen['price_in_usd'];
+                                                    }
+                                                } if ($values2['payment_type_id'] == $iconid) {
+                                                    $icon_custom = $values2['is_custom'];
+                                                    $geticonlinkAD = $mypricing->geticonlink($value['app_id']);
+                                                    $iconPrice = $mypricing->geticonCurrency($geticonlinkAD['app_image'], $values2['is_custom'], $values2['payment_type_value']);
+                                                    if ($currency == 1) {
+                                                        $priceI = $iconPrice['price'];
+                                                    } else {
+                                                        $priceI = $iconPrice['price_in_usd'];
+                                                    }
+                                                }
+                                            }
+                                            $appIconSS = $priceS + $priceI;
+                                            $totalAmountWithoutDiscount=$value['total_amount'];
+                                            $totalwithISS = $value['total_amount'] + $appIconSS;
+                                        }
+                                        } else{
+                                            $priceS = 0;
+                                            $priceI = 0;
+                                            $priceIS = $mypricing->getallappsIS($value['id']);
+                                            foreach ($priceIS as $key2 => $values2) {
+                                                $iconid = $mypricing->geticonPrice();
+                                                $splashscreenid = $mypricing->getsplashscreen();
+                                                if ($values2['payment_type_id'] == $splashscreenid) {
+                                                    $splash_custom = $values2['is_custom'];
+                                                    $splasscreen = $mypricing->getsplashscreenCurrency($values2['payment_type_value'], $values2['is_default_splash'], $values2['is_custom']);
+                                                    if ($currency == 1) {
+                                                        $priceS = $splasscreen['price'];
+                                                    } else {
+                                                        $priceS = $splasscreen['price_in_usd'];
+                                                    }
+                                                } if ($values2['payment_type_id'] == $iconid) {
+                                                    $icon_custom = $values2['is_custom'];
+                                                    $geticonlinkAD = $mypricing->geticonlink($value['app_id']);
+                                                    $iconPrice = $mypricing->geticonCurrency($geticonlinkAD['app_image'], $values2['is_custom'], $values2['payment_type_value']);
+                                                    if ($currency == 1) {
+                                                        $priceI = $iconPrice['price'];
+                                                    } else {
+                                                        $priceI = $iconPrice['price_in_usd'];
+                                                    }
+                                                }
+                                            }
+                                            $appIconSS = $priceS + $priceI;
+                                            $totalAmountWithoutDiscount=$value['total_amount'];
+                                            $totalwithISS = $value['total_amount'] + $appIconSS;
+                                        }
+                                        $results_part = $mypricing->partpayment_app($value['masterpayment_id'], $value['app_id']);
+                                        ?>
+                                        <li><?php echo $currencyIcon; ?> <div id="finalPrice_<?php echo $x; ?>" class="finalPrice"><?php echo round($totalAmountWithoutDiscount, 2); ?></div>
 												<?php if(count($results_part)>0){?><div class="app-payment-first"><span>(Advance 1) <br>Part Payment</span><input type="hidden" value="1" id="part_payment_<?php echo $x; ?>"></div><?php }?>
 												</li>
                                             <div class="clear"></div>
@@ -248,8 +337,8 @@ if($jumpto == 1 && $jumptoapp != 0)
                                     <div class="payment_app_files">
                                         <div class="android_files">
 												<?php
-												$results_part=$mypricing->partpayment_app($value['masterpayment_id']);
-												if(count($results_part)>0){?>
+                                        if (count($results_part) > 0) {
+                                            ?>
 												
 												
 												
@@ -265,10 +354,11 @@ if($jumpto == 1 && $jumptoapp != 0)
 																$kk=1;
 																foreach($results_part as $val){
 																if($kk==1){
-																	}
-																	else{
+                                                                
+                                                            } else {
 																	$date = new DateTime($val['paymentdate']);
-																	//$date->modify('+15 days');?>
+                                                                //$date->modify('+15 days');
+                                                                ?>
 																<li>
 																	<span>Advance <?php echo $kk;?></span>
 																	<span><?php echo $currencyIcon; ?>  <?php echo $val['part_amount']; ?></span>
@@ -298,7 +388,7 @@ if($jumpto == 1 && $jumptoapp != 0)
 																$appAllowedS1 = 'selected';
 															}
 														?>
-														<select id="appAllowed_<?php echo $x; ?>">
+                                                    <select id="appAllowed_<?php echo $x; ?>" disabled="disabled">
 															<option value="Android-iOS" <?php echo $appAllowedS3 ?>>Android + iOS</option>
 															<option value="iOS" <?php echo $appAllowedS2 ?>>iOS</option>
 															<option value="Android" <?php echo $appAllowedS1 ?>>Android</option>
@@ -310,7 +400,8 @@ if($jumpto == 1 && $jumptoapp != 0)
 														<?php if($mypricing->custom_pkg('os',$value['app_id'])==3) echo "Android + iOS".'<input type="hidden" value="Android-iOS" id="appAllowed_'.$x.'">';?>
 														
 													<?php }?>
-													<?php if($value['app_customization']==1){	
+                                                <?php
+                                                if ($value['app_customization'] == 1) {
 														$platform = $value['platform'];
 														if ($platform == "3") {
 															$appAllowedS = 'Android + iOS';
@@ -353,7 +444,7 @@ if($jumpto == 1 && $jumptoapp != 0)
 																$selectedA = 'selected';
 															}
 														?>
-														<select id="packageType_<?php echo $x; ?>">
+														<select id="packageType_<?php echo $x; ?>" disabled="disabled">
 															<?php echo $str; ?>
 														</select>
 													<?php }?>
@@ -361,7 +452,8 @@ if($jumpto == 1 && $jumptoapp != 0)
 														<div><?php echo $mypricing->custom_pkg('pkg_name',$value['app_id']);?><input type="hidden" value="4" id="packageType_<?php echo $x; ?>"></div>
 													<?php }?>
 													
-                                                    <?php if($value['app_customization']==1){														
+                                                <?php
+                                                if ($value['app_customization'] == 1) {
 														$planname = $planid['plan_type'];
 														if ($planname == '4') {
 															$string = 'Advanced+Customize';
@@ -392,88 +484,80 @@ if($jumpto == 1 && $jumptoapp != 0)
 													<div class="clear"></div>
 												</div>
 											<?php }?>
+                                        <div class="payment_files_name">
+                                            <div class="files_name_left">
+                                                <p>App Icon</p>
+                                            </div>
+                                            <div class="files_name_right">
+                                                <p><?php echo $currencyIcon; ?> <?php echo round($priceI, 2); ?></p>
+                                                <?php if (count($results_part) > 0) { ?>
+                                                    <input type="hidden" class="icon_part" value="<?php echo round($priceI, 2); ?>"/>
                                             <?php
-                                            $priceIS = $mypricing->getallappsIS($value['id']);
-                                            foreach ($priceIS as $key2 => $values2) {
-                                                $iconid = $mypricing->geticonPrice();
-                                                $splashscreenid = $mypricing->getsplashscreen();
-                                                if ($values2['payment_type_id'] == $splashscreenid) {
-                                                    $splash_custom=$values2['is_custom'];
-                                                    $splasscreen = $mypricing->getsplashscreenCurrency($values2['payment_type_value'],$value['app_id'],$values2['is_custom']);
-                                                    if ($currency == 1) {
-                                                        $priceS = $splasscreen['price'];
                                                     } else {
-                                                        $priceS = $splasscreen['price_in_usd'];
-                                                    }
                                                     ?>
+                                                    <input type="hidden" id="icon_<?php echo $x; ?>" value="<?php echo round($priceI, 2); ?>"/>
+                                                <?php } ?>
+                                                <div class="clear"></div>
+                                            </div>
+                                            <div class="clear"></div>
+                                        </div>
                                                     <div class="payment_files_name">
                                                         <div class="files_name_left">
                                                             <p>Splash Screen</p>
                                                         </div>
                                                         <div class="files_name_right">
                                                             <p><?php echo $currencyIcon; ?> <?php echo round($priceS, 2); ?></p>
+                                                            <?php if (count($results_part) > 0) { ?>
+                                                            <input type="hidden" class="ss_screnn"  value="<?php echo round($priceS, 2); ?>"/>
+                                                            <?php
+                                                        } else {
+                                                            ?>															
+
                                                             <input type="hidden" id="splashscreen_<?php echo $x; ?>" value="<?php echo round($priceS, 2); ?>"/>
+            <?php } ?>
                                                             <div class="clear"></div>
                                                         </div>
                                                         <div class="clear"></div>
                                                     </div>
-                                                    <?php
-                                                } if ($values2['payment_type_id'] == $iconid) {
-                                                   $icon_custom=$values2['is_custom'];  
-                                                $geticonlinkAD = $mypricing->geticonlink($value['app_id']);
-                                                    $iconPrice = $mypricing->geticonCurrency($geticonlinkAD['app_image'],$values2['is_custom'],$values2['payment_type_value']);
-                                                    if ($currency == 1) {
-                                                        $priceI = $iconPrice['price'];
-                                                    } else {
-                                                        $priceI = $iconPrice['price_in_usd'];
-                                                    }
-                                                    ?>
-                                                    <div class="payment_files_name">
-                                                        <div class="files_name_left">
-                                                            <p>App Icon</p>
-                                                        </div>
-                                                        <div class="files_name_right">
-                                                            <p><?php echo $currencyIcon; ?> <?php echo round($priceI, 2); ?></p>
-                                                            <input type="hidden" id="icon_<?php echo $x; ?>" value="<?php echo round($priceI, 2); ?>"/>
-                                                            <div class="clear"></div>
-                                                        </div>
-                                                        <div class="clear"></div>
-                                                    </div>
-                                                    <?php
-                                                }
+
                                                
                                                 
-                                            }
-                                            ?>
-											<?php if($value['is_custom']==1|| $value['app_customization']==1){?>
+                                        <?php // if ($value['is_custom'] == 1 || $value['app_customization'] == 1) {  ?>
 												<div class="payment_files_name">
 													<h4>Comment</h4>
 													<p></p>
 													<?php echo $mypricing->crm_usercomments_app($value['app_id']); ?>
 													<div class="clear"></div>
 													</div>
-												<?php }?>
+                                        <?php // }  ?>
                                         </div>
-                                        <?php
 
-                                        if(($icon_custom==2 && $splash_custom==2)||($icon_custom==2 || $splash_custom==2) ){?>
+                                    <?php if (($icon_custom == 2 && $splash_custom == 2) || ($icon_custom == 1 || $splash_custom == 1)) { ?>
                                             <div class="total_app_payment">
                                             
-                                            <p><span><?php echo $currencyIcon; ?> <div id="apptotalPrice_<?php echo $x; ?>" class="finalPrice"><?php echo round($value['total_amount'], 2); ?></div></span>
+                                            <p><span><?php echo $currencyIcon; ?> <div id="apptotalPrice_<?php echo $x; ?>" class="finalPrice"><?php echo round($totalwithISS, 2); ?></div></span>
                                                 <input type="hidden" id="appsaving_<?php echo $x; ?>" value="<?php echo round($totalSaving, 2); ?>"/>
                                             </p>
                                         </div>
 
                                      <?php
-                                        }
-                                        else{
-                                        ?>
+                                    } else {
+                                        if (count($results_part) > 0) {
+                                            ?>
                                         <div class="total_app_payment">
-                                            <p><span><?php echo $currencyIcon; ?> <div id="apptotalPrice_<?php echo $x; ?>" class="finalPrice"><?php echo round(($value['total_amount'] + $priceI + $priceS), 2); ?></div></span>
+                                            <p><span><?php echo $currencyIcon; ?> <div id="apptotalPrice_<?php echo $x; ?>" class="finalPrice"><?php echo round(($value['total_amount']), 2); ?></div></span>
                                                 <input type="hidden" id="appsaving_<?php echo $x; ?>" value="<?php echo round($totalSaving, 2); ?>"/>
                                             </p>
                                         </div>
-                                        <?php 
+                                        <?php } else {
+                                            ?>
+                                         <div class="total_app_payment">
+                                                <p><span><?php echo $currencyIcon; ?> <div id="apptotalPrice_<?php echo $x; ?>" class="finalPrice"><?php echo round(($totalwithISS), 2); ?></div></span>
+                                                <input type="hidden" id="appsaving_<?php echo $x; ?>" value="<?php echo round($totalSaving, 2); ?>"/>
+                                            </p>
+                                        </div>
+                                            <?php
+                                        }
                                     }
                                     ?>
                                     </div>
@@ -506,7 +590,7 @@ if($jumpto == 1 && $jumptoapp != 0)
                                     <ul>
                                         <li>Order No. <?php echo $value4['masterpayment_orderid']; ?></li>
                                         <li> </li>
-                                        <li><a href="payment_details.php" class="deleteincart" id="mpackage_<?php echo $y; ?>"><i class="fa fa-pencil"></i></a></li>
+                                        <li><a ia-track="IA101000212" href="payment_details.php" class="deleteincart" id="mpackage_<?php echo $y; ?>"><i class="fa fa-pencil"></i></a></li>
                                         <div class="clear"></div>
                                     </ul>
                                 </div>
@@ -520,17 +604,26 @@ if($jumpto == 1 && $jumptoapp != 0)
                                                 $mpname = $mypricing->getMPprice($mpid);
                                                 echo $mpname['name'];
                                                 if ($currency == 1) {
+                                                if($value2['crm_discount']!=0){
+                                                $mpamount = $mpname['discounted_amount']-($mpname['discounted_amount']*$value2['crm_discount']/100);
+                                                } else{
                                                     $mpamount = $mpname['discounted_amount'];
+                                                }
                                                 } else {
+                                                if($value2['crm_discount']!=0){
+                                                  $mpamount = $mpname['price_in_usd']-($mpname['price_in_usd']*$value2['crm_discount']/100);  
+                                                } else{
                                                     $mpamount = $mpname['price_in_usd'];
                                                 }
+                                            }
                                                 ?></p>
                                             <input type="hidden" value="<?php echo $mpid; ?>" id="mp_id_<?php echo $y; ?>"/>
                                         </div>
                                         <div class="package_box_right">
-
+                                        <?php if($value2['is_partpayment']==0) {?>
                                             <?php echo $currencyIcon; ?> <p class="mpackageINR" id="mptotal_<?php echo $y; ?>"><?php echo round($mpamount, 2); ?></p>
                                             <input type="hidden" value="<?php echo round($mpamount, 2); ?>" class="mpamount"/>
+                                        <?php }?>
                                         </div>
                                         <div class="clear"></div>
                                     </div>
@@ -573,7 +666,7 @@ if($jumpto == 1 && $jumptoapp != 0)
                     <div class="next_step" >
                         <a href="payment_info.php" class="back_cart">< &nbsp;&nbsp;&nbsp;Back to Billing &amp; Payment</a>
                         <?php if ($currency == 1) { ?>
-                            <a href="#" class="continue" onclick="ccavForm()">Place Your Order ></a>
+                            <a ia-track="IA101000215" href="#" class="continue" onclick="ccavForm()">Place Your Order ></a>
                         <?php } else { ?>
                             <div style="float: right;">
                             <input onclick="paypalForm()" type="image" src="https://www.paypalobjects.com/en_GB/i/btn/btn_paynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online.">
@@ -613,7 +706,7 @@ if($jumpto == 1 && $jumptoapp != 0)
                             <div >
                                 <?php if ($currency == 1) { ?>
                                     <!--<a href="#" onclick="payForm()">Place Your Order with PayU ></a>-->
-                                    <a href="#" onclick="ccavForm()">Place Your Order ></a>
+                                    <a  ia-track="IA101000215" href="#" onclick="ccavForm()">Place Your Order ></a>
                                 <?php } else { ?>
                                     <div style="float: right;">
                                     <input onclick="paypalForm()" type="image" src="https://www.paypalobjects.com/en_GB/i/btn/btn_paynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online.">
@@ -797,5 +890,6 @@ $(".leftsidemenu li.cart").addClass("active");
 
     });
 </script>
+<script type="text/javascript" src="js/trackuser.jquery.js"></script>
 </body>
 </html>

@@ -9,6 +9,7 @@ $token = md5(rand(1000, 9999)); //you can use any encryption
 $_SESSION['token'] = $token;
 $userprofile = new UserProfile();
 $user = $userprofile->getUserByCustId($_SESSION['custid']);
+print_r($user);die;
 if ($user == '') {
     ?>
     <script>
@@ -128,12 +129,8 @@ if ($user == '') {
                     <div class="edit_account_form">
                         <div class="edit_account_form_left">
                             <?php if ($user['avatar'] != '') { ?>
-							<?php if (strpos($results['avatar'], 'amazonaws') !== false) { ?>		 
-                                <img src="<?php echo $user['avatar']; ?>" alt="" onerror="this.src='avatars/user.png'"  id='preview_avatar'>
-							<?php }else { ?>
-								    <img src="avatars/<?php echo $user['avatar']; ?>" alt=""   id='preview_avatar'>
-							<?php } ?>                           
-						   <?php } else { ?>
+                                <img src="avatars/<?php echo $user['avatar']; ?>" alt="" onerror="this.src='avatars/user.png'"  id='preview_avatar'>
+                            <?php } else { ?>
                                 <img src="avatars/user.png" alt="" id='preview_avatar'>
                             <?php } ?>
                             <input type='file' name='avatar' id='avatar' style='display:none;'>

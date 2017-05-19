@@ -48,13 +48,14 @@ if ((isset($_POST['appid']) && trim($_POST['appid']) != '') && (isset($_POST['ap
 			
             $app_name = $sendMail['summary'];
 			$username = htmlentities($user['first_name']).' '.htmlentities($user['last_name']);
-            $chtmlcontent = file_get_contents('./edm/simulator.php');
+            $chtmlcontent = file_get_contents('./edm-new/simulator.php');
             $chtmlcontent = str_replace('{user_name}', $username, $chtmlcontent);
             $chtmlcontent = str_replace('{app_name}', $app_name, $chtmlcontent);
             $chtmlcontent = str_replace('{app_version}', $app_version, $chtmlcontent);
             $chtmlcontent = str_replace('{base_url}', $basicUrl, $chtmlcontent);
+            $chtmlcontent = str_replace('{custid}', $user['custid'], $chtmlcontent);
 
-            $cbcc = 'dev@instappy.com';
+            $cbcc = 'admin@instappy.com';
             
             $cto = $user['email_address'];
             //$cto = 'ravi.tiwari@pulpstrategy.com';

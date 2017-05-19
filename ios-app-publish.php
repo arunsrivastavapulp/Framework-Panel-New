@@ -301,19 +301,19 @@ administrator.
                 	<div class="how_publish_body_right">
                   <div class="common_publish_right_box">
 
-                            <a href="publish_android.php">Publish For Android</a>
+                            <a ia-track="IA101000204"  href="publish_android.php">Publish For Android</a>
                             <div class="clear"></div>
                         </div>
                     	<div class="common_publish_right_box">
                         	<h2>Let us help you !</h2>
                             <p>Need any help at any point, Let us guide you till the end.</p>
-                            <a href="support.php ">Support</a>
+                            <a ia-track="IA10100071" href="support.php ">Support</a>
                             <div class="clear"></div>
                         </div>
                     	<div class="common_publish_right_box">
                         	<h2>Need More Help ?</h2>
                             <p>For better view on the topic visit Devloper Console.</p>
-                            <a href="https://developer.apple.com/programs/enroll/" target="_blank">Go to Developer Console</a>
+                            <a  ia-track="IA101000205" href="https://developer.apple.com/programs/enroll/" target="_blank">Go to Developer Console</a>
                             <div class="clear"></div>
                         </div>
                     </div>
@@ -593,5 +593,6 @@ $(document).ready(function(){
 });
 
 </script>
+<script type="text/javascript" src="js/trackuser.jquery.js?v=1.1"></script>
 </body>
 </html>

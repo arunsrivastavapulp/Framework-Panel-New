@@ -24,7 +24,7 @@ unset($_SESSION['currentpagevisit']);
   <article class="banner-block">
     <div class="box-row theme-width">
       <div class="heading-area">
-        <p>mobile commerce was<span> not the future,</span></p>        
+        <p>mobile commerce is<span> not the future,</span></p>        
         <h1>It is now!</h1>
       </div>
     </div>
@@ -44,7 +44,7 @@ unset($_SESSION['currentpagevisit']);
         <div class="pro-app">
         
           <a id="pro-app-link" class="active app_selected" rel="pro_app" href="javascript:void(0);" title=""> 
-            <img src="images-new/shop-app-img.jpg"> 
+            <img src="images-new/shop-app-img.jpg" alt="Shopping Cart" title="Shopping Cart"> 
             <!-- <span>Pro Apps</span>  -->
           </a> 
           
@@ -118,11 +118,11 @@ unset($_SESSION['currentpagevisit']);
       </div>
       <div class="pick-style-box ">
         <ul class="pick-style-list bxslider">
-          <li> <img src="images-new/retail-slide1.jpg"> </li>
-          <li> <img src="images-new/retail-slide2.jpg"> </li>
-          <li> <img src="images-new/retail-slide3.jpg"> </li>
-          <li> <img src="images-new/retail-slide4.jpg"> </li>
-          <li> <img src="images-new/retail-slide5.jpg"> </li>
+          <li> <img src="images-new/retail-slide1.jpg" alt="Business Apps" title="Business Apps"> </li>
+          <li> <img src="images-new/retail-slide2.jpg" alt="M Commerece" title="M Commerece"> </li>
+          <li> <img src="images-new/retail-slide3.jpg" alt="Retail App" title="Retail App"> </li>
+          <li> <img src="images-new/retail-slide4.jpg" alt="Best Shopping Apps" title="Best Shopping Apps"> </li>
+          <li> <img src="images-new/retail-slide5.jpg" alt="Retailer App" title="Retailer App"> </li>
         </ul>
       </div>
       <div class="library-button"> <a href="themes.php#/?q=30" title="">Go to Library</a> </div>
@@ -141,14 +141,14 @@ unset($_SESSION['currentpagevisit']);
 
       <div class="steps-list-box">
         <ul class="steps-list">
-          <li> <img src="images-new/step-img1.png"> <span class="step-name">Step 1</span> <span class="step-detail">Choose your theme and start customising</span> </li>
-          <li> <img src="images-new/step-img2.png"> <span class="step-name">Step 2</span> <span class="step-detail">Add rich media content,
+          <li> <img src="images-new/step-img1.png" alt="Android App Maker" title="Android App Maker"> <span class="step-name">Step 1</span> <span class="step-detail">Choose your theme and start customising</span> </li>
+          <li> <img src="images-new/step-img2.png" alt="Application Maker" title="Application Maker"> <span class="step-name">Step 2</span> <span class="step-detail">Add rich media content,
             data, or a mobile store</span> </li>
-          <li> <img src="images-new/step-img3.png"> <span class="step-name">Step 3</span> <span class="step-detail">Test your app with 
+          <li> <img src="images-new/step-img3.png" alt="Android Application Maker" title="Android Application Maker"> <span class="step-name">Step 3</span> <span class="step-detail">Test your app with 
             the Instappy Wizard</span> </li>
-          <li> <img src="images-new/step-img4.png"> <span class="step-name">Step 4</span> <span class="step-detail">Launch your app <br>
+          <li> <img src="images-new/step-img4.png" alt="Mobile App development" title="Mobile App development"> <span class="step-name">Step 4</span> <span class="step-detail">Launch your app <br>
             instantly</span> </li>
-          <li> <img src="images-new/step-img5.png"> <span class="step-name">Step 5</span> <span class="step-detail">Promote your app 
+          <li> <img src="images-new/step-img5.png" alt="App development Company" title="App development Company"> <span class="step-name">Step 5</span> <span class="step-detail">Promote your app 
             and increase revenue</span> </li>
         </ul>
       </div>

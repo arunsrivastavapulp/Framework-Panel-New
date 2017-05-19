@@ -45,14 +45,15 @@ if (isset($_POST['appid']) && trim($_POST['appid']) != '') {
             $basicUrl = $connection->siteurl();
             $app_name = $sendMail['summary'];
             $username = $user['first_name'].' '.$user['last_name'];
-            $chtmlcontent = file_get_contents('./edm/Instappy-go_on_launch_to_store.php');
+            $chtmlcontent = file_get_contents('./edm-new/Instappy-go_on_launch_to_store.php');
             $chtmlcontent      = str_replace('{user_name}', $username, $chtmlcontent);
             $chtmlcontent      = str_replace('{app_name}', $app_name, $chtmlcontent);
             $chtmlcontent = str_replace('{base_url}', $basicUrl, $chtmlcontent);
+            $chtmlcontent = str_replace('{custid}',  $user['custid'], $chtmlcontent);
 
 
-            $cbcc = 'dev@instappy.com';
-            $cto = $user['email_address'].',neha@pulpstrategy.com';
+            $cbcc = 'admin@instappy.com';
+            $cto = $user['email_address'];
 //            $cto = 'nitin@pulpstrategy.com';
             $cformemail = 'noreply@instappy.com';
             $key = 'f894535ddf80bb745fc15e47e42a595e';

@@ -81,7 +81,7 @@ else{
                             </div>
                             
                             <div class="form_field">
-                                <label><span>*</span> Address :</label> <input type="text" name="address_1" class="required" value="<?php echo isset($user['street'])?$user['street']:''?>" maxlength="200"><div class="clear"></div>
+                                <label><span>*</span> Address 1:</label> <input type="text" name="address_1" class="required" value="<?php echo isset($user['street'])?$user['street']:''?>" maxlength="200"><div class="clear"></div>
                             </div>
                             
                             <div class="form_field">
@@ -109,7 +109,7 @@ else{
                             </div>
                            
                         
-				  
+				   
                         <input type="hidden" value="<?php echo isset($_SESSION['password'])?$_SESSION['password']:''?>" name="password" id="password"/>
                         <input type="hidden" value="<?php echo isset($_SESSION['password'])?$_SESSION['password']:''?>" name="confirm" id="confirm"/>
                         <input type="hidden" value="<?php echo $app_id;?>" name="appid" id="appid"/>
@@ -163,7 +163,6 @@ else{
 					type: "post",
 					data: $(form).serialize()+"&type=vendor_register",
 					success: function(response){
-						
 						if(response=='success'){							
 							$("#success").text("Successfully Registered");
 							email=$("#username").val();
@@ -171,8 +170,6 @@ else{
 							app_id=$("#appid").val();
 							curr_id = $('#curr_id').val();
 							$("#vendor_signup_form")[0].reset();
-							
-							
 							window.location=catalogueUrl+"catalogue/admin/index.php?route=common/login&email="+email+"&password="+password+"&app_id="+app_id+"&app_name="+app_name+"&curr_id="+curr_id;
 						}
 						else{

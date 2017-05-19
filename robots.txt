@@ -1,1 +1,34 @@
-<?php include("reversedns.php"); ?>User-agent: *Disallow: /trackback/Disallow: /feed/Disallow: /blackhole/Disallow: /mint/Disallow: /cgi.bin/Disallow: /recommended/Disallow: /wp-content/Disallow: /wp-admin/Disallow: /wp-includes/Disallow: /comments/feed/Disallow: /archives/Disallow: *?replytocomDisallow: /search/Disallow: /blyop8/Disallow: /*?*Disallow: /*?Disallow: /*~*Disallow: /*~Disallow: /*trackbackDisallow: /*trackback*Disallow: /*/trackbackDisallow: /comments/Disallow: /*?Disallow: /feed/Disallow: /trackback/Disallow: /tag/Disallow: /category/Disallow: /*.js$Disallow: /*.inc$Disallow: /*.css$
+<?php include("reversedns.php"); ?>
+
+User-agent: *
+
+Disallow: /trackback/
+Disallow: /feed/
+Disallow: /blackhole/
+Disallow: /mint/
+Disallow: /cgi.bin/
+Disallow: /recommended/
+Disallow: /wp-content/
+Disallow: /wp-admin/
+Disallow: /wp-includes/
+Disallow: /comments/feed/
+Disallow: /archives/
+Disallow: /search/
+Disallow: /blyop8/
+Disallow: /*trackback
+Disallow: /*trackback*
+Disallow: /*/trackback
+Disallow: /comments/
+Disallow: /tag/
+Disallow: /category/
+Disallow: /success-stories/category/
+Disallow: /success-stories/page/
+Disallow: /success-stories/author/
+Disallow: /success-stories/author/admin/
+Disallow: /blog/category/
+Disallow: /blog/page/
+Disallow: /blog/author/
+
+Sitemap: http://www.instappy.com/sitemap.xml
+Sitemap: http://www.instappy.com/blog/sitemap_index.xml
+Sitemap: http://www.instappy.com/success-stories/post-sitemap.xml

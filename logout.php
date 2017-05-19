@@ -16,8 +16,9 @@ $db = new DB();
       
         <?php
  if(isset($_GET['reseller_id']) && $_GET['reseller_id']>0) {
-            $return_url=$_SESSION['return_url'];
-            $app_id=$_SESSION['appid'];
+           // $return_url=$_SESSION['return_url'];
+     $return_url = isset($_SESSION['return_url'])?$_SESSION['return_url']:$db->resellerurl();       
+     $app_id=$_SESSION['appid'];
         session_unset();
         session_destroy();
         ob_start();

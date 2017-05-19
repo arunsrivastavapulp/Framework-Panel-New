@@ -49,12 +49,12 @@
                     <li>
                       <div class="device-frame" ng-class="{ 'animated fadeIn': currentTheme.loaded }">
                         <img ng-hide="currentTheme.loaded" class="img-loader" src="images/ajax-loader_new.gif" />
-                        <div class="tablet" ng-show="currentTheme.loaded"> <img alt="" src="images-new/iPad-frame.png">
+                        <div class="tablet" ng-show="currentTheme.loaded"> <img  src="images-new/iPad-frame.png" alt="Online Shopping Apps" title="Online Shopping Apps">
                           <div class="change-theme-tab">
                             <img alt="" ng-src="{{ currentTheme.image2x || currentTheme.image_new || currentTheme.image }}" img-on-load="currentTheme.loaded = true;" img-loading="currentTheme.loaded = false;">
                           </div>
                         </div>
-                        <div class="mobile" ng-show="currentTheme.loaded"> <img alt="" src="images-new/iPhone-frame.png">
+                        <div class="mobile" ng-show="currentTheme.loaded"> <img src="images-new/iPhone-frame.png" alt="Shopping Cart" title="Shopping Cart">
                           <div class="change-theme-mobile"><img alt="" ng-src="{{ currentTheme.image_new || currentTheme.image }}"></div>
                         </div>
                       </div>
@@ -62,12 +62,12 @@
                     <li>
                       <div class="device-frame android" ng-class="{ 'animated fadeIn': currentTheme.loaded }">
                         <img ng-hide="currentTheme.loaded" class="img-loader" src="images/ajax-loader_new.gif" />
-                        <div class="tablet" ng-show="currentTheme.loaded"> <img alt="" src="images-new/tablet-frame.png">
+                        <div class="tablet" ng-show="currentTheme.loaded"> <img src="images-new/tablet-frame.png" alt="Business apps" title="Business apps">
                           <div class="change-theme-tab">
                             <img alt="" ng-src="{{ currentTheme.image2x || currentTheme.image_new || currentTheme.image }}" img-on-load="currentTheme.loaded = true;" img-loading="currentTheme.loaded = false;">
                           </div>
                         </div>
-                        <div class="mobile" ng-show="currentTheme.loaded"> <img alt="" src="images-new/theme-mobile.png">
+                        <div class="mobile" ng-show="currentTheme.loaded"> <img alt="M Commerce" title="M Commerce" src="images-new/theme-mobile.png">
                           <div class="change-theme-mobile"><img alt="" ng-src="{{ currentTheme.image_new || currentTheme.image }}"></div>
                         </div>
                       </div>
@@ -76,7 +76,7 @@
                 </div>
                 <div class="device-list-box">
                   <ul class="device-list">
-                    <li class="active clearfix"><a href="">iOS</a></li>
+                    <li class="active"><a href="">iOS</a></li>
                     <li><a href="">Android</a></li>
                   </ul>
                 </div>
@@ -85,7 +85,7 @@
                 <div class="app-type-name">
                   <p>App Type: <span ng-bind="currentTheme.name"></span></p>
                 </div>
-                <div class="create-app-button"><a href="{{ ((currentTheme.top_cat.id === '30') ? 'catalogue-app' : 'panel') + '.php?themeid=' + currentTheme.id + '&catid=' + currentTheme.parent_cat[0].id + '&app=create' }}">Create App <i class="fa fa-sign-in fa-lg"></i></a></div>
+                <div class="create-app-button"><a href="{{ ((currentTheme.top_cat.id === '30') ? 'catalogue-app' : 'panel') + '.php?themeid=' + currentTheme.id + '&catid=' + currentTheme.parent_cat[0].id + '&app=create' }}" ia-track="IA10100025" mycat-id="{{currentTheme.parent_cat[0].id}}" mytheme-id="{{currentTheme.id}}">Create App <i class="fa fa-sign-in fa-lg"></i></a></div>
               </div>
             </div>
             <!-- end slider box -->
@@ -116,7 +116,7 @@
                   <h4 ng-bind="cat.name" ng-class="{ 'active openL': (params.q && (params.q === cat.id)) }" ng-click="fnUpdateFilter(cat, cat)" ng-init="(params.q && (params.q === cat.id)) ? fnUpdateFilter(cat, cat) : ''"></h4>
                   <ul class="filter_themes-list">
                     <li ng-repeat="subcat in cat.categories" ng-if="subcat.name" ng-class="{ 'active': (subcat.id === currentCat) }">
-                      <a href="" ng-click="fnUpdateFilter(subcat, cat)" ng-bind="subcat.name"></a>
+                      <a href="" ia-track="IA10100027" mycat-id="{{subcat.id}}" ng-click="fnUpdateFilter(subcat, cat)" ng-bind="subcat.name"></a>
                     </li>
                   </ul>
                 </div>
@@ -129,7 +129,7 @@
                 </div>
                 <ul class="theme-collection-list clearfix" ng-show="filtersList && themesRepo">
                   <li ng-repeat="theme in filteredThemes = (themesRepo | filter: filObj : filStrict | orderBy: '-featured')" ng-class="{ 'active': (currentTheme.id === theme.id), 'animated fadeIn': checkUpdate }">
-                    <a href="" ng-click="fnShowPreview(theme, true)">
+                    <a href="" ia-track="IA10100026" mycat-id="{{theme.parent_cat[0].id}}" mytheme-id="{{theme.id}}" ng-click="fnShowPreview(theme, true)">
                       <img ng-hide="theme.loaded" class="img-loader" src="images/ajax-loader_new.gif" />
                       <img ng-src="{{ theme.image_new || theme.image }}" ng-show="theme.loaded" ng-class="{ 'animated fadeIn': theme.loaded }" img-on-load="theme.loaded = true;" />
                       <span ng-bind="theme.name"></span>

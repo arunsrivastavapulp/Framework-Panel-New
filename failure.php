@@ -4,5 +4,4 @@
     <center><h1><strong>Oops!</strong> Your transaction has failed...</h1></center>
   </div>
 </div>
-<!-- footer starts here -->	
 <?php require_once('website_footer.php');?>

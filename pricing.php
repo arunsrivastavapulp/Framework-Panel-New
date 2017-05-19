@@ -158,15 +158,15 @@
                <div class="pr-block pack-pro-detail">
                   <p>Apps | Games | Software | Web | Enterprise Solutions <br><br> Our team of experienced developers are driven by a simple goal, to make high quality, engaging software and technology products for our clients. <br><br> Tablets / Phablets / Phones / Ipads / Ipad Mini / windows phones / 2in1's <br><br> </p>
                   <div class="price-cup">
-                     <img src="images/pre-cup.png" alt="">
+                     <img src="images/pre-cup.png" alt="Online Shopping Apps" title="Online Shopping Apps"/>
                      <p>Winners of The Maddy's 2015</p>
                   </div>
                   <div class="price-cup">
-                     <img src="images/pre-cup.png" alt="">
+                     <img src="images/pre-cup.png" alt="Online Shopping Apps" title="Online Shopping Apps"/>
                      <p>Featured in top 5 Apps of jan 2016</p>
                   </div>
                   <div class="price-cup">
-                     <img src="images/pre-cup.png" alt="">
+                     <img src="images/pre-cup.png" alt="Online Shopping Apps" title="Online Shopping Apps" />
                      <p>ECHO Awards winner</p>
                   </div>
                </div>
@@ -1230,7 +1230,7 @@
                   <div class="ex-block ex-plus"><i class="fa fa-check fa-lg"></i></div>
                </li>
                <li>
-                  <div class="ex-block ex-block-space">Tech support</div>
+                  <div class="ex-block ex-block-space">Tech support (paid)</div>
                   <span class="spc"></span>
                   <div class="ex-block ex-plus"><i class="fa fa-check fa-lg"></i></div>
                   <span class="spc"></span>
@@ -1247,7 +1247,7 @@
                   <div class="ex-block ex-plus"><i class="fa fa-check fa-lg"></i></div>
                </li>
                <li>
-                  <div class="ex-block ex-block-space">Marketing support</div>
+                  <div class="ex-block ex-block-space">Marketing support (paid)</div>
                   <span class="spc"></span>
                   <div class="ex-block ex-plus"><i class="fa fa-check fa-lg"></i></div>
                   <span class="spc"></span>
@@ -1264,7 +1264,7 @@
                   <div class="ex-block ex-plus"><i class="fa fa-check fa-lg"></i></div>
                </li>
                <li>
-                  <div class="ex-block ex-block-space">Publishing support</div>
+                  <div class="ex-block ex-block-space">Publishing support (paid)</div>
                   <span class="spc"></span>
                   <div class="ex-block ex-plus"><i class="fa fa-check fa-lg"></i></div>
                   <span class="spc"></span>
@@ -1281,7 +1281,7 @@
                   <div class="ex-block ex-plus"><i class="fa fa-check fa-lg"></i></div>
                </li>
                <li>
-                  <div class="ex-block ex-block-space">Indexing and Optimisation</div>
+                  <div class="ex-block ex-block-space">Indexing and Optimisation (paid)</div>
                   <span class="spc"></span>
                   <div class="ex-block ex-plus"><i class="fa fa-check fa-lg"></i></div>
                   <span class="spc"></span>
@@ -1746,8 +1746,7 @@
             </ul>
          </div>
          <div class="tg-tax">
-            <span>*All apps carry "Powered by Instappy" as copyright information</span>
-            <span>*14.5% tax extra as applicable</span>
+            <span>*Taxes as applicable as per country.</span>
             <span>*Prices are per platform.</span>
             <span>*Free Trial is available only for 30 days.</span>
             <div class="tag-img">

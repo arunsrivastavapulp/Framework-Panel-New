@@ -229,7 +229,7 @@ if (isset($_SESSION['custid'])) {
                     <div class="next_step">
                         <a href="payment_details.php" class="back_cart">< &nbsp;&nbsp;&nbsp;Back to Cart</a>
                         <!-- <a href="payment_review.php" class="continue">Continue ></a> -->
-                        <a href="javascript:void(0);" class="checkout continue">Continue ></a>
+                        <a ia-track="IA101000213" href="javascript:void(0);" class="checkout continue">Continue ></a>
                         <p>You will not be billed yet.</p>
                         <div class="clear"></div>
                     </div>
@@ -247,7 +247,7 @@ if (isset($_SESSION['custid'])) {
                                 <p class="total_saving">Total savings <span><?php echo $total_saving; ?></span><span style="margin-right:5px;"><?php echo $currencyIcon; ?></span></p>
                             <?php } ?>                            
                             <!-- <a href="payment_review.php">Proceed to Checkout ></a> -->
-                            <a href="javascript:void(0);" class="checkout">Proceed to Checkout ></a>
+                            <a ia-track="IA101000209" href="javascript:void(0);" class="checkout">Proceed to Checkout ></a>
                             <div class="clear"></div>
                         </div>
                     </div>
@@ -359,5 +359,6 @@ $(".leftsidemenu li.cart").addClass("active");
                                             utilsScript: "js/utils.js"
                                         });
 </script>
+<script type="text/javascript" src="js/trackuser.jquery.js"></script>
 </body>
 </html>

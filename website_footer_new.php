@@ -4,24 +4,24 @@
         <div class="link_box">
             <h2>Support</h2>
             <ul>
-                <li><a href="faq.php">FAQs</a></li>
-                <li><a href="languages.php">Create in 20+ languages</a></li>
-                <li><a href="blog/">Blog</a></li>
-                <li><a href="terms-of-service.php">Terms of Service</a></li>
+                <li><a href="faq.php" ia-track="IA10100011">FAQs</a></li>
+                <li><a href="languages.php" ia-track="IA10100012">Create in 20+ languages</a></li>
+                <li><a href="blog/" ia-track="IA1010009">Blog</a></li>
+                <li><a href="terms-of-service.php" ia-track="IA10100014">Terms of Service</a></li>
             </ul>
         </div>
         <div class="link_box">
             <ul>
-                <li><a href="contact-us.php">Contact Us</a></li>
-                <li><a href="press">Press &amp; Media</a></li>
-                <li><a href="privacy-policy.php">Privacy Policy</a></li>
-                <li><a href="careers.php">Careers</a></li>
+                <li><a href="contact-us.php" ia-track="IA10100010">Contact Us</a></li>
+                <li><a href="press" ia-track="IA10100016">Press &amp; Media</a></li>
+                <li><a href="privacy-policy.php" ia-track="IA10100017">Privacy Policy</a></li>
+                <li><a href="careers.php" ia-track="IA10100018">Careers</a></li>
             </ul>
         </div>
 
         <!--footer_right_start -->
         <div class="footer_right">
-            <div class="footer_wizard"> <img src="images/in-wizard.png" />
+            <div class="footer_wizard"> <img src="images/in-wizard.png" alt="Android App Builder-Instappy Wizard" title="Android App Builder-Instappy Wizard" />
                 <div class="icon_wizard">
                     <a href="https://play.google.com/store/apps/details?id=com.pulp.wizard" target="_blank">
                         <i class="fa fa-android fa-lg"></i>
@@ -33,8 +33,8 @@
                     </a>
                 </div>
             </div>
-            <span><img src="images/fot-border.png" /></span>
-            <div class="footer_retail"> <img src="images/in-retail.png" />
+            <span><img src="images/fot-border.png" alt="App Creator - Instappy" title="App Creator - Instappy" /></span>
+            <div class="footer_retail"> <img src="images/in-retail.png" alt=" Retail App" title="Retail App" />
                 <div class="icon_wizard">
                     <a href="https://play.google.com/store/apps/details?id=com.pulp.catalog" target="_blank"><i class="fa fa-android fa-lg"></i></a>
                 </div>
@@ -66,15 +66,16 @@
                 <a href="https://www.youtube.com/channel/UC2TWzMwlUiFs6pyCm3Q679g?view_as=public " target="_blank"><i class="fa fa-youtube-square"></i></a>
             </li>
         </ul>
-        &copy; Instappy.com. 2016 Pulp Strategy. All Rights Reserved.
+        &copy; Instappy.com. <?php echo date("Y") ?> Pulp Strategy. All Rights Reserved.
         
     </div>
 </div>
 </section>
 
-<script src="<?php echo $basicUrl; ?>js/require.js"></script> 
-<script src="<?php echo $basicUrl; ?>js/require.config.js"></script> 
-<script src="<?php echo $basicUrl; ?>js/header_footer.js"></script>
+<script src="js/require.js"></script> 
+<script src="js/require.config.js"></script> 
+<script src="js/header_footer.js?r=6"></script>
+<script type="text/javascript" src="js/trackuser.angular.js?v=1.1"></script>
 
 <?php include 'foot-meta.php'; ?>
     </body>

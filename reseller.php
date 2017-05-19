@@ -55,33 +55,37 @@ $scope.validateEmail = function()
 		
 	
 		var xsrf = $.param({type:'checkEmail',email: $scope.email});
-		$http({
-        method : "POST",
-        url : BASEURL+'/ajax.php',
-		data: xsrf,
-        headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-		
-    }).then(function mySucces(response) {
-       
-		console.log(response.data);
-		if(response.data.email_address)
-		{
-		$scope.emailMsg='This email Is present';
-		$scope.reqSave='';
-		$eem=$(".email_address").val();
-		 $(".email_address").attr("placeholder", $eem);
-		 $(".email_address").val('');
-		}
-		else
-		{
-		$scope.emailMsg = '';
-		$scope.reqSave=true;
-		
-		}
-    }, function myError(response) {
-        
-		console.log(response.data);
-    });
+    if($scope.email){
+        		$http({
+                method : "POST",
+                url : BASEURL+'ajax.php',
+        		data: xsrf,
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        		
+            }).then(function mySucces(response) {
+               
+        		console.log(response.data);
+        		if(response.data.email_address)
+        		{
+        		$scope.submitBtn="checked";
+        		$scope.emailMsg='Email address already exists';
+        		$scope.reqSave='';
+        		$eem=$(".email_address").val();
+        		 $(".email_address").attr("placeholder", $eem);
+        		 $(".email_address").val('');
+        		}
+        		else
+        		{
+        		$scope.submitBtn="";
+        		$scope.emailMsg = '';
+        		$scope.reqSave=true;
+        		
+        		}
+            }, function myError(response) {
+                
+        		console.log(response.data);
+            });
+      }
 	
 	}
 	
@@ -148,32 +152,32 @@ getSecurityQuestions();
         <div class="program-list-box">
           <ul class="program-list">
             <li> 
-              <div class="img-row"><img src="images-new/pro-icon-1.png"> </div>
+              <div class="img-row"><img src="images-new/pro-icon-1.png" alt="Pro Apps" title="Pro Apps" /> </div>
               <span class="program-name">Add Native Mobile apps to your services</span> 
               <span class="program-detail">Our reseller program is designed to enable and equip design agencies, advertising, marketing and web development agencies to Add App development to their existing service portfolio instantly, and enable individuals to set up an app development service company within a few days. </span> 
             </li>
             <li>
-              <div class="img-row"><img src="images-new/pro-icon-2.png"> </div>
+              <div class="img-row"><img src="images-new/pro-icon-2.png" alt="E Commerece App" title="E Commerece App" /> </div>
               <span class="program-name">White label Solution</span> 
               <span class="program-detail">Design mobile apps for your clients and release them under your or your client’s accounts. Our enterprise plans also come with a dashboard panel with only your branding! </span>
             </li>
             <li>
-              <div class="img-row"><img src="images-new/pro-icon-3.png"> </div>
+              <div class="img-row"><img src="images-new/pro-icon-3.png" alt="Enterprise Application" title="Enterprise Application" /> </div>
               <span class="program-name">Dashboard access for your clients</span> 
               <span class="program-detail">Get individual dashboard access for your clients with a CMS panel which enables full app control and updates, unlimited notifications, app analytics, user data access and more. </span> 
             </li>
             <li>
-              <div class="img-row"><img src="images-new/pro-icon-4.png"> </div>
+              <div class="img-row"><img src="images-new/pro-icon-4.png" alt="Real Estate App" title="Real Estate App"/> </div>
               <span class="program-name">Discounts on bulk pricing</span> 
               <span class="program-detail">We have generous discounts with over 80% off for our partners. Build hundreds of apps with Instappy without investing in any coding or development + Earn additional revenue with App marketing and related services for your clients.  </span> 
             </li>
             <li>
-              <div class="img-row"><img src="images-new/pro-icon-5.png"> </div>
+              <div class="img-row"><img src="images-new/pro-icon-5.png" alt="Travel App" title="Travel App"/> </div>
               <span class="program-name">Training and premium support</span> 
               <span class="program-detail">Our Instappy partner plan is truly business success in a box. We train your teams, provide premium online support, marketing materials, promotional kits and even local business leads. What’s more? You get your very own account manager. </span> 
             </li>
             <li>
-              <div class="img-row"><img src="images-new/pro-icon-6.png"> </div>
+              <div class="img-row"><img src="images-new/pro-icon-6.png" alt="Native Apps" title="Native Apps"/> </div>
               <span class="program-name">Your own Wizard app</span> 
               <span class="program-detail">Our enterprise plans come with your very own white label Instappy wizards. With your branding and launched under your account. The wizard’s enable you to offer state of the art premium on device app testing to your clients.</span> 
             </li>
@@ -198,23 +202,23 @@ getSecurityQuestions();
         <div class="reason-list-box">
           <ul class="reason-list">
             <li> 
-              <div class="img-row"><img src="images-new/reason-icon-1.png"> </div>
+              <div class="img-row"><img src="images-new/reason-icon-1.png"alt="Business Apps" title="Business Apps" /> </div>
               <span class="reason-name">Set up your App development company instantly</span> 
             </li>
             <li> 
-              <div class="img-row"><img src="images-new/reason-icon-2.png"> </div>
+              <div class="img-row"><img src="images-new/reason-icon-2.png" alt="M Commerece" title="M Commerece" /> </div>
               <span class="reason-name">Add mobile apps to your existing business services</span> 
             </li>
             <li> 
-              <div class="img-row"><img src="images-new/reason-icon-3.png"> </div>
+              <div class="img-row"><img src="images-new/reason-icon-3.png" alt="Retail Apps" title="Retail Apps" /> </div>
               <span class="reason-name">Build revenue from your existing clients</span> 
             </li>
             <li> 
-              <div class="img-row"><img src="images-new/reason-icon-4.png"> </div>
+              <div class="img-row"><img src="images-new/reason-icon-4.png" alt="Business Shopping Apps" title="Business Shopping Apps" /> </div>
               <span class="reason-name">Stay ahead of Competition</span> 
             </li>
             <li> 
-              <div class="img-row"><img src="images-new/reason-icon-5.png"> </div>
+              <div class="img-row"><img src="images-new/reason-icon-5.png" alt="Retailer Apps" title="Retailer Apps" /> </div>
               <span class="reason-name">Acquire new clients</span> 
             </li>
           </ul>
@@ -233,15 +237,16 @@ getSecurityQuestions();
         <div class="request-form" ng-app="App" ng-controller="AppReseller">
           
             <ul class="request-list">
-              <li class="mini-input"><input class="first_name" maxlength="50" type="text" value="" placeholder="First Name" /></li>
-              <li class="mini-input right-side"><input class="last_name" maxlength="50" type="text" value="" placeholder="Last Name" /></li>
-              <li class="mini-input"><input class="email_address" type="text" value="" placeholder="Email" ng-model='email' ng-blur="validateEmail();"/></li>
+              <li class="mini-input "><input class="first_name no-spac" maxlength="50" type="text" value="" placeholder="First Name" /></li>
+              <li class="mini-input right-side no-spac"><input class="last_name no-spac" maxlength="50" type="text" value="" placeholder="Last Name" /></li>
+              <li class="mini-input "><input ng-class="{'email_address':email_address}" type="text"class="no-spac" value="" placeholder="Email" ng-model='email' ng-blur="validateEmail();"/> <label ng-if='emailMsg' class="emlErr" style=" margin: 5px 0 0 10px;color: red;display: inline-block;
+">{{emailMsg}}</label></li>
               <li class="mini-input right-side">
                 <input class="area-code country_code" type="text" value="" placeholder="(+91)" />
-                <input class="area-name mobile_number" type="text"  maxlength="16" minlength="5"  value="" placeholder="Phone Number" onkeypress="return isNumber(event)"/>
+                <input class="area-name mobile_number" type="text"  maxlength="16" minlength="5"  value="" placeholder="Mobile Number" onkeypress="return isNumber(event)"/>
               </li>
               <li><input class="organization_name" type="text" maxlength="50" value="" placeholder="Organization Name" /></li>
-              <li><input class="website" type="text" value="" placeholder="http://www.xyz.com" /></li>
+              <li><input class="website no-spac" type="text" value="" placeholder="http://www.xyz.com" /></li>
               <li>
                 <select class="custom-design number_of_app" data-placeholder="How many apps are you looking to build">
                   <option value=""></option>
@@ -265,10 +270,10 @@ getSecurityQuestions();
               <li><textarea class="information" maxlength="250" value="" placeholder="Tell us more about the clients you serve"></textarea></li>
             </ul>  
             <div class="request-info-btn">
-            <label ng-if='emailMsg' class="emlErr">{{emailMsg}}</label>
+            
               <input type="hidden" value="<?php echo $_SERVER['REMOTE_ADDR'];?>" class="ip_address">
 			        <div class="result"></div>
-              <button class="save">Request Information</button> 
+              <button class="save" ng-model="submitBtn" ng-disabled="submitBtn" ng-click="email_address = true;">Request Information</button> 
             </div>
          
         </div>
