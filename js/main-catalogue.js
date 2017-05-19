@@ -277,7 +277,9 @@ requirejs(['jquery', 'angular', 'bxslider', 'colpick', 'jquery-ui', 'shapeshift'
       submit: 0,
       onChange: function (hsb, hex, rgb, el, bySetColor) {
         $(el).css('background-color', '#' + hex);
+        $(".theme_head").css("background-color", '#' + hex);
         $scope.appDtls.screen_properties.background_color = ('#' + hex);
+		app_bg_color = ('#' + hex);
         $scope.$apply();
       }
     });
@@ -290,6 +292,7 @@ requirejs(['jquery', 'angular', 'bxslider', 'colpick', 'jquery-ui', 'shapeshift'
       onChange: function (hsb, hex, rgb, el, bySetColor) {
         $(el).css('background-color', '#' + hex);
         $scope.appDtls.screen_properties.font_color = ('#' + hex);
+		text_color = ('#' + hex);
         $scope.$apply();
       }
     });
@@ -302,20 +305,21 @@ requirejs(['jquery', 'angular', 'bxslider', 'colpick', 'jquery-ui', 'shapeshift'
       onChange: function (hsb, hex, rgb, el, bySetColor) {
         $(el).css('background-color', '#' + hex);
         $scope.appDtls.screen_properties.discount_color = ('#' + hex);
+		discount_color = ('#' + hex);
         $scope.$apply();
       }
     });
-    
-    $('.editPickerLabelBg').colpick({
-      colorScheme: 'dark',
-      layout: 'rgbhex',
-      color: app_bg_color || 'theme_bg',
-      submit: 0,
-      onChange: function (hsb, hex, rgb, el, bySetColor) {
-        $scope.currentComp.label_bg = ('#' + hex);
-        $scope.$apply();
-      }
-    })
+	
+	$('.editPickerLabelBg').colpick({
+		colorScheme: 'dark',
+		layout: 'rgbhex',
+		color: app_bg_color || 'theme_bg',
+		submit: 0,
+		onChange: function (hsb, hex, rgb, el, bySetColor) {
+			$scope.currentComp.label_bg = ('#' + hex);
+			$scope.$apply();
+		}
+	});
     
     $scope.specialTags = [
       {
@@ -352,7 +356,7 @@ requirejs(['jquery', 'angular', 'bxslider', 'colpick', 'jquery-ui', 'shapeshift'
       '101': {
         'markup': '<section data-cid="101" class="cat-border" data-ss-colspan="2"><p class="widgetClose">x</p><p>Categories</p><ul class="black-card slider1"><li class="slide"> <img src="images-new/theme.png" alt=""><div><span>Category Name</span></div></li><li class="slide"> <img src="images-new/theme.png" alt=""><div><span>Category Name</span></div></li><li class="slide"> <img src="images-new/theme.png" alt=""><div><span>Category Name</span></div></li><li class="slide"> <img src="images-new/theme.png" alt=""><div><span>Category Name</span></div></li><li class="slide"> <img src="images-new/theme.png" alt=""><div><span>Category Name</span></div></li><li class="slide"> <img src="images-new/theme.png" alt=""><div><span>Category Name</span></div></li></ul><div class="common_input_overlay"></div></section>',
         'ng-markup': '<section data-cid="101" ng-click="fnEditComponent($event)" class="cat-border" data-ss-colspan="2"><p class="widgetClose">x</p><p>{{ comp.title.name }}</p><ul class="black-card slider1"><li class="slide" ng-repeat="elem in comp.elements.element_array"><img ng-src="{{ elem.imageurl || comp.dummy_dtls.img }}" alt=""><div ng-style="{ \'background-color\' : comp.label_bg }"><span>{{ elem.itemheading }}</span></div></li></ul><div class="common_input_overlay"></div></section>',
-        'heading': 'Heading',
+        'heading': 'Category Name',
         'subheading': 'Sub-heading',
         'dummyImg': 'images-new/theme.png',
         'width': 540,
@@ -366,7 +370,7 @@ requirejs(['jquery', 'angular', 'bxslider', 'colpick', 'jquery-ui', 'shapeshift'
       '102': {
         'markup': '<section data-cid="102" class="cat-border" data-ss-colspan="2"><p class="widgetClose">x</p><p>Categories</p><ul class="white-card slider1"><li class="slide"> <img src="images-new/theme.png" alt=""><div><span>Category Name</span></div></li><li class="slide"> <img src="images-new/theme.png" alt=""><div><span>Category Name</span></div></li><li class="slide"> <img src="images-new/theme.png" alt=""><div><span>Category Name</span></div></li><li class="slide"> <img src="images-new/theme.png" alt=""><div><span>Category Name</span></div></li><li class="slide"> <img src="images-new/theme.png" alt=""><div><span>Category Name</span></div></li><li class="slide"> <img src="images-new/theme.png" alt=""><div><span>Category Name</span></div></li></ul><div class="common_input_overlay"></div></section>',
         'ng-markup': '<section data-cid="102" ng-click="fnEditComponent($event)" class="cat-border" data-ss-colspan="2"><p class="widgetClose">x</p><p>{{ comp.title.name }}</p><ul class="white-card slider1"><li class="slide" ng-repeat="elem in comp.elements.element_array"><img ng-src="{{ elem.imageurl || comp.dummy_dtls.img }}" alt=""><div ng-style="{ \'background-color\' : comp.label_bg }"><span>{{ elem.itemheading }}</span></div></li></ul><div class="common_input_overlay"></div></section>',
-        'heading': 'Heading',
+        'heading': 'Category Name',
         'subheading': 'Sub-heading',
         'dummyImg': 'images-new/theme.png',
         'width': 540,
@@ -380,7 +384,7 @@ requirejs(['jquery', 'angular', 'bxslider', 'colpick', 'jquery-ui', 'shapeshift'
       '103': {
         'markup': '<section data-cid="103" class="cat-border" data-ss-colspan="2"><p class="widgetClose">x</p><p>Categories</p><ul class="half-black-larg"><li > <img src="images-new/half-large.jpg" alt=""><div><span>Category Name</span></div></li><li > <img src="images-new/half-large.jpg" alt=""><div><span>Category Name</span></div></li><li > <img src="images-new/half-large.jpg" alt=""><div><span>Category Name</span></div></li><li > <img src="images-new/half-large.jpg" alt=""><div><span>Category Name</span></div></li></ul><div class="view-more"><a href="#">View more &raquo;</a></div><div class="common_input_overlay"></div></section>',
         'ng-markup': '<section data-cid="103" ng-click="fnEditComponent($event)" class="cat-border" data-ss-colspan="2"><p class="widgetClose">x</p><p>{{ comp.title.name }}</p><ul class="half-black-larg"><li ng-repeat="elem in comp.elements.element_array"><img ng-src="{{ elem.imageurl || comp.dummy_dtls.img }}" alt=""><div ng-style="{ \'background-color\' : comp.label_bg }"><span>{{ elem.itemheading }}</span></div></li></ul><div class="view-more"><a href="#">View more &raquo;</a></div><div class="common_input_overlay"></div></section>',
-        'heading': 'Heading',
+        'heading': 'Category Name',
         'subheading': 'Sub-heading',
         'dummyImg': 'images-new/half-large.jpg',
         'width': 540,
@@ -406,9 +410,9 @@ requirejs(['jquery', 'angular', 'bxslider', 'colpick', 'jquery-ui', 'shapeshift'
         }
       },
       '105': {
-        'markup': '<section data-cid="105" class="cat-border" data-ss-colspan="2"><p class="widgetClose">x</p><p> Tags</p><ul class="half-white-tag-nor"><li> <span>Heading</span> <img src="images-new/half-white-tag.jpg" alt=""><span>Price</span> </li><li><span>Heading</span><img src="images-new/half-white-tag.jpg" alt=""><span>Price</span></li><li><span>Heading</span><img src="images-new/half-white-tag.jpg" alt=""><span>Price</span></li><li><span>Heading</span> <img src="images-new/half-white-tag.jpg" alt=""><span>Price</span> </li><li> <span>Heading</span> <img src="images-new/half-white-tag.jpg" alt=""><span>Price</span> </li><li><span>Heading</span><img src="images-new/half-white-tag.jpg" alt=""><span>Price</span> </li></ul><div class="view-more"><a href="#">View more &raquo;</a></div><div class="common_input_overlay"></div></section>',
-        'ng-markup': '<section data-cid="105" ng-click="fnEditComponent($event)" class="cat-border" data-ss-colspan="2"><p class="widgetClose">x</p><p>{{ comp.title.name }}</p><ul class="half-white-tag-nor"><li ng-repeat="elem in comp.elements.element_array" ng-style="{ \'background-color\' : comp.label_bg }"><span>Heading</span><img ng-src="{{ elem.imageurl || comp.dummy_dtls.img }}" alt=""><span>Price</span></li></ul><div class="view-more"><a href="#">View more &raquo;</a></div><div class="common_input_overlay"></div></section>',
-        'heading': 'Heading',
+        'markup': '<section data-cid="105" class="cat-border" data-ss-colspan="2"><p class="widgetClose">x</p><p> Tags</p><ul class="half-white-tag-nor"><li> <span>Product name</span> <img src="images-new/half-white-tag.jpg" alt=""><span>Price</span> </li><li><span>Product name</span><img src="images-new/half-white-tag.jpg" alt=""><span>Price</span></li><li><span>Product name</span><img src="images-new/half-white-tag.jpg" alt=""><span>Price</span></li><li><span>Product name</span> <img src="images-new/half-white-tag.jpg" alt=""><span>Price</span> </li><li> <span>Product name</span> <img src="images-new/half-white-tag.jpg" alt=""><span>Price</span> </li><li><span>Product name</span><img src="images-new/half-white-tag.jpg" alt=""><span>Price</span> </li></ul><div class="view-more"><a href="#">View more &raquo;</a></div><div class="common_input_overlay"></div></section>',
+        'ng-markup': '<section data-cid="105" ng-click="fnEditComponent($event)" class="cat-border" data-ss-colspan="2"><p class="widgetClose">x</p><p>{{ comp.title.name }}</p><ul class="half-white-tag-nor"><li ng-repeat="elem in comp.elements.element_array" ng-style="{ \'background-color\' : comp.label_bg }"><span>{{ elem.itemheading }}</span><img ng-src="{{ elem.imageurl || comp.dummy_dtls.img }}" alt=""><span>{{ elem.actualprice ? (elem.symbol_left ? (elem.symbol_left + elem.special_price || elem.symbol_left + elem.actualprice) : (elem.special_price + elem.symbol_right || elem.actualprice + elem.symbol_right)) : "Price" }}</span></li></ul><div class="view-more"><a href="#">View more &raquo;</a></div><div class="common_input_overlay"></div></section>',
+        'heading': 'Product name',
         'subheading': 'Sub-heading',
         'dummyImg': 'images-new/half-white-tag.jpg',
         'width': 540,
@@ -464,8 +468,8 @@ requirejs(['jquery', 'angular', 'bxslider', 'colpick', 'jquery-ui', 'shapeshift'
       },
       '109': {
         'markup': '<section data-cid="109" class="cat-border" data-ss-colspan="2"><p class="widgetClose">x</p><p>Products</p><ul class="half-white-products-slide slider1 clearfix"><li class="slide"><img src="images-new/half-white-products.jpg" alt=""><div><span>Text</span><strong>Price</strong></div></li><li class="slide"><img src="images-new/half-white-products.jpg" alt=""><div><span>Text</span><strong>Price</strong> </div></li><li class="slide"><img src="images-new/half-white-products.jpg" alt=""><div><span>Text</span><strong>Price</strong></div></li><li class="slide"><img src="images-new/half-white-products.jpg" alt=""><div><span>Text</span><strong>Price</strong></div></li><li class="slide"><img src="images-new/half-white-products.jpg" alt=""><div><span>Text</span><strong>Price</strong></div></li><li class="slide"><img src="images-new/half-white-products.jpg" alt=""><div><span>Text</span>Price <strong>Price</strong></div></li></ul><div class="common_input_overlay"></div></section>',
-        'ng-markup': '<section data-cid="109" ng-click="fnEditComponent($event)" class="cat-border" data-ss-colspan="2"><p class="widgetClose">x</p><p>{{ comp.title.name }}</p><ul class="half-white-products-slide slider1 clearfix"><li class="slide" ng-repeat="elem in comp.elements.element_array" ng-style="{ \'background-color\' : comp.label_bg }"><img ng-src="{{ elem.imageurl || comp.dummy_dtls.img }}" alt=""><div><span>Text</span><strong>Price</strong></div></li></ul><div class="common_input_overlay"></div></section>',
-        'heading': 'Heading',
+        'ng-markup': '<section data-cid="109" ng-click="fnEditComponent($event)" class="cat-border" data-ss-colspan="2"><p class="widgetClose">x</p><p>{{ comp.title.name }}</p><ul class="half-white-products-slide slider1 clearfix"><li class="slide" ng-repeat="elem in comp.elements.element_array" ng-style="{ \'background-color\' : comp.label_bg }"><img ng-src="{{ elem.imageurl || comp.dummy_dtls.img }}" alt=""><div><span>{{ elem.itemheading || "Text" }}</span><strong>{{ elem.actualprice ? (elem.symbol_left ? (elem.symbol_left + elem.special_price || elem.symbol_left + elem.actualprice) : (elem.special_price + elem.symbol_right || elem.actualprice + elem.symbol_right)) : "Price" }}</strong></div></li></ul><div class="common_input_overlay"></div></section>',
+        'heading': 'Text',
         'subheading': 'Sub-heading',
         'dummyImg': 'images-new/half-white-products.jpg',
         'width': 540,
@@ -478,8 +482,8 @@ requirejs(['jquery', 'angular', 'bxslider', 'colpick', 'jquery-ui', 'shapeshift'
       },
       '110': {
         'markup': '<section data-cid="110" class="cat-border" data-ss-colspan="2"><p class="widgetClose">x</p><p>Products</p><ul class="half-white-products clearfix"><li> <img src="images-new/half-white-products.jpg" alt=""><div><span>Text</span><strong>Price</strong></div></li><li> <img src="images-new/half-white-products.jpg" alt=""><div><span>Text</span><strong>Price</strong></div></li><li> <img src="images-new/half-white-products.jpg" alt=""><div><span>Text</span><strong>Price</strong></div></li><li> <img src="images-new/half-white-products.jpg" alt=""><div><span>Text</span><strong>Price</strong></div></li><li> <img src="images-new/half-white-products.jpg" alt=""><div><span>Text</span><strong>Price</strong></div></li><li> <img src="images-new/half-white-products.jpg" alt=""><div><span>Text</span><strong>Price</strong></div></li></ul><div class="view-more"><a href="#">View more &raquo;</a></div><div class="common_input_overlay"></div></section>',
-        'ng-markup': '<section data-cid="110" ng-click="fnEditComponent($event)" class="cat-border" data-ss-colspan="2"><p class="widgetClose">x</p><p>{{ comp.title.name }}</p><ul class="half-white-products clearfix"><li ng-repeat="elem in comp.elements.element_array" ng-style="{ \'background-color\' : comp.label_bg }"><img ng-src="{{ elem.imageurl || comp.dummy_dtls.img }}" alt=""><div><span>Text</span><strong>Price</strong></div></li></ul><div class="view-more"><a href="#">View more &raquo;</a></div><div class="common_input_overlay"></div></section>',
-        'heading': 'Heading',
+        'ng-markup': '<section data-cid="110" ng-click="fnEditComponent($event)" class="cat-border" data-ss-colspan="2"><p class="widgetClose">x</p><p>{{ comp.title.name }}</p><ul class="half-white-products clearfix"><li ng-repeat="elem in comp.elements.element_array" ng-style="{ \'background-color\' : comp.label_bg }"><img ng-src="{{ elem.imageurl || comp.dummy_dtls.img }}" alt=""><div><span>{{ elem.itemheading || "Text" }}</span><strong>{{ elem.actualprice ? (elem.symbol_left ? (elem.symbol_left + elem.special_price || elem.symbol_left + elem.actualprice) : (elem.special_price + elem.symbol_right || elem.actualprice + elem.symbol_right)) : "Price" }}</strong></div></li></ul><div class="view-more"><a href="#">View more &raquo;</a></div><div class="common_input_overlay"></div></section>',
+        'heading': 'Text',
         'subheading': 'Sub-heading',
         'dummyImg': 'images-new/half-white-products.jpg',
         'width': 540,
@@ -506,7 +510,7 @@ requirejs(['jquery', 'angular', 'bxslider', 'colpick', 'jquery-ui', 'shapeshift'
       },
       '112': {
         'markup': '<section data-cid="112" class="cat-border" data-ss-colspan="2"><p class="widgetClose">x</p><p>Tags</p><ul class="half-white-tag slider1"><li class="slide"> <span>Discount</span> <img src="images-new/half-white-tag.jpg" alt=""><span>Price</span></li><li class="slide"> <span>Discount</span><img src="images-new/half-white-tag.jpg" alt=""><span>Price</span></li><li class="slide"> <span>Discount</span><img src="images-new/half-white-tag.jpg" alt=""><span>Price</span></li><li class="slide"> <span>Discount</span><img src="images-new/half-white-tag.jpg" alt=""><span>Price</span></li></ul><div class="common_input_overlay"></div></section>',
-        'ng-markup': '<section data-cid="112" ng-click="fnEditComponent($event)" class="cat-border" data-ss-colspan="2"><p class="widgetClose">x</p><p>{{ comp.title.name }}</p><ul class="half-white-tag slider1"><li class="slide" ng-repeat="elem in comp.elements.element_array" ng-style="{ \'background-color\' : comp.label_bg }"><span>Discount</span><img ng-src="{{ elem.imageurl || comp.dummy_dtls.img }}" alt=""><span>Price</span></li></ul><div class="common_input_overlay"></div></section>',
+        'ng-markup': '<section data-cid="112" ng-click="fnEditComponent($event)" class="cat-border" data-ss-colspan="2"><p class="widgetClose">x</p><p>{{ comp.title.name }}</p><ul class="half-white-tag slider1"><li class="slide" ng-repeat="elem in comp.elements.element_array" ng-style="{ \'background-color\' : comp.label_bg }"><span>{{ elem.discount || "Discount" }}</span><img ng-src="{{ elem.imageurl || comp.dummy_dtls.img }}" alt=""><span>{{ elem.actualprice ? (elem.symbol_left ? (elem.symbol_left + elem.special_price || elem.symbol_left + elem.actualprice) : (elem.special_price + elem.symbol_right || elem.actualprice + elem.symbol_right)) : "Price" }}</span></li></ul><div class="common_input_overlay"></div></section>',
         'heading': 'Heading',
         'subheading': 'Sub-heading',
         'dummyImg': 'images-new/half-white-tag.jpg',
@@ -520,8 +524,8 @@ requirejs(['jquery', 'angular', 'bxslider', 'colpick', 'jquery-ui', 'shapeshift'
         }
       },
       '113': {
-        'markup': '<section data-cid="113" class="cat-border" data-ss-colspan="2"><p class="widgetClose">x</p><p>Tags</p><ul class="half-white-tag-nor"><li> <span>Heading</span> <img src="images-new/half-white-tag.jpg" alt=""><span>Price</span></li><li><span>Heading</span><img src="images-new/half-white-tag.jpg" alt=""><span>Price</span></li><li> <span>Heading</span><img src="images-new/half-white-tag.jpg" alt=""><span>Price</span></li><li><span>Heading</span><img src="images-new/half-white-tag.jpg" alt=""><span>Price</span></li><li> <span>Heading</span><img src="images-new/half-white-tag.jpg" alt=""><span>Price</span></li><li><span>Heading</span><img src="images-new/half-white-tag.jpg" alt=""><span>Price</span></li></ul><div class="view-more"><a href="#">View more &raquo;</a></div><div class="common_input_overlay"></div></section>',
-        'ng-markup': '<section data-cid="113" ng-click="fnEditComponent($event)" class="cat-border" data-ss-colspan="2"><p class="widgetClose">x</p><p>{{ comp.title.name }}</p><ul class="half-white-tag-nor"><li ng-repeat="elem in comp.elements.element_array" ng-style="{ \'background-color\' : comp.label_bg }"><span>Heading</span><img ng-src="{{ elem.imageurl || comp.dummy_dtls.img }}" alt=""><span>Price</span></li></ul><div class="view-more"><a href="#">View more &raquo;</a></div><div class="common_input_overlay"></div></section>',
+        'markup': '<section data-cid="113" class="cat-border" data-ss-colspan="2"><p class="widgetClose">x</p><p>Tags</p><ul class="half-white-tag-nor"><li> <span>Discount</span> <img src="images-new/half-white-tag.jpg" alt=""><span>Price</span></li><li><span>Discount</span><img src="images-new/half-white-tag.jpg" alt=""><span>Price</span></li><li> <span>Discount</span><img src="images-new/half-white-tag.jpg" alt=""><span>Price</span></li><li><span>Discount</span><img src="images-new/half-white-tag.jpg" alt=""><span>Price</span></li><li> <span>Discount</span><img src="images-new/half-white-tag.jpg" alt=""><span>Price</span></li><li><span>Discount</span><img src="images-new/half-white-tag.jpg" alt=""><span>Price</span></li></ul><div class="view-more"><a href="#">View more &raquo;</a></div><div class="common_input_overlay"></div></section>',
+        'ng-markup': '<section data-cid="113" ng-click="fnEditComponent($event)" class="cat-border" data-ss-colspan="2"><p class="widgetClose">x</p><p>{{ comp.title.name }}</p><ul class="half-white-tag-nor"><li ng-repeat="elem in comp.elements.element_array" ng-style="{ \'background-color\' : comp.label_bg }"><span>{{ elem.discount || "Discount" }}</span><img ng-src="{{ elem.imageurl || comp.dummy_dtls.img }}" alt=""><span>{{ elem.actualprice ? (elem.symbol_left ? (elem.symbol_left + elem.special_price || elem.symbol_left + elem.actualprice) : (elem.special_price + elem.symbol_right || elem.actualprice + elem.symbol_right)) : "Price" }}</span></li></ul><div class="view-more"><a href="#">View more &raquo;</a></div><div class="common_input_overlay"></div></section>',
         'heading': 'Heading',
         'subheading': 'Sub-heading',
         'dummyImg': 'images-new/half-white-tag.jpg',
@@ -536,7 +540,7 @@ requirejs(['jquery', 'angular', 'bxslider', 'colpick', 'jquery-ui', 'shapeshift'
       },
        '114': {
         'markup': '<section data-cid="114" class="cat-border" data-ss-colspan="2"><p class="widgetClose">x</p><p>Tags</p><ul class="half-white-larg-four"><li><span>Discount</span><img src="images-new/half-large.jpg" alt=""><span>Price</span></li><li><span>Discount</span><img src="images-new/half-large.jpg" alt=""><span>Price</span></li><li><span>Discount</span><img src="images-new/half-large.jpg" alt=""><span>Price</span></li><li><span>Discount</span><img src="images-new/half-large.jpg" alt=""><span>Price</span></li></ul><div class="view-more"><a href="#">View more »</a></div><div class="common_input_overlay"></div></section>',
-        'ng-markup': '<section data-cid="114" ng-click="fnEditComponent($event)" class="cat-border" data-ss-colspan="2"><p class="widgetClose">x</p><p>{{ comp.title.name }}</p><ul class="half-white-larg-four"><li ng-repeat="elem in comp.elements.element_array" ng-style="{ \'background-color\' : comp.label_bg }"><span>Discount</span><img ng-src="{{ elem.imageurl || comp.dummy_dtls.img }}" alt=""><span>Price</span></li></ul><div class="view-more"><a href="#">View more »</a></div><div class="common_input_overlay"></div></section>',
+        'ng-markup': '<section data-cid="114" ng-click="fnEditComponent($event)" class="cat-border" data-ss-colspan="2"><p class="widgetClose">x</p><p>{{ comp.title.name }}</p><ul class="half-white-larg-four"><li ng-repeat="elem in comp.elements.element_array" ng-style="{ \'background-color\' : comp.label_bg }"><span>{{ elem.discount || "Discount" }}</span><img ng-src="{{ elem.imageurl || comp.dummy_dtls.img }}" alt=""><span>{{ elem.actualprice ? (elem.symbol_left ? (elem.symbol_left + elem.special_price || elem.symbol_left + elem.actualprice) : (elem.special_price + elem.symbol_right || elem.actualprice + elem.symbol_right)) : "Price" }}</span></li></ul><div class="view-more"><a href="#">View more »</a></div><div class="common_input_overlay"></div></section>',
         'heading': 'Heading',
         'subheading': 'Sub-heading',
         'dummyImg': 'images-new/half-large.jpg',
@@ -551,7 +555,7 @@ requirejs(['jquery', 'angular', 'bxslider', 'colpick', 'jquery-ui', 'shapeshift'
       },
        '115': {
         'markup': '<section data-cid="115" class="cat-border" data-ss-colspan="2"><p class="widgetClose">x</p><p>Tags</p><ul class="half-white-larg-four slider2"><li class="slide"><span>Discount</span><img src="images-new/half-large.jpg" alt="" /><span>Price</span></li><li class="slide"><span>Discount</span><img src="images-new/half-large.jpg" alt="" /><span>Price</span></li><li class="slide"><span>Discount</span><img src="images-new/half-large.jpg" alt="" /><span>Price</span></li><li class="slide"><span>Discount</span><img src="images-new/half-large.jpg" alt="" /><span>Price</span></li></ul><div class="common_input_overlay"></div></section>',
-        'ng-markup': '<section data-cid="115" ng-click="fnEditComponent($event)" class="cat-border" data-ss-colspan="2"><p class="widgetClose">x</p><p>{{ comp.title.name }}</p><ul class="half-white-larg-four slider2"><li class="slide" ng-repeat="elem in comp.elements.element_array" ng-style="{ \'background-color\' : comp.label_bg }"><span>Discount</span><img ng-src="{{ elem.imageurl || comp.dummy_dtls.img }}" alt="" /><span>Price</span></li></ul><div class="common_input_overlay"></div></section>',
+        'ng-markup': '<section data-cid="115" ng-click="fnEditComponent($event)" class="cat-border" data-ss-colspan="2"><p class="widgetClose">x</p><p>{{ comp.title.name }}</p><ul class="half-white-larg-four slider2"><li class="slide" ng-repeat="elem in comp.elements.element_array" ng-style="{ \'background-color\' : comp.label_bg }"><span>{{ elem.discount || "Discount" }}</span><img ng-src="{{ elem.imageurl || comp.dummy_dtls.img }}" alt="" /><span>{{ elem.actualprice ? (elem.symbol_left ? (elem.symbol_left + elem.special_price || elem.symbol_left + elem.actualprice) : (elem.special_price + elem.symbol_right || elem.actualprice + elem.symbol_right)) : "Price" }}</span></li></ul><div class="common_input_overlay"></div></section>',
         'heading': 'Heading',
         'subheading': 'Sub-heading',
         'dummyImg': 'images-new/half-large.jpg',
@@ -566,7 +570,7 @@ requirejs(['jquery', 'angular', 'bxslider', 'colpick', 'jquery-ui', 'shapeshift'
       },
       '116': {
         'markup': '<section data-cid="116" class="cat-border" data-ss-colspan="2"><p class="widgetClose">x</p><p>Products</p><ul class="full-white-product-cart clearfix"><li><img src="images-new/product-img.jpg" alt=""><div class="icon-text-container"><div class="text-container"><span>Text</span><strong>Price</strong></div><div class="icon-container"><img src="images-new/cart-icon.png" ></div></div></li></ul><div class=common_input_overlay"></div></section>',
-        'ng-markup': '<section data-cid="116" ng-click="fnEditComponent($event)" class="cat-border" data-ss-colspan="2"><p class="widgetClose">x</p><ul class="full-white-product-cart clearfix"><li ng-style="{ \'background-color\' : comp.label_bg }"><div class="heart_icon" ng-if="appDtls.app_type == 3"><i class="fa fa-heart"></i></div><img ng-src="{{ elem.imageurl || comp.dummy_dtls.img }}" alt="" /><div class="icon-text-container"><div class="text-container"><span>Text</span><strong>Price</strong></div><div class="icon-container"><img ng-if="appDtls.app_type == 2" ng-src="images-new/cart-icon.png" alt="" /></div></div></li></ul><div class="common_input_overlay"></div><section> ',
+        'ng-markup': '<section data-cid="116" ng-click="fnEditComponent($event)" class="cat-border" data-ss-colspan="2"><p class="widgetClose">x</p><ul class="full-white-product-cart clearfix"><li ng-style="{ \'background-color\' : comp.label_bg }" ng-repeat="elem in comp.elements.element_array"><div class="heart_icon" ng-if="appDtls.app_type == 3"><i class="fa fa-heart"></i></div><img ng-src="{{ elem.itemprod.imageurl || comp.dummy_dtls.img }}" alt="" /><div class="icon-text-container"><div class="text-container"><span>{{ elem.itemprod.itemheading || "Text" }}</span><strong>{{ elem.itemprod.actualprice ? (elem.itemprod.symbol_left ? (elem.itemprod.symbol_left + elem.itemprod.price || elem.itemprod.symbol_left + elem.itemprod.actualprice) : (elem.itemprod.price + elem.itemprod.symbol_right || elem.itemprod.actualprice + elem.itemprod.symbol_right)) : "Price" }}</strong></div><div class="icon-container"><img ng-if="appDtls.app_type == 2" ng-src="images-new/cart-icon.png" alt="" /></div></div></li></ul><div class="common_input_overlay"></div><section> ',
           'heading': ' ',
           'subheading': ' ',
           'dummyImg': 'images-new/product-img.jpg',
@@ -580,9 +584,9 @@ requirejs(['jquery', 'angular', 'bxslider', 'colpick', 'jquery-ui', 'shapeshift'
         }
       },
       '117': {
-        'markup': '<section data-cid="117" class="cat-border" data-ss-colspan="2"><p class="widgetClose">x</p><p>Categories</p><ul class="full-white-product-cart clearfix"><li><img src="images-new/product-img.jpg" alt=""><div class="icon-text-container"><div class="text-container2 cat_title_box"><span class="cat-title">Category Name</span></div></div></li></ul><div class=common_input_overlay"></div></section>',
-        'ng-markup': '<section data-cid="117" ng-click="fnEditComponent($event)" class="cat-border" data-ss-colspan="2"><p class="widgetClose">x</p><ul class="full-white-product-cart clearfix"><li ng-style="{ \'background-color\' : comp.label_bg }"><img ng-src="{{ elem.imageurl || comp.dummy_dtls.img }}" alt="" /><div class="icon-text-container"><div class="text-container"><span class="cat-title">Category Name</span></div></div></li></ul><div class="common_input_overlay"></div><section> ',
-          'heading': ' ',
+        'markup': '<section data-cid="117" class="cat-border" data-ss-colspan="2"><p class="widgetClose">x</p><p>Categories</p><ul class="full-white-product-cart clearfix"><li><img src="images-new/product-img.jpg" alt=""><div class="icon-text-container"><div class="text-container2"><strong>Category</strong></div></div></li></ul><div class=common_input_overlay"></div></section>',
+        'ng-markup': '<section data-cid="117" ng-click="fnEditComponent($event)" class="cat-border" data-ss-colspan="2"><p class="widgetClose">x</p><ul class="full-white-product-cart clearfix"><li ng-style="{ \'background-color\' : comp.label_bg }" ng-repeat="elem in comp.elements.element_array"><img ng-src="{{ elem.imageurl || comp.dummy_dtls.img }}" alt="" /><div class="icon-text-container"><div class="text-container2"><strong>{{ elem.itemheading || \"Category\" }}</strong></div></div></li></ul><div class="common_input_overlay"></div><section> ',
+          'heading': 'Category',
           'subheading': ' ',
           'dummyImg': 'images-new/product-img.jpg',
           'width': 1080,
@@ -593,7 +597,22 @@ requirejs(['jquery', 'angular', 'bxslider', 'colpick', 'jquery-ui', 'shapeshift'
             'name': '',
             'id': '0'
           }
-        }
+        },
+       '118': {
+        'markup': '<section data-cid="118" class="cat-border" data-ss-colspan="2"><p class="widgetClose">x</p><div class="all-snap-category"> <span>Category</span><button>View All</button> </div><div class="snap-list-box"> <ul class="snap-list"> <li><div class="snap-img"><img src="http://www.instappy.com/images/category-img_118.png" alt=""></div><div class="snap-area"> <h5 class="snap-heading">Category Name</h5><p class="snap-detail">Short Description</p></div><div class="snap-arrow"><i class="fa fa-angle-right fa-lg" aria-hidden="true"></i></div></li><li><div class="snap-img"><img src="http://www.instappy.com/images/category-img_118.png" alt=""></div><div class="snap-area"> <h5 class="snap-heading">Category Name</h5><p class="snap-detail">Short Description</p></div><div class="snap-arrow"><i class="fa fa-angle-right fa-lg" aria-hidden="true"></i></div></li><li><div class="snap-img"><img src="http://www.instappy.com/images/category-img_118.png" alt=""></div><div class="snap-area"> <h5 class="snap-heading">Category Name</h5><p class="snap-detail">Short Description</p></div><div class="snap-arrow"><i class="fa fa-angle-right fa-lg" aria-hidden="true"></i></div></li><li><div class="snap-img"><img src="http://www.instappy.com/images/category-img_118.png" alt=""></div><div class="snap-area"> <h5 class="snap-heading">Category Name</h5><p class="snap-detail">Short Description</p></div><div class="snap-arrow"><i class="fa fa-angle-right fa-lg" aria-hidden="true"></i></div></li></ul></div><div class=common_input_overlay"></div></section>',
+        'ng-markup': '<section data-cid="118" ng-click="fnEditComponent($event)" class="cat-border" data-ss-colspan="2"><p class="widgetClose">x</p><div class="all-snap-category"> <span>Category</span><button>View All</button> </div><div class="snap-list-box"> <ul class="snap-list" ng-repeat="elem in comp.snap_sim_data.element_array" ng-show="comp.snap_sim_data.element_count > 0"><li><div class="snap-img"><img src="{{ elem.imageurl }}" alt="{{ elem.itemheading }}"></div><div class="snap-area"> <h5 class="snap-heading">{{ elem.itemheading || "Category Name"}}</h5><p class="snap-detail">{{ elem.itemdesc || "Short Description"}}</p></div><div class="snap-arrow"><i class="fa fa-angle-right fa-lg" aria-hidden="true"></i></div></li></ul><ul class="snap-list" ng-hide="comp.snap_sim_data.element_count > 0"><li><div class="snap-img"><img src="http://www.instappy.com/images/category-img_118.png" alt=""></div><div class="snap-area"> <h5 class="snap-heading">Category Name</h5><p class="snap-detail">Short Description</p></div><div class="snap-arrow"><i class="fa fa-angle-right fa-lg" aria-hidden="true"></i></div></li><li><div class="snap-img"><img src="http://www.instappy.com/images/category-img_118.png" alt=""></div><div class="snap-area"> <h5 class="snap-heading">Category Name</h5><p class="snap-detail">Short Description</p></div><div class="snap-arrow"><i class="fa fa-angle-right fa-lg" aria-hidden="true"></i></div></li><li><div class="snap-img"><img src="http://www.instappy.com/images/category-img_118.png" alt=""></div><div class="snap-area"> <h5 class="snap-heading">Category Name</h5><p class="snap-detail">Short Description</p></div><div class="snap-arrow"><i class="fa fa-angle-right fa-lg" aria-hidden="true"></i></div></li><li><div class="snap-img"><img src="http://www.instappy.com/images/category-img_118.png" alt=""></div><div class="snap-area"> <h5 class="snap-heading">Category Name</h5><p class="snap-detail">Short Description</p></div><div class="snap-arrow"><i class="fa fa-angle-right fa-lg" aria-hidden="true"></i></div></li></ul></div><div class="common_input_overlay"></div><section> ',
+          'heading': 'Category Name',
+          'subheading': 'Short Description',
+          'dummyImg': 'images-new/product-img.jpg',
+          'width': 1080,
+          'height': 360,
+          'elem_count': 1,
+          'background-color': '#fff',
+          'title': {
+            'name': '',
+            'id': '0'
+          }
+        }   
     };
     
     var scrollBlockMap = {
@@ -672,13 +691,47 @@ requirejs(['jquery', 'angular', 'bxslider', 'colpick', 'jquery-ui', 'shapeshift'
       'app-name-exists': {
         msg: 'App Name Already Exists.'
       },
+      'reseller-check': {
+        msg: 'You can not create app.Please contact to your reseller.'
+      },
       'products-only': {
         msg: 'Please Select Product.',
-        scroll: '.retailpanel_detail_input'
+        scroll: '.other_than_banner'
       },
       'category-only': {
         msg: 'Please Select Category.',
-        scroll: '.retailpanel_detail_input'
+        scroll: '.other_than_banner'
+      },
+      'add-feedback-email': {
+        msg: 'Please add feedback email.',
+        scroll: '.is_feedback'
+      },
+      'add-valid-feedback-email': {
+        msg: 'Please add valid email.',
+        scroll: '.is_feedback'
+      },
+      'add-contact-email': {
+        msg: 'Please add contact email.',
+        scroll: '.is_contactus'
+      },
+      'add-tnc-link': {
+        msg: 'Please add terms & condition link.',
+        scroll: '.is_tnc'
+      },
+      'add-order-logo': {
+        msg: 'Please upload company logo.',
+        scroll: '.is_order'
+      },
+      'add-order-package': {
+        msg: 'Please select order package.',
+        scroll: '.is_order'
+      },
+      'add-order-email': {
+        msg: 'Please add order email.',
+        scroll: '.is_order'
+      },
+      'no-small-image': {
+        msg: 'Please add order email.'
       }
     };
     
@@ -790,6 +843,9 @@ requirejs(['jquery', 'angular', 'bxslider', 'colpick', 'jquery-ui', 'shapeshift'
               element_array: []
             };
           }
+          
+		  if(comp.elements.element_array.length == 0)
+		  {
           if (comp.elements.element_array.length < compMap[comp.comp_type].elem_count) {
             var len = compMap[comp.comp_type].elem_count - comp.elements.element_array.length;
             for (var i = 0; i < len; i++) {
@@ -804,6 +860,7 @@ requirejs(['jquery', 'angular', 'bxslider', 'colpick', 'jquery-ui', 'shapeshift'
               });
             }
           }
+		  }
           if (!comp.comp_row_id && comp.comp_row_id !== 0) {
             comp.comp_row_id = 'new';
           }
@@ -853,7 +910,10 @@ requirejs(['jquery', 'angular', 'bxslider', 'colpick', 'jquery-ui', 'shapeshift'
         $('.editPickerText').css('background', $scope.appDtls.screen_properties.font_color);
         $('.editPickerDiscount').css('background', $scope.appDtls.screen_properties.discount_color);
         
-        $scope.nameYourAppForm.$setPristine();
+		if(typeof $scope.nameYourAppForm != 'undefined')
+		{
+			$scope.nameYourAppForm.$setPristine();
+		}
       });
       
     })();
@@ -997,7 +1057,6 @@ requirejs(['jquery', 'angular', 'bxslider', 'colpick', 'jquery-ui', 'shapeshift'
             comp_html: $(compMap[curr_type]['ng-markup'] || compMap[curr_type].markup).attr('data-uid', ts)[0].outerHTML,
             comp_id: '',
             comp_row_id: 'new',
-            label_bg: compMap[curr_type]['background-color'],
             comp_properties: {},
             dummy_dtls: {
               img: compMap[curr_type].dummyImg,
@@ -1017,7 +1076,6 @@ requirejs(['jquery', 'angular', 'bxslider', 'colpick', 'jquery-ui', 'shapeshift'
               image_width: '',
               itemid: '',
               imagename: compMap[curr_type].dummyImg
-              
             });
           }
         }
@@ -1026,6 +1084,21 @@ requirejs(['jquery', 'angular', 'bxslider', 'colpick', 'jquery-ui', 'shapeshift'
         $timeout(function () {
           $scope.$broadcast('updateSimulator');
         });
+	  
+		// fix for multiple dots
+		if(typeof sliders != 'undefined')
+		{
+			sliders.reloadShow(); 
+			//sliders.reloadSlider();
+			/* $('.clones').trigger("ss-destroy");
+			$('.clones').shapeshift({
+			dragClone: true,
+			enableCrossDrop: false,
+			colWidth: 139.5,
+			minColumns: 2,
+			enableTrash: true
+			}); */
+		}
       }
       else if (action === 'arrange') {
         var elemId = $(elem).attr('data-uid');
@@ -1075,16 +1148,29 @@ requirejs(['jquery', 'angular', 'bxslider', 'colpick', 'jquery-ui', 'shapeshift'
     })();
     
     var fieldsMap = {
-      'heading': ['101', '102', '103', '109', '110'],
-      'tag': ['104', '105', '112', '113', '114', '115'],
-      'subHeading': [],
-      'catProdSelect': ['101', '102', '103', '109', '110'],
-      'imageUpload': [],
-      'imgHeadSubhead': ['106', '107', '108', '111'],
-      'noHeadSubhead': ['106', '111'],
-      'compWithCatsOnly': ['101', '102', '103', '117'],
-      'labelColpick': ['101', '102', '103', '104', '105', '107', '108', '109', '110', '112', '113', '114', '115'],
-       'onlyCatWithProdDropdwn' : ['116', '117']
+		/*
+		'heading': ['101', '102', '103', '109', '110'],
+		'tag': ['104', '105', '112', '113'],
+		'subHeading': [],
+		'catProdSelect': ['101', '102', '103', '109', '110'],
+		'imageUpload': [],
+		'imgHeadSubhead': ['106', '107', '108', '111'],
+		'noHeadSubhead': ['106', '111'],
+		'compWithCatsOnly': ['101', '102', '103'],
+		'labelColpick': ['116'],
+		'onlyCatWithProdDropdwn' : ['116']
+		*/
+		'heading': ['101', '102', '103', '109', '110'],
+		'tag': ['104', '105', '112', '113', '114', '115'],
+		'subHeading': [],
+		'catProdSelect': ['101', '102', '103', '109', '110'],
+		'imageUpload': [],
+		'imgHeadSubhead': ['106', '107', '108', '111'],
+		'noHeadSubhead': ['106', '111'],
+		'compWithCatsOnly': ['101', '102', '103', '117', '118'],
+		//'labelColpick': ['101', '102', '103', '104', '105', '107', '108', '109', '110', '112', '113', '114', '115'],
+		'labelColpick': [],
+		'onlyCatWithProdDropdwn' : ['116', '117','118']
     };
         
     $scope.fnEditComponent = function (event) {
@@ -1184,8 +1270,8 @@ requirejs(['jquery', 'angular', 'bxslider', 'colpick', 'jquery-ui', 'shapeshift'
     }
     
     $scope.postAppDtls = function (redirectUrl) {
-		
-		if ($scope.nameYourAppForm.$invalid)
+	
+		if ($scope.nameYourAppForm.$invalid && angular.element(nameYourAppForm).parents('.name-your-app').hasClass('active') == true)
 		{
 			if ($scope.nameYourAppForm.app_name.$invalid) {
 				$scope.showPopup('app-name');
@@ -1198,22 +1284,76 @@ requirejs(['jquery', 'angular', 'bxslider', 'colpick', 'jquery-ui', 'shapeshift'
 			}
 			return false;
 		}
-		else if($scope.update_widgets_details.$valid)
+		else if($scope.update_widgets_details.$valid && angular.element(update_widgets_details).parents('.update-card-dtls').hasClass('active') == true)
 		{
-			if(!$scope.update_widgets_details.itemcatagory.$dirty)
+			if(!angular.element(update_widgets_details).find('.other_than_banner').hasClass('ng-hide'))
 			{
-				$scope.showPopup('category-only');
+				if($scope.update_widgets_details.itemcatagory.$modelValue.itemid == '' || $scope.update_widgets_details.itemcatagory.$modelValue.itemid == 0)
+				{
+					$scope.showPopup('category-only');
+					return false;
+				}
+				
+				if(($scope.update_widgets_details.itemcatagory.$modelValue.itemid > 0) && angular.element(update_widgets_details).find('.other_than_banner .cat_dependent_prod').hasClass('ng-hide') == false)
+				{
+					if($scope.update_widgets_details.itemprod.$modelValue.itemid == '' || $scope.update_widgets_details.itemprod.$modelValue.itemid == 0)
+					{
+						$scope.showPopup('products-only');
+						return false;
+					}
+				}
+			}
+		}
+		else if($scope.retail_additional_features.$valid && angular.element(retail_additional_features).parents('.additional-features').hasClass('active') == true)
+		{
+			if(($scope.appDtls.feedback_dtls.is_feedback == true) && ($scope.appDtls.feedback_dtls.feedback_email == false))
+			{
+				$scope.showPopup('add-feedback-email');
 				return false;
 			}
-			else if (($scope.update_widgets_details.itemcatagory.$dirty && typeof $scope.update_widgets_details.itemprod != 'undefined') && (!$scope.update_widgets_details.itemprod.$dirty))
+			/* else if($scope.retail_additional_features.feedback_email.$error)
 			{
-				$scope.showPopup('products-only');
+				$scope.showPopup('add-valid-feedback-email');
+				return false;
+			} */
+			
+			if(($scope.appDtls.contact_details.is_contactus == true) && ($scope.appDtls.contact_details.contact_email == false))
+			{
+				$scope.showPopup('add-contact-email');
+				return false;
+			}
+			
+			if(($scope.appDtls.tnc.is_tnc == true) && ($scope.appDtls.tnc.tnc_email == false))
+			{
+				$scope.showPopup('add-tnc-link');
+				return false;
+			}
+			
+			if(($scope.appDtls.order_dtls.is_order == true) && ($scope.appDtls.logo_dtls.imageurl == false))
+			{
+				$scope.showPopup('add-order-logo');
+				return false;
+			}
+			
+			if(($scope.appDtls.order_dtls.is_order == true) && ($scope.appDtls.order_dtls.package == false))
+			{
+				$scope.showPopup('add-order-package');
+				return false;
+			}
+			
+			if(($scope.appDtls.order_dtls.is_order == true) && ($scope.appDtls.order_dtls.orderconfirm_email == false))
+			{
+				$scope.showPopup('add-order-email');
 				return false;
 			}
 		}
       
-      $scope.resetCurrentComp();
-      $scope.dataLoaded = false;
+		$scope.resetCurrentComp();
+		$scope.dataLoaded = false;
+
+		$scope.appDtls.screen_properties.background_color = app_bg_color;
+		$scope.appDtls.screen_properties.font_color       = text_color;
+		$scope.appDtls.screen_properties.discount_color   = discount_color;
       
       hitApi('postAppData', {
         app_data: {
@@ -1229,7 +1369,7 @@ requirejs(['jquery', 'angular', 'bxslider', 'colpick', 'jquery-ui', 'shapeshift'
           if (!redirectUrl) {            
             getAppData();
           }
-          else  {
+          else {
 			
 			if(typeof sliders != 'undefined'){
             sliders.goToSlide(0);
@@ -1379,7 +1519,7 @@ requirejs(['jquery', 'angular', 'bxslider', 'colpick', 'jquery-ui', 'shapeshift'
                           
                           tempImgName = tempImgName[tempImgName.length - 1];
                           
-                          var imagePath = BASEURL + imagename;
+                          var imagePath = imagename;
 
                           $("#filenamest").val('');
                           $("#filetypest").val('');
@@ -1425,6 +1565,12 @@ requirejs(['jquery', 'angular', 'bxslider', 'colpick', 'jquery-ui', 'shapeshift'
                           tmpImg.src = imagePath;
                           tmpImg.onload = function () {
                             dfd.resolve();
+                            if (sliders) {
+                              //sliders.reloadSlider();
+							  $timeout (function () {
+								  sliders.reloadShow();
+								});
+                            }
                             $scope.dataLoaded = true;
                             $scope.$apply();
                           };
@@ -1480,14 +1626,14 @@ requirejs(['jquery', 'angular', 'bxslider', 'colpick', 'jquery-ui', 'shapeshift'
       }
       
       $scope.dataLoaded = false;
-      
+      var email = $('#login_email').val();
       var app_id = $scope.appDtls.screen_properties.app_id;
       var app_name = $scope.appDtls.screen_properties.title;
       var curr_id = $scope.appDtls.defaultcurrency;
       $.ajax({
         type: "POST",
         url: "ajax.php",
-        data: "type=catlog_app_login_check",
+        data: "type=catlog_app_login_check&email="+email,
         success: function (response) {
           if (response == 'fails') {
             $("#screenoverlay").css("display", "none");
@@ -1513,9 +1659,8 @@ requirejs(['jquery', 'angular', 'bxslider', 'colpick', 'jquery-ui', 'shapeshift'
         },
       });
     }
-	
-	
-	/* $scope.sendToOpencartCatProd = function (redirectType) {
+    
+    $scope.sendToOpencartCatProd = function (redirectType) {
       var email = $('#login_email').val();
       var app_id = $scope.appDtls.screen_properties.app_id;
       var app_name = $scope.appDtls.screen_properties.title;
@@ -1540,9 +1685,7 @@ requirejs(['jquery', 'angular', 'bxslider', 'colpick', 'jquery-ui', 'shapeshift'
           }
         },
       });
-    } */	
-	
-	
+    }
     
     $scope.$on('screenReady', function (e, data) {
       var element = $('.container.droparea');
@@ -1551,15 +1694,6 @@ requirejs(['jquery', 'angular', 'bxslider', 'colpick', 'jquery-ui', 'shapeshift'
           slideWidth: 84,
           minSlides: 3,
           maxSlides: 3,
-          infiniteLoop: false,
-          hideControlOnEnd: true,
-          pager: false,
-          slideMargin: 2
-        });
-        $(element).find('.slider2').bxSlider({
-          slideWidth: 130,
-          minSlides: 2,
-          maxSlides: 2,
           infiniteLoop: false,
           hideControlOnEnd: true,
           pager: false,
@@ -1640,15 +1774,6 @@ requirejs(['jquery', 'angular', 'bxslider', 'colpick', 'jquery-ui', 'shapeshift'
           slideWidth: 84,
           minSlides: 3,
           maxSlides: 3,
-          infiniteLoop: false,
-          hideControlOnEnd: true,
-          pager: false,
-          slideMargin: 2
-        });
-        $('.clones .slider2').bxSlider({
-          slideWidth: 130,
-          minSlides: 2,
-          maxSlides: 2,
           infiniteLoop: false,
           hideControlOnEnd: true,
           pager: false,

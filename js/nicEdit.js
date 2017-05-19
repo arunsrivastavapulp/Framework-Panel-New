@@ -266,7 +266,6 @@ var nicEditorConfig = bkClass.extend({
 		'removeformat' : {name : __('Remove Formatting'), command : 'removeformat', noActive : true},
 		'indent' : {name : __('Indent Text'), command : 'indent', noActive : true},
 		'outdent' : {name : __('Remove Indent'), command : 'outdent', noActive : true},
-//      'fontSize' : {name : __('Select Font Size'), type : 'nicEditorFontSizeSelect', command : 'fontsize'},
 		'hr' : {name : __('Horizontal Rule'), command : 'insertHorizontalRule', noActive : true}
 	},
 	iconsPath : 'images/nicEditorIcons.gif',

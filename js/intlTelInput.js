@@ -55,6 +55,20 @@ https://github.com/Bluefieldscom/intl-tel-input.git
     $(window).load(function() {
         windowLoaded = true;
     });
+		function getCookie(countrycode) {
+		var name = countrycode + "=";
+		var ca = document.cookie.split(';');
+		for(var i=0; i<ca.length; i++) {
+		var c = ca[i];
+		while (c.charAt(0)==' ') {
+		c = c.substring(1);
+		}
+		if (c.indexOf(name) == 0) {
+		return c.substring(name.length, c.length);
+		}
+		}
+		return "";
+		}
     function Plugin(element, options) {
         this.element = element;
         this.options = $.extend({}, defaults, options);
@@ -74,17 +88,60 @@ https://github.com/Bluefieldscom/intl-tel-input.git
             if (this.options.defaultCountry == "auto") {
                 // reset this in case lookup fails
                 this.options.defaultCountry = "";
-                var ipinfoURL = "//ipinfo.io";
-                if (this.options.ipinfoToken) {
-                    ipinfoURL += "?token=" + this.options.ipinfoToken;
-                }
-                $.get(ipinfoURL, function(response) {
-                    if (response && response.country) {
-                        that.options.defaultCountry = response.country.toLowerCase();
-                    }
-                }, "jsonp").always(function() {
-                    that._ready();
-                });
+				 var cntryCodes=getCookie("countrycode");
+				 var d = new Date();
+					var curr_hour = d.getHours();
+					var curr_minute = d.getMinutes();
+					var curr_time = curr_hour + ":" + curr_minute;
+					var open_time = "04:30";
+					var close_time="11:00";
+					var cntrycode='';
+					var cntryVal="0";
+				if(cntryCodes == "")
+				{
+						var ipinfoURL = "//ipinfo.io";
+						if (this.options.ipinfoToken) {
+							ipinfoURL += "?token=" + this.options.ipinfoToken;
+						}
+						$.get(ipinfoURL, function(response) {
+							if (response && response.country) {								
+								var cntrycode = response.country.toLowerCase();								
+								that.options.defaultCountry = response.country.toLowerCase();
+								var d = new Date();
+								d.setTime(d.getTime() + (30*24*60*60*1000));
+								var expires = "expires=" + d.toGMTString();
+								document.cookie = "countrycode="+cntrycode+";"+expires;
+								if(cntrycode == "us" || cntrycode == "ca")
+								{
+									cntryVal= "1";
+								}
+									if((cntryVal == "1") && (curr_time > open_time && curr_time > close_time) || (curr_time < open_time && curr_time < close_time))
+									{
+									document.getElementById("showTollFree").innerHTML = "<span class='callus'>Call us:</span> +13152772557";
+									document.getElementById("showTollFreeMob").innerHTML = "<span class='callus'>Call us:</span> +13152772557";
+									}											
+								
+							}
+						}, "jsonp").always(function() {
+							that._ready();
+						});
+				}
+				else
+				{		
+						cntrycode=cntryCodes;		
+						if(cntrycode == "us" || cntrycode == "ca")
+						{
+						cntryVal= "1";
+						}	
+					if((cntryVal == "us") && (curr_time > open_time && curr_time > close_time) || (curr_time < open_time && curr_time < close_time))
+					{
+						document.getElementById("showTollFree").innerHTML = "<span class='callus'>Call us:</span> +13152772557";
+						document.getElementById("showTollFreeMob").innerHTML = "<span class='callus'>Call us:</span> +13152772557";
+					}
+					that.options.defaultCountry = cntryCodes;
+					that._ready();	
+				}
+				
             } else {
                 this._ready();
             }

@@ -431,7 +431,7 @@ $(document).ready(function () {
         var index = $items.index($(this));
         if (index == 0) {
             $('.login_popup').animate({
-                height: '450px',
+                height: '400px',
                 width: '300px',
                 marginTop: '-220px',
                 marginLeft: '-150px'
@@ -497,6 +497,8 @@ $(document).ready(function () {
         $(".popup_container").css("display", "block");
         $(".login_popup").css("display", "none");
         $(".forgot_popup").css("display", "block");
+		$(".forgot_popup .forgot_popup_body #signup_reset").hide();
+        $(".signup_success_popup").hide();
     })
 
 
@@ -535,12 +537,14 @@ $.ajax({
         else if (!regex.test(username)) {
             $(".login_popup").css("height", "400px");
             $("#login_email").css("border", "1px solid #ff0000");
+            $("#email_error").css("margin-top", "-10px");
             $("#email_error").text("Invalid email");
             return false;
         }
         else {
             $("#login_email").css("border", "1px solid #e5e5e5");
             $("#email_error").text("");
+            $("#email_error").css("margin-top", "0");
         }
         if (password == '' || password == null)
         {
@@ -563,6 +567,8 @@ $.ajax({
                 if (res[0] == 'success') {
 					crmapicall();
                     var userImage = res[2];
+                    var reseller_id = res[4];
+                    var is_reseller = res[5];
                     if (userImage != '')
                     {
                         var imageHtml = '<img alt="Image Not Found" src="avatars/' + userImage + '">';
@@ -580,7 +586,7 @@ $.ajax({
                     }
                     $("#panel_login").css("display", "none");
                     $("#loginout").html('<a href="logout.php" id="panel_logout" onclick="logout();"> <img src="images/login_icon.png" /> <span>Logout</span></a>');
-                    $(".login_popup").css("height", "440px");
+                    $(".login_popup").css("height", "400px");
                     $(".login_popup").css("margin-top", "-210px");
                     $("#loading").addClass("success");
                     $("#loading").html("Login successfully.");
@@ -593,6 +599,16 @@ $.ajax({
                         $(".confirm_name .confirm_name_form p").text("Please complete your profile to proceed.");
                         setTimeout(function () {
                             window.location.href = BASEURL + 'userprofile.php';
+                        }, 5000);
+                        return false;
+                    }
+                    if(reseller_id>0 && is_reseller==''){
+                        $(".popup_container").css("display", "block");
+                        $(".confirm_name").css("display", "block");
+                        $(".confirm_name .confirm_name_form p").text("You can not create app.Please contact your reseller. ");
+                        /* alert(reseller_id);return false;*/
+                        setTimeout(function(){                        
+                          window.location =BASEURL + 'applisting.php';   
                         }, 2000);
                         return false;
                     }
@@ -609,18 +625,18 @@ $.ajax({
 
                 }
                 else if (response == 'invalid') {
-                    $(".login_popup").css("height", "440px");
+                    $(".login_popup").css("height", "400px");
                     $(".login_popup").css("margin-top", "-210px");
                     $("#loading").html("Please Verify Your Email To SignIn.");
                 }
                 else if (res[0] == 'fail') {
-                    $(".login_popup").css("height", "440px");
+                    $(".login_popup").css("height", "400px");
                     $(".login_popup").css("margin-top", "-210px");
                     $("#loading").html("Invalid Username or Password.");
                     $("#loading").css("color", "#f00");
                 }
                 else {
-                    $(".login_popup").css("height", "440px");
+                    $(".login_popup").css("height", "400px");
                     $(".login_popup").css("margin-top", "-210px");
                     $("#loading").html("OOps something went wrong.Try again later");
                 }
@@ -635,7 +651,7 @@ $.ajax({
             },
             beforeSend: function () {
                 $("#loading").addClass("success");
-                $(".login_popup").css("height", "440px");
+                $(".login_popup").css("height", "400px");
                 $(".login_popup").css("margin-top", "-210px");
                 $("#loading").html("Logging in....");
                 $("#loading").css("color", "#008000");
@@ -787,6 +803,19 @@ $.ajax({
             success: function (response) {
                 $("img#captcha-refresh").trigger("click");
                	if (response == 'success') {         
+					
+					 $.ajax({
+						type: "POST",
+						url: "ajax.php",
+						data: "firstname="+first_name+"&lastname="+last_name+"&company="+company_name+"&telephone="+mobile_number+"&email="+username+"&password=" + password + "&type=vendor_register&confirm="+password+"&username="+username+"&city="+space+"&postcode=0&country_id=0&zone_id=0&appid=0&curr_id=0&paypal="+username+"&agree=1&address_1="+space,
+						success: function (resellerData) {			
+							if (resellerData == 'success') {
+								
+								
+							}
+							}
+					    });
+					
                     $("#signup_form")[0].reset();
                     $(".login_popup").hide();
                     $(".signup_success_popup").show();
@@ -823,8 +852,10 @@ $.ajax({
         });
         return false;
     });
-	$("#signup_reset").on("click" , function(){
+	$(".forgot_popup .forgot_popup_body #signup_reset").on("click" , function(){
+		
         $(".popup_container").hide();
+		$(".forgot_popup").hide();
         $(".signup_success_popup").hide();
     });
     $("#author_product").change(function () {
@@ -876,10 +907,10 @@ $.ajax({
             return false;
         }
         else if (!regex.test(forgot_email)) {
-            $(".forgot_popup").css("height", "240px");
-            $("#ferror_email").css("color", "#ff0000");
+            $(".forgot_popup").css("height", "240px");            
             $("#forgot_email").css("border", "1px solid #ff0000");
-            $("#ferror_email").text("Invalid email");
+            $(".forgot_popup .forgot_popup_body #ferror_email").css("color", "#ff0000");
+            $(".forgot_popup .forgot_popup_body #ferror_email").text("Invalid email");
             return false;
         }
         else {
@@ -894,11 +925,13 @@ $.ajax({
             success: function (response) {
                 if (response == 'success') {
                     $(".forgot_popup").css("height", "250px");
+					$(".forgot_popup .forgot_popup_body #loading_forgot").css("color", "green");
+					$(".forgot_popup .forgot_popup_body #loading_forgot").html("Please check your email to reset your password.");
                     $("#forgot_email").val('');
-                    $("#loading_forgot").html("Please check your email to reset your password.");
-                    setTimeout(function () {
-                        $("#loading_forgot").html('');
-                    }, 5000);
+					$(".forgot_popup .forgot_popup_body #signup_reset").show();
+					$("#reset").hide();
+					$("#forgot_email").hide();
+					// $(".forgot_popup_body #loading_forgot").hide();
                 }
                 else if (response == 'fail') {
                     $(".forgot_popup").css("height", "250px");
@@ -910,11 +943,11 @@ $.ajax({
                 }
                 else if (response == 'invalid') {
                     $(".forgot_popup").css("height", "250px");
-                    $("#loading_forgot").css("color", "#ff0000");
-                    $("#loading_forgot").html("This email id is not registered.");
-                    setTimeout(function () {
-                        $("#loading_forgot").html('');
-                    }, 5000);
+                    $(".forgot_popup .forgot_popup_body #loading_forgot").css("color", "#ff0000");
+                    $(".forgot_popup .forgot_popup_body #loading_forgot").html("This email id is not registered.");
+                    // setTimeout(function () {
+                    //     $("#loading_forgot").html('');
+                    // }, 5000);
                 }
                 else {
                     $(".forgot_popup").css("height", "250px");
@@ -966,9 +999,14 @@ $.ajax({
             data: "email=" + resend_email + "&type=resend",
             success: function (response) {
                 if (response == 'success') {
-                    $("#email_resend").val('');
+                   // $("#email_resend").val('');
                     $(".em_ver").css("height", "300px");
-                    $("#forgot_email").val('');
+					$("#reset_email").hide();
+					$("#email_resend").hide();
+					$("#signup_reset").show();
+					$("#test1").hide();
+                    //$("#forgot_email").val('');
+					  $("#loading_resend").css("color", "green");
                     $("#loading_resend").html("A verification link has been sent to your email. Please verify your email.");
                     setTimeout(function () {
                         $("#loading_resend").html('');
@@ -1218,7 +1256,7 @@ function testAPI(authToken) {
                     $(".user_img").html('<div class="user_img_icon"><a href="userprofile.php"><img alt="Image Not Found" src="avatars/' + userFbId + '.jpg"></a></div><div class="clear"></div><span><a href="userprofile.php">Hi,  ' + fname + '</a></span>');
                     $("#panel_login").css("display", "none");
                     $("#loginout").html('<a href="logout.php" id="panel_logout" onclick="logout();"> <img src="images/login_icon.png" /> <span>Logout</span></a>');
-                    $(".login_popup").css("height", "440px");
+                    $(".login_popup").css("height", "400px");
                     $(".login_popup").css("margin-top", "-210px");
                     $("#loading").addClass("success");
                     $("#loading").html("Register successfully.");
@@ -1251,25 +1289,25 @@ function testAPI(authToken) {
                 }
                 else if (response == 415) {
                     $("#loading").removeClass();
-                    $(".login_popup").css("height", "440px");
+                    $(".login_popup").css("height", "400px");
                     $(".login_popup").css("margin-top", "-210px");
                     $("#loading").html("Email id is already register");
                 }
                 else if (response == 405) {
                     $("#loading").removeClass();
-                    $(".login_popup").css("height", "440px");
+                    $(".login_popup").css("height", "400px");
                     $(".login_popup").css("margin-top", "-210px");
                     $("#loading").html("Parameters can not empty");
                 }
                 else if (response == 403) {
                     $("#loading").removeClass();
-                    $(".login_popup").css("height", "440px");
+                    $(".login_popup").css("height", "400px");
                     $(".login_popup").css("margin-top", "-210px");
                     $("#loading").html("Authentication Failed.Try again later");
                 }
                 else {
                     $("#loading").removeClass();
-                    $(".login_popup").css("height", "440px");
+                    $(".login_popup").css("height", "400px");
                     $(".login_popup").css("margin-top", "-210px");
                     $("#loading").html("OOps something went wrong.Try again later");
                 }
@@ -1284,7 +1322,7 @@ function testAPI(authToken) {
             },
             beforeSend: function () {
                 $("#loading").addClass("success");
-                $(".login_popup").css("height", "440px");
+                $(".login_popup").css("height", "400px");
                 $(".login_popup").css("margin-top", "-210px");
                 $("#loading").html("Please Wait request in process....");
             }
@@ -1313,7 +1351,7 @@ function onSignIn(googleUser) {
                 $(".user_img").html('<div class="user_img_icon"><a href="userprofile.php"><img alt="Image Not Found" src="avatars/' + userFbId + '.jpg"></a></div><div class="clear"></div><span><a href="userprofile.php">Hi,  ' + fname + '</a></span>');
                 $("#panel_login").css("display", "none");
                 $("#loginout").html('<a href="logout.php" id="panel_logout" onclick="logout();"> <img src="images/login_icon.png" /> <span>Logout</span></a>');
-                $(".login_popup").css("height", "440px");
+                $(".login_popup").css("height", "400px");
                 $(".login_popup").css("margin-top", "-210px");
                 $("#loading").addClass("success");
                 $("#loading").html("Register successfully.");
@@ -1347,22 +1385,22 @@ function onSignIn(googleUser) {
 
             }
             else if (response == 415) {
-                $(".login_popup").css("height", "440px");
+                $(".login_popup").css("height", "400px");
                 $(".login_popup").css("margin-top", "-210px");
                 $("#loading").html("Email id is already register");
             }
             else if (response == 405) {
-                $(".login_popup").css("height", "440px");
+                $(".login_popup").css("height", "400px");
                 $(".login_popup").css("margin-top", "-210px");
                 $("#loading").html("Parameters can not empty");
             }
             else if (response == 403) {
-                $(".login_popup").css("height", "440px");
+                $(".login_popup").css("height", "400px");
                 $(".login_popup").css("margin-top", "-210px");
                 $("#loading").html("Authentication Failed.Try again later");
             }
             else {
-                $(".login_popup").css("height", "440px");
+                $(".login_popup").css("height", "400px");
                 $(".login_popup").css("margin-top", "-210px");
                 $("#loading").html("OOps something went wrong.Try again later");
             }
@@ -1376,7 +1414,7 @@ function onSignIn(googleUser) {
             return false;
         },
         beforeSend: function () {
-            $(".login_popup").css("height", "440px");
+            $(".login_popup").css("height", "400px");
             $(".login_popup").css("margin-top", "-210px");
             $("#loading").html("Please Wait request in process....");
         }

@@ -6,7 +6,7 @@ requirejs(['jquery', 'website_login', 'jquery-validate', 'additional-methods', '
 
         // code from header starts here
         $('#login_reg').on('click', function () {
-            $('.em_ver').fadeOut();
+			$('.em_ver').fadeOut();
             $('.popup_container').fadeIn();
             $('.login_popup').fadeIn();
             $('.reset_pass').fadeOut();
@@ -14,6 +14,11 @@ requirejs(['jquery', 'website_login', 'jquery-validate', 'additional-methods', '
         $('.close_popup').on('click', function () {
             $('.login_popup').fadeOut();
             $('.popup_container').fadeOut();
+        });
+		
+		$('.cross-me').on('click', function () {
+            $('.sh-makememid').fadeOut();
+            $('.full-bg').fadeOut();
         });
 
         $('.login_popup .login_tabbing').hide().eq(0).show();
@@ -535,8 +540,18 @@ requirejs(['jquery', 'website_login', 'jquery-validate', 'additional-methods', '
         })(document, "script");
 
     });
-    
+    $(document).ready(function () {
+var path = $(location).attr('href');
+//alert(path); 
+if(path == "http://www.instappy.com/?vc=werttt"){ 
+$(".popup_container").css("display", "block"); 
+$(".forgot_popup").css("display", "block");
+$("#signup_reset").css("display", "none");
+}
+ });
     $(window).load(function () {
+        
+        
         $('#screenoverlay').fadeOut();
         
         // banner-slider
