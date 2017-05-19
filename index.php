@@ -12,7 +12,7 @@ unset($_SESSION['currentpagevisit']);
 <div class="overlay">
   <div class="video-popup"> 
     <div id="video-popup"></div>
-    <div class="popupClose"><img src="images-new/close.png"></div>
+    <div class="popupClose"><img src="images-new/close.png" alt="App Builder Instappy" title="App Builder Instappy"></div>
   </div>
 </div>
 
@@ -31,10 +31,10 @@ unset($_SESSION['currentpagevisit']);
           </div>
         </div>
         <div class="right-side">
-          <div class="device-area"> <img src="images-new/device-img.png" alt=""> </div>
+          <div class="device-area"> <img src="images-new/device-img.png" alt="Create Your Own App" title="Create Your Own App"> </div>
         </div>
         <div class="button_position">
-          <div class="create-app-button"> <a href="themes.php" title="Create your app">Create your app</a> </div>
+          <div class="create-app-button"> <a href="themes.php" title="Create your app" ia-track="IA1010007">Create your app</a> </div>
           <div class="clear"></div>
           <div class="watch-demo-box">
             <div class="demo-button"> <a href="#" title="Rich Media and Content Apps: Built with Instappy App Builder">Watch a Demo</a> </div>
@@ -62,7 +62,7 @@ unset($_SESSION['currentpagevisit']);
             and sell on mobile with awesome Instappy features.</p>
         </div>
         <div class="app-category">
-          <div class="pro-app"> <a id="pro-app-link" class="active app_selected" rel="pro_app" href="javascript:void(0);" title=""> <img src="images-new/pro-app-img.jpg"> <span>Pro Apps</span> </a> 
+          <div class="pro-app"> <a id="pro-app-link" class="active app_selected" rel="pro_app" href="javascript:void(0);" title=""> <img src="images-new/pro-app-img.jpg" alt="Best Shopping Apps" title="Best Shopping Apps"> <span>Pro Apps</span> </a> 
             
             <!--pro-app-menu-start -->
             <div class="pro-app-menus pro-apps">
@@ -72,7 +72,7 @@ unset($_SESSION['currentpagevisit']);
             <!--pro-app-menu-end --> 
             
           </div>
-          <div class="pro-app"> <a id="shopping-app-link" class="app_selected" rel="shoping_app" href="javascript:void(0);" title=""> <img src="images-new/shop-app-img.jpg"> <span>Shopping Apps</span> </a> 
+          <div class="pro-app"> <a id="shopping-app-link" class="app_selected" rel="shoping_app" href="javascript:void(0);" title=""> <img src="images-new/shop-app-img.jpg" alt="Best Shopping Apps" title="Best Shopping Apps"> <span>Shopping Apps</span> </a> 
           
           <div class="pro-app-menus shop-apps">
             <ul>     
@@ -111,14 +111,14 @@ unset($_SESSION['currentpagevisit']);
         </div>
         <div class="steps-list-box">
           <ul class="steps-list">
-            <li> <img src="images-new/step-img1.png"> <span class="step-name">Step 1</span> <span class="step-detail">Choose your theme and start customising</span> </li>
-            <li> <img src="images-new/step-img2.png"> <span class="step-name">Step 2</span> <span class="step-detail">Add rich media content,
+            <li> <img src="images-new/step-img1.png" alt="Android App Maker" title="Android App Maker"> <span class="step-name">Step 1</span> <span class="step-detail">Choose your theme and start customising</span> </li>
+            <li> <img src="images-new/step-img2.png" alt="Application Maker" title="Application Maker"> <span class="step-name">Step 2</span> <span class="step-detail">Add rich media content,
               data, or a mobile store</span> </li>
-            <li> <img src="images-new/step-img3.png"> <span class="step-name">Step 3</span> <span class="step-detail">Test your app with 
+            <li> <img src="images-new/step-img3.png" alt="Android Application Maker" title="Android Application Maker"> <span class="step-name">Step 3</span> <span class="step-detail">Test your app with 
               the Instappy Wizard</span> </li>
-            <li> <img src="images-new/step-img4.png"> <span class="step-name">Step 4</span> <span class="step-detail">Launch your app <br>
+            <li> <img src="images-new/step-img4.png" alt="Mobile App development" title="Mobile App development"> <span class="step-name">Step 4</span> <span class="step-detail">Launch your app <br>
               instantly</span> </li>
-            <li> <img src="images-new/step-img5.png"> <span class="step-name">Step 5</span> <span class="step-detail">Promote your app 
+            <li> <img src="images-new/step-img5.png" alt="App development Company" title="App development Company"> <span class="step-name">Step 5</span> <span class="step-detail">Promote your app 
               and increase revenue</span> </li>
           </ul>
         </div>
@@ -135,14 +135,14 @@ unset($_SESSION['currentpagevisit']);
         </div>
         <div class="pick-style-box ">
           <ul class="pick-style-list bxslider">
-            <li> <img src="images-new/style-slide1.jpg"> </li>
-            <li> <img src="images-new/style-slide2.jpg"> </li>
-            <li> <img src="images-new/style-slide3.jpg"> </li>
-            <li> <img src="images-new/style-slide4.jpg"> </li>
-            <li> <img src="images-new/style-slide5.jpg"> </li>
+            <li> <img src="images-new/style-slide1.jpg" alt="Retailer App" title="Retailer App"> </li>
+            <li> <img src="images-new/style-slide2.jpg" alt="Mobile shopping" title="Mobile shopping"> </li>
+            <li> <img src="images-new/style-slide3.jpg" alt="Ecommerce App" title="Ecommerce App"> </li>
+            <li> <img src="images-new/style-slide4.jpg" alt="Travel App" title="Travel App"> </li>
+            <li> <img src="images-new/style-slide5.jpg" alt="Real Estate App" title="Real Estate App"> </li>
           </ul>
         </div>
-        <div class="library-button"> <a href="themes.php" title="">Go to library</a> </div>
+        <div class="library-button"> <a href="themes.php" title="" ia-track="IA1010007">Go to library</a> </div>
       </div>
     </article>
     <!-- end pick app block --> 
@@ -165,13 +165,13 @@ unset($_SESSION['currentpagevisit']);
         <div class="box-row">
           <div class="logo-area-inside">
             <div class="logo-area-wizard">
-              <figure><img src="images-new/wizard.png" alt="" /></figure>
-              <div class="logo-area-icon"><a href="https://play.google.com/store/apps/details?id=com.pulp.wizard" target="_blank"><img src="images-new/android.png" alt="" /></a> <a href="https://itunes.apple.com/us/app/instappy/id1053874135?mt=8" target="_blank"><img src="images-new/apple.png" alt="" /></a></div>
+              <figure><img src="images-new/wizard.png"  alt="Android App Builder-Instappy Wizard" title="Android App Creator"/></figure>
+              <div class="logo-area-icon"><a href="https://play.google.com/store/apps/details?id=com.pulp.wizard" target="_blank"><img src="images-new/android.png" alt="Android App Creator" title="Android App Creator" /></a> <a href="https://itunes.apple.com/us/app/instappy/id1053874135?mt=8" target="_blank"><img src="images-new/apple.png" alt="iphone App Maker" title="iphone App Maker" /></a></div>
             </div>
-            <span><img src="images-new/wizard-diveder.png" alt="" /></span>
+            <span><img src="images-new/wizard-diveder.png" alt="App Maker For Android - Instappy Wizard" title="App Maker For Android - Instappy Wizard" /></span>
             <div class="logo-area-retail">
-              <figure><img src="images-new/retail.png" alt="" /></figure>
-              <div class="logo-area-icon"><a href="https://play.google.com/store/apps/details?id=com.pulp.wizard" target="_blank"><img src="images-new/android.png" alt="" /></a> <a href="https://itunes.apple.com/us/app/instappy/id1053874135?mt=8" target="_blank"><img src="images-new/apple.png" alt="" /></a></div>
+              <figure><img src="images-new/retail.png" alt="Retail App Maker" title="Retail App Maker" /></figure>
+              <div class="logo-area-icon"><a href="https://play.google.com/store/apps/details?id=com.pulp.wizard" target="_blank"><img src="images-new/android.png" alt="Android App Creator" title="Android App Creator" /></a> <a href="https://itunes.apple.com/us/app/instappy/id1053874135?mt=8" target="_blank"><img src="images-new/apple.png" alt="iphone App Maker" title="iphone App Maker" /></a></div>
             </div>
           </div>
         </div>
@@ -201,12 +201,12 @@ unset($_SESSION['currentpagevisit']);
     <!-- start white block -->
     <article  class="box-row">
       <div class="profess-app">
-        <div class="profess-app-img"> <img src="images-new/profosnal.jpg" alt=""> </div>
+        <div class="profess-app-img"> <img src="images-new/profosnal.jpg" alt="Shopping Apps" title="Shopping Apps"> </div>
         <div class="profess-app-text">
           <h5>Professional Apps for Business</h5>
           <p>Designers, universities, photographers, artists, restaurants, and even magazines can now build customer loyalty by making it easier for them to stay connected! Go the extra mile by offering valuable information, inviting loyalty programs, exclusive discounts, and convenient tools. Select from a wide variety of mobile app categories and amazing templates to build your own mobile app in an instant. With superior content publishing and designing capabilities, Instappy will ensure that your vision is translated into a stunning mobile reality.</p><div class="home-button clear">
-          <a href="themes.php">Create App</a> 
-<a href="content-apps.php">Learn more</a>
+          <a href="themes.php" ia-track="IA1010007">Create App</a> 
+<a href="content-apps.php" ia-track="IA1010002">Learn more</a>
 
 </div>
         </div>
@@ -216,12 +216,12 @@ unset($_SESSION['currentpagevisit']);
     <div class="clearfix"></div>
     <article  class="box-row">
       <div class="shopping-app">
-        <div class="shopping-app-img"> <img src="images-new/shop-app.jpg" alt=""> </div>
+        <div class="shopping-app-img"> <img src="images-new/shop-app.jpg" alt="Online Shopping Apps" title="Online Shopping Apps" > </div>
         <div class="shopping-app-text">
           <h5>Shopping Apps</h5>
           <p>Got something to sell? Take your business to the next level with a dedicated retail and catalogue mobile app. Retail and catalogue apps with Instappy are built for mobile commerce, equipped with stock and inventory management, shopping carts, as well as ready for secure payment gateway integration. Provide your customers the convenience of purchasing your products at their fingertips. Whether you own an export house, a niche fashion boutique, a superstore, or an exotic pet shop, your mobile commerce store is instantly ready with Instappy.</p><div class="home-button clear">
-<a href="themes.php">Create App</a>
-<a href="shopping-apps.php">Learn more</a>
+<a href="themes.php" ia-track="IA1010007">Create App</a>
+<a href="shopping-apps.php" ia-track="IA1010003">Learn more</a>
  
 </div>
         </div>
@@ -231,11 +231,11 @@ unset($_SESSION['currentpagevisit']);
     <div class="clearfix"></div>
     <article  class="box-row">
       <div class="profess-app">
-        <div class="profess-app-img"> <img src="images-new/enterpris-app.jpg" alt=""> </div>
+        <div class="profess-app-img"> <img src="images-new/enterpris-app.jpg" alt="Enterprise Application" title="Enterprise Application"> </div>
         <div class="profess-app-text">
           <h5>Enterprise Apps</h5>
           <p>Build sales management applications, campaign management applications, and HR ERP applications. Fully customisable with team management, on-the-go attendance and location tracking, and inventory as well as order management. Add transparency, control, and accountability to your business with your own ERP mobile application. Develop a one-stop-solution to streamline processes, track resources, increase management visibility, and improve organisational efficiency. Get the most effective business tracker for your business, only with Instappy.</p><div class="home-button clear">
-<a href="enterprise-mobile-apps.php">Learn more</a>
+<a href="enterprise-mobile-apps.php" ia-track="IA1010004">Learn more</a>
  
 </div>
         </div>
