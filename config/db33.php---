@@ -1,0 +1,121 @@
+<?php
+//define db user name
+define('USERNAME','hemant');
+//define db password
+define('PASSWORD','Fdfjkhg%#$#@4312AS');
+//define db hostname
+define('HOST','framework.cuogjeymw1h7.us-west-2.rds.amazonaws.com');
+//define database name
+define('DB','instappy_production');
+//define db class
+class DB {
+private $urL = "http://www.instappy.com/";	
+private $catalogue_urL = "http://www.instappy.com/";	
+
+public function dbconnection(){
+	
+	$user=USERNAME;
+	$pass=PASSWORD;
+	$host=HOST;
+	$db=DB;
+	try{
+	$db=new PDO("mysql:host=$host;dbname=$db",$user,$pass);	
+		$db->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+		return $db;
+	}
+	catch(PDOException $e){
+		
+		echo "DB Error".$e->getMessage();
+	}
+}	
+	
+	
+	public function siteurl() {        
+        return $this->urL;
+    }
+    
+    public function ip_details($IPaddress) {
+        
+        $json = file_get_contents("http://www.freegeoip.net/json/{$IPaddress}");
+       
+        $details = json_decode($json);
+       
+        return $details;
+    }
+    
+    public function getcurrencyid($country) {
+        $db = $this->dbconnection();
+        $sql = "SELECT * FROM currency_type WHERE country='$country'";
+        $stmt = $db->prepare($sql);
+        $stmt->execute();
+        $results = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $results;
+    }
+
+    public function get_country() {
+      session_start();
+      $IPaddress = $_SERVER['REMOTE_ADDR'];
+//      echo "<input text='hidden' value='$IPaddress'/>";
+        // $details    =   ip_details("182.74.217.98");
+//        $details = $this->ip_details("12.215.42.19");
+//        
+      $details = $this->ip_details($IPaddress);
+      $country = $details->country_code;
+      
+//    $country = "US";
+//    $country = "IN";
+        if ($country == "IN") {
+//            echo 'IN'.'--';
+//            echo $countryName['country'];
+            $countryName = $this->getcurrencyid($country);
+            $_SESSION['country'] = $countryName['country'];
+            $_SESSION['currencyid'] = $countryName['id'];
+            $_SESSION['currency'] = $countryName['Name'];
+            $checkcountry = $countryName['id'];
+            $currency = $countryName['id'];
+            $currencyIcon = $countryName['Name'];
+        } else if ($country == "US") {
+//            echo 'USA'.'--';
+//            echo $countryName['country'];
+            $countryName = $this->getcurrencyid($country);
+            $_SESSION['country'] = $countryName['country'];
+            $_SESSION['currencyid'] = $countryName['id'];
+            $_SESSION['currency'] = $countryName['Name'];
+            $checkcountry = $countryName['id'];
+            $currency = $countryName['id'];
+            $currencyIcon = $countryName['Name'];
+        } else {
+//            echo 'IN2'.'--';
+//            echo $countryName['country'];
+            $countryName = $this->getcurrencyid("IN");
+            $_SESSION['country'] = $countryName['country'];
+            $_SESSION['currencyid'] = $countryName['id'];
+            $_SESSION['currency'] = $countryName['Name'];
+            $checkcountry = $countryName['id'];
+            $currency = $countryName['id'];
+            $currencyIcon = $countryName['Name'];
+        }
+    }
+
+    public function catalogue_url(){
+		return $this->catalogue_urL;
+	}
+	
+	public function restrictPages()
+	{
+		$pages = array(
+		'panel.php','catalogue.php'
+				);
+		return $pages;
+	}
+	public function meta_tags($page,$tag){
+		$db=$this->dbconnection();
+		$sql ="select $tag from app_meta_tags where url='$page'";
+		$stmt=$db->prepare($sql);
+		$stmt->execute();
+		$results=$stmt->fetch(PDO::FETCH_ASSOC);
+		return $results[$tag];
+		
+	}
+} 
+?>
