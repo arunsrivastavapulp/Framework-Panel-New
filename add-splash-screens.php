@@ -111,9 +111,7 @@ if ($app_id)
                             </div>
                             <div class="mid_right_box_body">
                                 <div class="choose_screen">
-												<?php if($isPublished == 0)
-												{ 
-												?> 
+								 <?php if($isPublished == 0){ ?> 
                                                                 <h2>Choose a premium splash screen for your awesome app <span style="color:#ffcc00;"><?php if($currency==1){ ?>(Price- Rs.1,500)<?php } else {?>(Price- $23)<?php }?></span></h2>
                                     <div class="screens">
                                         <?php
@@ -139,37 +137,7 @@ if ($app_id)
 										<input type="button" data-page="1" data-total_page="<?php echo intval($webscreen->get_total_app_screen($app_id,1)/8);?>" value="Load More" id="load_more_paid_screen" class="load_more">
 										<?php } } ?>
                                     </div>
-									<script>$('.hint_content').show();</script>
-												<?php
-												} 
-												else
-												{
-												?>
-												
-												<div class="screens">
-												<?php
-												$webscreen = new WebScreen();
-												$screens = $webscreen->get_app_screen($app_id, 1); /* 1 == premium */
-												if(count($screens) > 0){
-												$sel_screen = $webscreen->get_selected_splash_screen($app_id,1);
-												foreach ($screens as $screen) {
-
-												if ($screen['image_link'] != '') {
-												if (trim($sel_screen) == $screen['id']) {
-												?>
-												<script>$('.hint_content').hide();</script>
-												<h2 class="icon_tip">App Splash Screen</h2>
-												<img class="selected" src="<?php echo $screen['image_link']; ?>" defaultSplash="0" data-id="<?php echo $screen['id']; ?>" width='158'><div class="clear"></div>
-												<?php 
-												} 
-												}
-												}
-											 
-												} ?>
-												</div>
-												<?php	
-												}
-												?>
+								 <?php } ?>
                                     <h2>Choose a free splash screen for your awesome app:</h2>
                                     <div class="screens">
                                         <?php
@@ -758,9 +726,7 @@ else
                             </div>
                             <div class="mid_right_box_body">
                                 <div class="choose_screen">
-									<?php if($isPublished == 0)
-									{
-									?> 
+								 <?php if($isPublished == 0){ ?> 
 									<h2>Choose a premium splash screen for your awesome app <span style="color:#ffcc00;"><?php if($currency==1){ ?>(Price- Rs.1,500)<?php } else {?>(Price- $23)<?php }?></span></h2>
                                     <div class="screens">
                                         <?php
@@ -785,34 +751,7 @@ else
 										<input type="button" data-page="1" data-total_page="<?php echo intval($webscreen->get_total_app_screen($appID,1)/8);?>" value="Load More" id="load_more_paid_screen" class="load_more">
 										<?php } } ?>
                                     </div>
-									<?php 
-									}
-else
-{
-	?>
-															
-														<div class="screens">
-														<?php
-														$webscreen = new WebScreen();
-														$screens = $webscreen->get_app_screen($appID, 1); /* 1 == premium */
-														if(count($screens) > 0){
-														$sel_screen = $webscreen->get_selected_splash_screen($_SESSION['appid']);
-														foreach ($screens as $screen) {
-														if ($screen['image_link'] != '') {
-														if (trim($sel_screen) == $screen['id']) {
-														?>
-														<h2 class="icon_tip" >App Splash Screen</h2>
-														<img class="selected" src="<?php echo $screen['image_link']; ?>" defaultSplash="0" data-id="<?php echo $screen['id']; ?>" width='158'>
-														<?php } 
-														}
-														}
-														 }
-														 ?>
-														</div>
-
-	<?php
-}	
-									?>
+								 <?php } ?>
                                     <h2>Choose a free splash screen for your awesome app:</h2>
                                     <div class="screens">
                                         <?php
@@ -1302,7 +1241,7 @@ else
 
                                 }
                                 $(".theme_head h1:first").text(pageDetails[0].name);
-                               $(".droparea.container").css("background-color", $(".mobile .theme_head").attr("data-appbackground"));
+                                $(".droparea.container").css("background-color", $(".theme_head").eq(1).attr("data-appbackground"));
 
                                 //firstUpdateSlideNames();
         //                            updateSlideNames();

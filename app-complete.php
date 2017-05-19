@@ -95,7 +95,7 @@ if ($app_id) {
                                     </div>
                                     <div class="congrats_btns">
                                         <!--<a  href="#" class="free_down" id="appcreate" >Download Trial</a>-->
-                                        <p>Or buy it, now</p>
+                                        
                                     
                                         <?php                                     
                                          if($_SESSION['reseller_id']){                                            
@@ -113,7 +113,8 @@ if ($app_id) {
                                                  <a id="reseller_link" href="mailto:<?php echo $reseller_details->email_address; ?>">Contact Ressller</a> 
                                              <?php }      
                                         else{?>
-                                        <a href="#" class="buy" id="appcreate1" >Buy</a>
+                                        <p>Or buy it, now</p>
+                                        <a ia-track="IA101000201" href="#" class="buy" id="appcreate1" >Buy</a>
 
                                         <?php
                                         }
@@ -187,7 +188,7 @@ if ($app_id) {
             var param = {'platform': platform, 'appName': appName};
             var form_data = {
                 data: param, //your data being sent with ajax
-                token: '<?php echo $token; ?>', //used token here.
+                token: '<?php echo $token; ?>', //used token here1.
                 themeid: '<?php echo $theme_id; ?>',
                 catid: '<?php echo $categoryid; ?>',
                 confirm: 'Yes',
@@ -200,9 +201,15 @@ if ($app_id) {
                 url: 'modules/myapps/addtocart.php',
                 data: form_data,
                 success: function (response) {
-
+                    if(response==1){
+                        $(".confirm_name_form p").text('Please empty your Cart.');
+$(".popup_container").show();
+$(".confirm_name").show();
+//                        alert('Please empty your Cart');
+                    } else{
                     if (download == 2) {
                         location.href = BASEURL + "payment_details.php";
+                    }
                     }
                 },
                 error: function () {
@@ -376,8 +383,8 @@ else {
                                              <?php }
                                              }  
                                     else{?>
-                                         <p>Or buy it now !</p>
-                                        <a href="#" class="buy" id="appcreate1" >Buy</a>
+                                        <p>Or buy it now !</p>
+                                        <a ia-track="IA101000201" href="#" class="buy" id="appcreate1" >Buy</a>
 
                                     <?php
                                     }
@@ -425,7 +432,7 @@ else {
                 var appid = '<?php echo $appID; ?>';
 
                 var form_data = {
-                    token: '<?php echo $token; ?>', //used token here.
+                    token: '<?php echo $token; ?>', //used token here2.
                     hasid: appid,
                     is_ajax: 1
                 };
@@ -436,11 +443,16 @@ else {
                     data: form_data,
                     async: false,
                     success: function (response) {
-
+                        if(response==1){
+								$(".confirm_name_form p").text('Please empty your Cart.');
+$(".popup_container").show();
+$(".confirm_name").show();
+                    } else{
                         if (download == 2) {
                             location.href = BASEURL + "payment_details.php";
                         }
                     }
+                }
                 });
 
             }
@@ -554,7 +566,9 @@ else {
 
         });
         </script>
+		<script type="text/javascript" src="js/trackuser.jquery.js?v=1.1"></script>
     <?php } ?>
+	
     </body>
     </html>
 <?php } ?>

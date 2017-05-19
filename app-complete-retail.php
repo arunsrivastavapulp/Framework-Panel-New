@@ -174,63 +174,71 @@ $html=$obj->get_cuurent_app_html($app_data['theme']);
 <script type="text/javascript" src="js/publishJS.js"></script>
 <script>
     function createApp() {
-               
-                var appid = '<?php echo $app_id; ?>';
-             
-                var form_data = {
-                    token: '<?php echo $token; ?>', //used token here.
-                    hasid: appid,
-                    is_ajax: 2
-                };
+	   
+		var appid = '<?php echo $app_id; ?>';
+	 
+		var form_data = {
+			token: '<?php echo $token; ?>', //used token here.
+			hasid: appid,
+			is_ajax: 2
+		};
 
-                $.ajax({
-                    type: "POST",
-                    url: 'modules/myapp/appAddtocart.php',
-                    data: form_data,
-                    async: false,
-                    success: function (response) {
-                        
-                        if (download == 2) {
-                            location.href = BASEURL + "payment_details.php";
-                        }
-                    },
-                    error: function () {
-                        console.log("error in ajax call");
-                        // alert("error in ajax call");
+		$.ajax({
+			type: "POST",
+			url: 'modules/myapp/appAddtocart.php',
+			data: form_data,
+			async: false,
+			success: function (response) {
+				
+                        if(response==1){
+                        $(".confirm_name_form p").text('Please empty your Cart.');
+$(".popup_container").show();
+$(".confirm_name").show();
+//                        alert('Please empty your Cart');
+                    } else{
+				if (download == 2) {
+					location.href = BASEURL + "payment_details.php";
                     }
-                });
-            }
-			var page = '<?php echo addslashes(json_decode($html,false)); ?>';
-            //if(page != '')
-            //{
-            var obj = JSON.parse(page);
-            var storedPages = [];
-            storedPages.push(obj);
-            $(document).off("click", "nav > ul >li");
-			
-            //        alert(obj.navigationbar);
-            if (obj.banner == undefined || obj.banner == "")
-            {
-                $(obj.navigationbar).insertBefore(".overlay");
-                $(".container.droparea").html(obj.contentarea);
-            }
-            else
-            {
-                $(obj.navigationbar).insertBefore(".overlay");
-                $(".container.droparea").html(obj.contentarea);
-                $("<div class='banner'>" + obj.banner + "</div>").insertAfter(".overlay");
-            }
-			for(var i=0;i<3;i++){
-			if(i==0)
-			$(".banner").find("img").eq(i).attr('src', '<?php echo $app_data['banner1'];?>');	
-			if(i==1)
-			$(".banner").find("img").eq(i).attr('src', '<?php echo $app_data['banner2'];?>');	
-			if(i==2)
-			$(".banner").find("img").eq(i).attr('src','<?php echo $app_data['banner3'];?>');
-		
+				}
+			},
+			error: function () {
+				console.log("error in ajax call");
+				// alert("error in ajax call");
 			}
-			$(".theme_head").css("background-color","<?php if($app_data['background_color'])echo $app_data['background_color'];else echo '#ff8800';?>");
-			var download =0;
+		});
+	}
+	
+	var page = '<?php echo trim(addslashes(json_decode($html,false))); ?>';
+	//if(page != '')
+	//{
+	var obj = JSON.parse(page);
+	var storedPages = [];
+	storedPages.push(obj);
+	$(document).off("click", "nav > ul >li");
+	
+	//        alert(obj.navigationbar);
+	if (obj.banner == undefined || obj.banner == "")
+	{
+		$(obj.navigationbar).insertBefore(".overlay");
+		$(".container.droparea").html(obj.contentarea);
+	}
+	else
+	{
+		$(obj.navigationbar).insertBefore(".overlay");
+		$(".container.droparea").html(obj.contentarea);
+		$("<div class='banner'>" + obj.banner + "</div>").insertAfter(".overlay");
+	}
+	for(var i=0;i<3;i++){
+	if(i==0)
+	$(".banner").find("img").eq(i).attr('src', '<?php echo $app_data['banner1'];?>');	
+	if(i==1)
+	$(".banner").find("img").eq(i).attr('src', '<?php echo $app_data['banner2'];?>');	
+	if(i==2)
+	$(".banner").find("img").eq(i).attr('src','<?php echo $app_data['banner3'];?>');
+
+	}
+	$(".theme_head").css("background-color","<?php if($app_data['background_color'])echo $app_data['background_color'];else echo '#ff8800';?>");
+	var download =0;
 
 
 $("#appcreate1").click(function(){

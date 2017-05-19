@@ -32,7 +32,7 @@
     -->
     
     <div class="banner contpublish_create enterprise_create">
-    	<img src="images/banner-slide-bg4.jpg" class="active">
+    	<img src="images/banner-slide-bg4.jpg" class="active" alt="Android Application Maker" title="Android Application Maker">
     	
         <div class="banner_text" style="display:none">
         	<p>The future of mobile is the future<br>of everything.</p>
@@ -65,7 +65,7 @@
                 <ul class="slides">
                     <li>
                         <div class="logo-img-block">
-                            <div class="logo-img"><img src="images/logo-slide4.png"></div>
+                            <div class="logo-img"><img src="images/logo-slide4.png" alt="Native Apps" title="Native Apps"></div>
                             <div class="logo-name">
                                 <h2 class="logo-name-text">
                                     TCB
@@ -88,7 +88,7 @@
                     </li>
                     <li>
                         <div class="logo-img-block">
-                            <div class="logo-img"><img src="images/logo-slide5.png"></div>
+                            <div class="logo-img"><img src="images/logo-slide5.png" alt="Pro Apps" title="Pro Apps"></div>
                             <div class="logo-name">
                                 <h2 class="logo-name-text">
                                     SOGNO
@@ -111,7 +111,7 @@
                     </li>
                     <li>
                         <div class="logo-img-block">
-                            <div class="logo-img"><img src="images/logo-slide2.png"></div>
+                            <div class="logo-img"><img src="images/logo-slide2.png" alt="App Maker" title="App Maker"></div>
                             <div class="logo-name">
                                 <h2 class="logo-name-text">
                                     GARTNER
@@ -131,7 +131,7 @@
                     </li>
                     <li>
                         <div class="logo-img-block">
-                            <div class="logo-img"><img src="images/logo-slide3.png"></div>
+                            <div class="logo-img"><img src="images/logo-slide3.png" alt="App Creator" title="App Creator"></div>
                             <div class="logo-name">
                                 <h2 class="logo-name-text">
                                     STUDIO 
@@ -154,7 +154,7 @@
                     </li>                                            
                     <li>
                         <div class="logo-img-block">
-                            <div class="logo-img"><img src="images/logo-slide1.png"></div>
+                            <div class="logo-img"><img src="images/logo-slide1.png" alt="Android App Maker" title="Android App Maker"></div>
                             <div class="logo-name">
                                 <h2 class="logo-name-text">
                                     CMO
@@ -175,7 +175,7 @@
                     </li>            
                     <li>
                         <div class="logo-img-block">
-                            <div class="logo-img"><img src="images/logo-slide6.png"></div>
+                            <div class="logo-img"><img src="images/logo-slide6.png" alt="App Builder" title="App Builder"></div>
                             <div class="logo-name">
                                 <h2 class="logo-name-text">
                                     ABSS THEATRE GROUP
@@ -198,7 +198,7 @@
                     </li>                   
                     <li>
                         <div class="logo-img-block">
-                            <div class="logo-img"><img src="images/logo-slide7.png"></div>
+                            <div class="logo-img"><img src="images/logo-slide7.png" alt="Create Your Own App" title="Create Your Own App"></div>
                             <div class="logo-name">
                                 <h2 class="logo-name-text">
                                     DR H S 
@@ -222,7 +222,7 @@
                     </li>
                     <li>
                         <div class="logo-img-block">
-                            <div class="logo-img"><img src="images/logo-slide1.png"></div>
+                            <div class="logo-img"><img src="images/logo-slide1.png" alt="Android App Maker" title="Android App Maker"></div>
                             <div class="logo-name">
                                 <h2 class="logo-name-text">
                                     CMO
@@ -417,7 +417,7 @@
                    
 ?>
                 <input type="hidden" name="urlsource" value="<?php echo $_SESSION['source'];?>">		
-                    <input type="submit" id="letstalk" value="SUBMIT"> 
+                    <input type="submit" id="letstalk" ia-track="IA10100024" value="SUBMIT"> 
             </form>
         </div>
     </div>
@@ -428,7 +428,7 @@
                 <ul class="slides">
                     <li>
                         <div class="logo-img-block">
-                            <div class="logo-img"><img src="images/logo-slide4.png"></div>
+                            <div class="logo-img"><img src="images/logo-slide4.png" alt="Native Apps" title="Native Apps"></div>
                             <div class="logo-name">
                                 <h2 class="logo-name-text">
                                     TCB
@@ -451,7 +451,7 @@
                     </li>
                     <li>
                         <div class="logo-img-block">
-                            <div class="logo-img"><img src="images/logo-slide5.png"></div>
+                            <div class="logo-img"><img src="images/logo-slide5.png" alt="Pro Apps" title="Pro Apps"></div>
                             <div class="logo-name">
                                 <h2 class="logo-name-text">
                                     SOGNO
@@ -474,7 +474,7 @@
                     </li>
                     <li>
                         <div class="logo-img-block">
-                            <div class="logo-img"><img src="images/logo-slide2.png"></div>
+                            <div class="logo-img"><img src="images/logo-slide2.png" alt="App Maker" title="App Maker"></div>
                             <div class="logo-name">
                                 <h2 class="logo-name-text">
                                     GARTNER
@@ -494,7 +494,7 @@
                     </li>
                     <li>
                         <div class="logo-img-block">
-                            <div class="logo-img"><img src="images/logo-slide3.png"></div>
+                            <div class="logo-img"><img src="images/logo-slide3.png" alt="App Creator" title="App Creator"></div>
                             <div class="logo-name">
                                 <h2 class="logo-name-text">
                                     STUDIO 
@@ -517,7 +517,7 @@
                     </li>                                            
                     <li>
                         <div class="logo-img-block">
-                            <div class="logo-img"><img src="images/logo-slide1.png"></div>
+                            <div class="logo-img"><img src="images/logo-slide1.png" alt="Android App Maker" title="Android App Maker"></div>
                             <div class="logo-name">
                                 <h2 class="logo-name-text">
                                     CMO
@@ -538,7 +538,7 @@
                     </li>            
                     <li>
                         <div class="logo-img-block">
-                            <div class="logo-img"><img src="images/logo-slide6.png"></div>
+                            <div class="logo-img"><img src="images/logo-slide6.png" alt="App Builder" title="App Builder"></div>
                             <div class="logo-name">
                                 <h2 class="logo-name-text">
                                     ABSS THEATRE GROUP
@@ -561,7 +561,7 @@
                     </li>                   
                     <li>
                         <div class="logo-img-block">
-                            <div class="logo-img"><img src="images/logo-slide7.png"></div>
+                            <div class="logo-img"><img src="images/logo-slide7.png" alt="Create Your Own App" title="Create Your Own App"></div>
                             <div class="logo-name">
                                 <h2 class="logo-name-text">
                                     DR H S 
@@ -585,7 +585,7 @@
                     </li>
                     <li>
                         <div class="logo-img-block">
-                            <div class="logo-img"><img src="images/logo-slide1.png"></div>
+                            <div class="logo-img"><img src="images/logo-slide1.png" alt="Android App Maker" title="Android App Maker"></div>
                             <div class="logo-name">
                                 <h2 class="logo-name-text">
                                     CMO
@@ -610,7 +610,7 @@
 </div>
 <div class="clear"></div>
     <div class="form_toggle_btn">
-    	<a href="#"><img src="images/lets_talk_btm_opn.jpg"></a>
+    	<a href="#"><img src="images/lets_talk_btm_opn.jpg" alt="Mobile App Development" title="Mobile App Development"></a>
     </div>
     <div class="lets_talk_form_small_devices">
     
@@ -792,25 +792,25 @@
     	<h1>Enterprise Apps</h1>
         <p class="clear"> 
        With Instappy’s enterprise solutions, you can now streamline your on-field initiatives and better manage your mobile workforce. Get two white label solutions- Sales Team Tracker and Campaign Tracker. Manage complete tasks like team management, on-the-go attendance and location tracking, and inventory as well as order management. Add transparency, control, and accountability to your business with your own Enterprise Mobile Application. Develop a one-stop-solution to streamline track resources, increase management visibility, and improve organisational efficiency. Get the most effective business tracker for your business, only with Instappy. </p>
-       <img src="images/YoutubeThumbnails_Enterprise.png" class="videoImg" width="560" height="315">
+       <img src="images/YoutubeThumbnails_Enterprise.png" alt="Application Maker" title="Application Maker"class="videoImg" width="560" height="315">
         <iframe width="560" height="315" src="https://www.youtube.com/embed/z6mSpfyz0vc?rel=0" frameborder="0" allowfullscreen></iframe>
     </div>
 </div>
 
 <div class="big-contentpublish clearfix">
         <ul class="box enterprise-box clearfix">
-                <li><a href="#"><img src="images/Enterprise_location.png" alt=""/><span>Attendance and Location Tracking</span><span>With Instappy’s GPS-based location tracking, you can keep a track of your entire mobile work-force and get regular updates of all their activities. You will significantly reduce the time and effort invested in resource tracking and management.</span></a></li>
+                <li><a href="#"><img src="images/Enterprise_location.png" alt="Enterprise Application" title="Enterprise Application"/><span>Attendance and Location Tracking</span><span>With Instappy’s GPS-based location tracking, you can keep a track of your entire mobile work-force and get regular updates of all their activities. You will significantly reduce the time and effort invested in resource tracking and management.</span></a></li>
 
-                <li><a href="#"><img src="images/Enterprise_speak.png" alt=""/><span>On-the-go MIS Reporting</span><span>With on-the-go MIS reporting, you can achieve increased agility of management and operations as necessary information is readily available to everyone in the network.</span></a></li>
+                <li><a href="#"><img src="images/Enterprise_speak.png" alt="Real Estate App" title="Real Estate App"/><span>On-the-go MIS Reporting</span><span>With on-the-go MIS reporting, you can achieve increased agility of management and operations as necessary information is readily available to everyone in the network.</span></a></li>
 
-                <li><a href="#"><img src="images/Enterprise_note.png" alt=""/><span>Superior Data Management</span><span>As everything is updated in real-time in a systematic and organised manner, you can streamline processes and establish clear communication channels.</span></a></li>
+                <li><a href="#"><img src="images/Enterprise_note.png" alt="Travel App" title="Travel App"/><span>Superior Data Management</span><span>As everything is updated in real-time in a systematic and organised manner, you can streamline processes and establish clear communication channels.</span></a></li>
 
-                <li><a href="#"><img src="images/Enterprise_sharing.png" alt=""/><span>Seamless Order Management</span><span>You can identify opportunities and leads, issue quotations, record every client dealing in the sales cycle, all while on-the-move.</span></a></li>
+                <li><a href="#"><img src="images/Enterprise_sharing.png" alt="Native Apps" title="Native Apps"/><span>Seamless Order Management</span><span>You can identify opportunities and leads, issue quotations, record every client dealing in the sales cycle, all while on-the-move.</span></a></li>
 
-                <li><a href="#"><img src="images/cloud-host-icon.png" alt=""/><span>Secure Data Hosting</span><span>With Instappy, you get secure cloud hosting and reliable backup utility so that your valuable data is in safe hands.</span></a></li>
+                <li><a href="#"><img src="images/cloud-host-icon.png" alt="Pro Apps" title="Pro Apps"/><span>Secure Data Hosting</span><span>With Instappy, you get secure cloud hosting and reliable backup utility so that your valuable data is in safe hands.</span></a></li>
                 
                 
-                <li><a href="#"><img src="images/Enterprise_mobile.png" alt=""/><span>Native Apps with Slick and 
+                <li><a href="#"><img src="images/Enterprise_mobile.png" alt="Enterprise Application" title="Enterprise Application"/><span>Native Apps with Slick and 
 Adaptive UI Design</span><span>Enterprise apps with Instappy are fully native and have a smooth and adaptive interface that will ensure a convenient experience for your mobile fieldforce.</span></a></li>
                 
                
@@ -833,15 +833,15 @@ Adaptive UI Design</span><span>Enterprise apps with Instappy are fully native an
                    <div class="msld">
                        
                         <ul class="msld-sl">
-                        <li><a href="#"><img src="images/campaign-1.png" alt="" /></a></li>
-                         <li><a href="#"><img src="images/campaign-2.png" alt="" /></a></li>
-                         <li><a href="#"><img src="images/campaign-3.png" alt="" /></a></li>
-                         <li><a href="#"><img src="images/campaign-4.png" alt="" /></a></li>
-                         <li><a href="#"><img src="images/campaign-5.png" alt="" /></a></li>                         
-                         <li><a href="#"><img src="images/campaign-6.png" alt="" /></a></li>                         
-                         <li><a href="#"><img src="images/campaign-7.png" alt="" /></a></li>                         
-                         <li><a href="#"><img src="images/campaign-8.png" alt="" /></a></li>                         
-                         <li><a href="#"><img src="images/campaign-9.png" alt="" /></a></li>                         
+                        <li><a href="#"><img src="images/campaign-1.png" alt="Android App Builder" title="Android App Builder" /></a></li>
+                         <li><a href="#"><img src="images/campaign-2.png" alt="Content App Creator" title="Content App Creator" /></a></li>
+                         <li><a href="#"><img src="images/campaign-3.png" alt="Content App Builder" title="Content App Builder" /></a></li>
+                         <li><a href="#"><img src="images/campaign-4.png" alt="Content App Maker" title="Content App Maker" /></a></li>
+                         <li><a href="#"><img src="images/campaign-5.png" alt="shopping Apps" title="shopping Apps" /></a></li>                         
+                         <li><a href="#"><img src="images/campaign-6.png" alt="Online shopping Apps" title="Online shopping Apps" /></a></li>                         
+                         <li><a href="#"><img src="images/campaign-7.png" alt="Shopping Cart" title="Shopping Cart" /></a></li>                         
+                         <li><a href="#"><img src="images/campaign-8.png" alt="Business Apps" title="Business Apps" /></a></li>                         
+                         <li><a href="#"><img src="images/campaign-9.png" alt="M Commerce" title="M Commerce" /></a></li>                         
                     </ul>
                    </div>
 
@@ -872,7 +872,7 @@ With Sales Team Tracker, you can create single point of access to information, s
 
                     <small><br/>Download Demo</small>
                     <div class="home-button tr clear">
-                        <a href="https://play.google.com/store/apps/details?id=com.pulp.salesteamtracker"><img src="images/play.png"></a>
+                        <a href="https://play.google.com/store/apps/details?id=com.pulp.salesteamtracker"><img src="images/play.png" alt="Google Play Store-Instappy" title="Google Play Store-Instappy"></a>
                         <a href="salesteam_tracker.php">Learn More</a> 
                     </div>
                </div> 
@@ -889,15 +889,15 @@ With Sales Team Tracker, you can create single point of access to information, s
                    <div class="msld">
                        
                         <ul class="msld-sl">
-                        <li><a href="#"><img src="images/SFT-1.png" alt="" /></a></li>
-                         <li><a href="#"><img src="images/SFT-2.png" alt="" /></a></li>
-                         <li><a href="#"><img src="images/SFT-3.png" alt="" /></a></li>
-                         <li><a href="#"><img src="images/SFT-4.png" alt="" /></a></li>
-                         <li><a href="#"><img src="images/SFT-5.png" alt="" /></a></li>
-                         <li><a href="#"><img src="images/SFT-6.png" alt="" /></a></li>
-                         <li><a href="#"><img src="images/SFT-7.png" alt="" /></a></li>
-                         <li><a href="#"><img src="images/SFT-8.png" alt="" /></a></li>
-                         <li><a href="#"><img src="images/SFT-9.png" alt="" /></a></li>
+                        <li><a href="#"><img src="images/SFT-1.png" alt="Best Shopping Apps" title="Best Shopping Apps" /></a></li>
+                         <li><a href="#"><img src="images/SFT-2.png" alt="retailer App" title="retailer App"/></a></li>
+                         <li><a href="#"><img src="images/SFT-3.png" alt="Mobile Shopping" title="Mobile Shopping" /></a></li>
+                         <li><a href="#"><img src="images/SFT-4.png" alt="E Commerce App" title="E Commerce App" /></a></li>
+                         <li><a href="#"><img src="images/SFT-5.png" alt="Enterprise Application" title="Enterprise Application" /></a></li>
+                         <li><a href="#"><img src="images/SFT-6.png" alt="Real Estate App" title="Real Estate App" /></a></li>
+                         <li><a href="#"><img src="images/SFT-7.png" alt="Travel App" title="Travel App" /></a></li>
+                         <li><a href="#"><img src="images/SFT-8.png" alt="Native Apps" title="Native Apps" /></a></li>
+                         <li><a href="#"><img src="images/SFT-9.png" alt="Pro Apps" title="Pro Apps" /></a></li>
                     </ul>
                    </div>
 
@@ -931,7 +931,7 @@ The Campaign Tracker covers communication, tracking and location of the fieldfor
                     </p>
                     <small><br/>Download Demo</small>
                     <div class="home-button tr clear">
-                        <a href="https://play.google.com/store/apps/details?id=com.pulp.campaigntracker&hl=en"><img src="images/play.png"></a>
+                        <a href="https://play.google.com/store/apps/details?id=com.pulp.campaigntracker&hl=en"><img src="images/play.png" alt="Google Play Store-Instappy" title="Google Play Store-Instappy"></a>
                         <a href="campaign-tracker.php">Learn More</a> 
                     </div>
                </div> 
@@ -954,7 +954,7 @@ The Campaign Tracker covers communication, tracking and location of the fieldfor
                    <small>mobile enterprise app.</small>
                 </p>
             </div>
-            <img src="images/ContentPublishingright_img.png"><br/>
+            <img src="images/ContentPublishingright_img.png" alt="Content App creator" title="Content App creator"/><br/>
             <p >
             	Automate tasks like attendance management, location tracking of your mobile workforce, and MIS reporting with Instappy's Campaign Tracker. 
             </p>
@@ -963,30 +963,22 @@ The Campaign Tracker covers communication, tracking and location of the fieldfor
             </p>
         </div>
         <div class="contpublish-growImg enterprise-growImg">
-        	<img src="images/Enterprise_border_white.png"/>
+        	<img src="images/Enterprise_border_white.png" alt="Real Estate App" title="Real Estate App"/>
         </div>
     </div>
 
-    
-
-
-
-
-
-
-	
  <div class="stp clearfix">
                 <span class="step contpublisb-step">Streamline your fieldforce management in <strong>6</strong> easy steps:</span>
 <ul class="st-list">
-        <li><img src="images/Enterprise_mobile.png" alt=""/><span>Assess your needs and get your white-label mobile enterprise app</span></li>
-        <li><img src="images/Enterprise_pc.png" alt=""/><span>Integrate your mobile workforce in the web panel and get things started</span></li>
-        <li><img src="images/Enterprise_people_line.png" alt=""/><span>Establish the organisational chart and assign roles and 
+        <li><img src="images/Enterprise_mobile.png" alt="Enterprise Application" title="Enterprise Application"/><span>Assess your needs and get your white-label mobile enterprise app</span></li>
+        <li><img src="images/Enterprise_pc.png" alt="Enterprise Application" title="Enterprise Application"/><span>Integrate your mobile workforce in the web panel and get things started</span></li>
+        <li><img src="images/Enterprise_people_line.png" alt="Travel App" title="Travel App"/><span>Establish the organisational chart and assign roles and 
 responsibilities</span></li>
-        <li><img src="images/Enterprise_manger.png" alt=""/><span>Set up tasks and provide necessary information for all the relevant 
+        <li><img src="images/Enterprise_manger.png" alt="Native Apps" title="Native Apps"/><span>Set up tasks and provide necessary information for all the relevant 
 people to see</span></li>
-        <li><img src="images/Enterprise_sharing.png" alt=""/><span>Go to market through a cloud-based web panel and mobile app, 
+        <li><img src="images/Enterprise_sharing.png" alt="Pro Apps" title="Pro Apps"/><span>Go to market through a cloud-based web panel and mobile app, 
 streamlining everything from processes to flow of information</span></li>
-        <li><img src="images/Enterprise_speak.png" alt=""/><span>Take smart, data-oriented decisions through features like custom 
+        <li><img src="images/Enterprise_speak.png" alt="Real Estate App" title="Real Estate App"/><span>Take smart, data-oriented decisions through features like custom 
 analytics and on-the-move reporting  </span></li>
 
 </ul>

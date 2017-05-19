@@ -220,7 +220,7 @@
 	                    <textarea placeholder="Type your message" name="message" maxlength="250"></textarea>
 						<p id="success"></p>
                                                 <input type="hidden" name="urlsource" value="<?php echo $_GET['source']?$_GET['source']:'';?>"> 
-                        <input type="submit" name="submit" id="submit" value="Submit"/>
+                        <input type="submit" name="submit" ia-track="IA10100023" id="submit" value="Submit"/>
                     </div>
                 </div>
             </form>
@@ -229,7 +229,7 @@
             <div class="add_email">
               <div class="add_email_box">
                 <div class="add_email_img">
-                  <img src="images/add_icon.png">
+                  <img src="images/add_icon.png" alt="App Maker-Instappy" title="App Maker-Instappy" />
                 </div>
                 <div class="add_email_text">
                   <h2>Address:</h2>
@@ -238,8 +238,8 @@
                     <div class="fn" style="display:none">
                       <span class="given-name">Instappy</span></div>
                     <div class="adr">
-                      <div class="street-address">Plot No: 48, 2nd Floor, Okhla Industrial Estate, Phase III,
-                        <span class="location">New Delhi</span>, <span class="postal-code">110020</span>
+                      <div class="street-address">Pulp Strategy Technologies Pvt Ltd <br>
+                        <span class="location">111 North Market Street Suite 300</span>,<br> <span class="postal-code">San Jose, CA 95113</span>
                         <span class="country-name" style="display:none">India</span></div>
                     </div>
                   </div>
@@ -248,7 +248,7 @@
               </div>
               <div class="add_email_box">
                 <div class="add_email_img">
-                  <img src="images/email_icon.png">
+                  <img src="images/email_icon.png"alt="App Creator-Instappy" title="App Creator-Instappy" />
                 </div>
                 <div class="add_email_text">
                   <h2>Email:</h2>

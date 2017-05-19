@@ -146,76 +146,79 @@ $statics->send_analytics_request($_POST);
 exit;
 }
 if(isset($_POST['type'])){
-		require_once('modules/opencart-integration/opencart-integration.php');
-		$send=new Opencart();
-		if($_POST['type']=='save_catalogue_app'){
+require_once('modules/opencart-integration/opencart-integration.php');
+$send=new Opencart();
+if($_POST['type']=='save_catalogue_app'){
 
-		//is_feedback
-		if(isset($_POST['is_feedback']))
-		{
-			$_POST['is_feedback'] = 1;
-		}
-		else
-		{
-			$_POST['is_feedback'] = 0;
-		}
+//is_feedback
+if(isset($_POST['is_feedback']))
+{
+	$_POST['is_feedback'] = 1;
+}
+else
+{
+	$_POST['is_feedback'] = 0;
+}
 
-		//is_contactus
-		if(isset($_POST['is_contactus']))
-		{
-			$_POST['is_contactus'] = 1;
-		}
-		else
-		{
-			$_POST['is_contactus'] = 0;
-		}
+//is_contactus
+if(isset($_POST['is_contactus']))
+{
+	$_POST['is_contactus'] = 1;
+}
+else
+{
+	$_POST['is_contactus'] = 0;
+}
 
-		//is_tnc
-		if(isset($_POST['is_tnc']))
-		{
-			$_POST['is_tnc'] = 1;
-		}
-		else
-		{
-			$_POST['is_tnc'] = 0;
-		}
+//is_tnc
+if(isset($_POST['is_tnc']))
+{
+	$_POST['is_tnc'] = 1;
+}
+else
+{
+	$_POST['is_tnc'] = 0;
+}
 
-		//is_order
-		if(isset($_POST['is_order']))
-		{
-			$_POST['is_order'] = 1;
-		}
-		else
-		{
-			$_POST['is_order'] = 0;
-		}
+//is_order
+if(isset($_POST['is_order']))
+{
+	$_POST['is_order'] = 1;
+}
+else
+{
+	$_POST['is_order'] = 0;
+}
 
-		if($_POST['action']=='add'){
-		$send->save_catalogue_app($_POST,$_FILES);
-		}	
-		if($_POST['action']=='edit'){
+if($_POST['action']=='add'){
+$send->save_catalogue_app($_POST,$_FILES);
+}	
+if($_POST['action']=='edit'){
 
-		$send->update_catalogue_app($_POST,$_FILES);
-		}
-		exit;
-		}
+$send->update_catalogue_app($_POST,$_FILES);
+}
+exit;
+}
 
-		if($_POST['type']=='catlog_app_login_check'){
-		$status = $send->userDetails($_REQUEST['email']);
-		if($status==true){	
-		$send->send_opencart($_SESSION['username'],$_SESSION['password']);
-		}
-		exit;
-		}
-		if($_POST['type']=='vendor_register'){
-		$send->vendor_register($_POST);
-		exit;
-		}
-		if($_POST['type']=='suggest'){
-		$send->suggest_catagory($_POST);
-		exit;
-		}
-		if($_POST['type']=='reseller_app_qa'){
+	if($_POST['type']=='catlog_app_login_check'){
+			$status = $send->userDetails($_SESSION['username']);
+		if($status){	
+			$send->send_opencart($_SESSION['username'],$_SESSION['password']);
+			}
+		else{
+			echo "fails";
+			}
+			exit;
+	}
+	if($_POST['type']=='vendor_register'){
+	$send->vendor_register($_POST);
+	exit;
+	}
+	if($_POST['type']=='suggest'){
+	$send->suggest_catagory($_POST);
+	exit;
+	}
+	if($_POST['type']=='reseller_app_qa'){
 		$send->reseller_app_qa($_POST);
 		exit;
 		}
@@ -239,6 +242,7 @@ if($_POST['type']=='getQuestions'){
 	
 }
 ////end reseller login axjax
+
 
 
 ?>

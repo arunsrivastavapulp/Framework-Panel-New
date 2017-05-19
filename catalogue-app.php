@@ -35,7 +35,7 @@ $_SESSION['currentpagevisit'] = 'catalogue-app.php';
 <link href="css/catalogue.css" rel="stylesheet" type="text/css">
 <link href="http://bxslider.com/lib/jquery.bxslider.css" type="text/css" rel="stylesheet" />
 
-<section class="main" ng-controller="catalogueController">
+<section class="main">
   
   <div style="height: 100%; width: 100%; position: fixed; background: #000; opacity: 0.7; top: 0; left: 0; z-index: 99999;" ng-hide="dataLoaded">
     <img class="loader_new" src="images/ajax-loader_new.gif" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); -webkit-transform: translate(-50%, -50%); -moz-transform: translate(-50%, -50%); -o-transform: translate(-50%, -50%);" />
@@ -53,17 +53,30 @@ $_SESSION['currentpagevisit'] = 'catalogue-app.php';
   <header>
 <!--    <a class="make_app_next" href="#" style="background:#ffcc00; float: left; margin: 10px 20px;" ng-click="postAppDtls()">Save &amp; Continue</a>-->
     <ul class="top-aside">
+	
+	<?php
+          if($_SESSION['is_reseller']){?>
+            <li><a id="reseller_link" href="logout.php?reseller_id=<?php echo $_SESSION['reseller_id']; ?>&is_reseller=<?php echo $_SESSION['is_reseller']; ?>">Dashboard<i class="fa fa-bar-chart"></i></a></li>
+            <?php }
+      else if($_SESSION['reseller_id']){
+            ?>
+           <li> <a id="reseller_link" href="logout.php?reseller_id=<?php echo $_SESSION['reseller_id']; ?>">Dashboard<i class="fa fa-bar-chart"></i></a></li>
+            <?php 
+            }
+            ?>
+      <li>	<a class="make_app_next addproduct" href="javascript:void(0);" ng-click="sendToOpencartCatProd('Products');" ia-track="IA10100038">Add Products</a></li>
+      <?php if(empty($_SESSION['cust_reseller_id'])){?>
 		<li>
-			<a class="make_app_next addproduct" href="javascript:void(0);" ng-click="sendToOpencartCatProd('Products');">Add Products</a>
+			<a href="themes.php#/?q=30" ia-track="IA1010007">Create New <i class="fa fa-rocket"></i></a>
 		</li>
-		<li>
-			<a href="themes.php#/?q=30">Create New <i class="fa fa-rocket"></i></a>
-		</li>
+      <?php }?>
+		
+		
 		<li class="save">
-			<a href="#" ng-click="postAppDtls()">Save <i class="fa fa-cloud-upload"></i></a>
+			<a href="#" ng-click="postAppDtls()" ia-track="IA10100039">Save <i class="fa fa-cloud-upload"></i></a>
 		</li>
 		<li>
-			<a href="#" ng-click="postAppDtls('add-icons.php')">Finish <i class="fa fa-sign-in"></i></a>
+			<a href="#" ng-click="postAppDtls('add-icons.php')" ia-track="IA10100040">Finish <i class="fa fa-sign-in"></i></a>
 		</li>
     </ul>
   </header>
@@ -89,6 +102,13 @@ $_SESSION['currentpagevisit'] = 'catalogue-app.php';
                 <a href='#'>
                   <span><img src='http://www.instappy.com/images/nav_img.png'></span>
                   <span>Home</span>
+                  <div class='clear'></div>
+                </a>
+              </li>
+              <li data-link='2'>
+                <a href='#'>
+                  <span><img src='http://www.instappy.com/images/nav_img.png'></span>
+                  <span>About Us</span>
                   <div class='clear'></div>
                 </a>
               </li>              
@@ -191,7 +211,7 @@ $_SESSION['currentpagevisit'] = 'catalogue-app.php';
                       </select>
                       <div class="clear"></div>
                     </div>
-                    <a class="make_app_next" href="" style="background: #ffcc00;" ng-click="postAppDtls()">Save &amp; Continue</a>
+                    <a class="make_app_next" href="" style="background: #ffcc00;" ng-click="postAppDtls()" ia-track="IA10100039">Save &amp; Continue</a>
                     <div class="clear"></div>
                   </form>
                 </div>
@@ -236,8 +256,8 @@ $_SESSION['currentpagevisit'] = 'catalogue-app.php';
                   <em>Remember soft pastels enhance great pictures. You can also try multiple combinations before you finalise. So go ahead and experiment.</em> <a class="read_more">Read More...</a>
                   <div class="clear"></div>
                 </div>
-                <a class="make_app_next" href="" style="background:#ffcc00;" ng-click="postAppDtls()">Save &amp; Continue</a>
-                <a class="make_app_next addproduct" style="margin-right: 10px;" href="" ng-click="sendToOpencart()">Add Products</a>
+                <a class="make_app_next" href="" style="background:#ffcc00;" ng-click="postAppDtls()" ia-track="IA10100039">Save &amp; Continue</a>
+                <a class="make_app_next addproduct" style="margin-right: 10px;" href="" ng-click="sendToOpencart()" ia-track="IA10100038">Add Products</a>
                 <div class="clear"></div>
               </div>
             </div>
@@ -265,7 +285,7 @@ $_SESSION['currentpagevisit'] = 'catalogue-app.php';
                   <!--card-end --> 
                 </div>
               </div>
-              <a class="make_app_next" href="" style="background:#ffcc00;" ng-click="postAppDtls()">Save &amp; Continue</a>
+              <a class="make_app_next" href="" style="background:#ffcc00;" ng-click="postAppDtls()" ia-track="IA10100039">Save &amp; Continue</a>
               <div class="clear"></div>
             </div>
           </div>
@@ -354,7 +374,7 @@ $_SESSION['currentpagevisit'] = 'catalogue-app.php';
                       <div class="clear"></div>
                     </ul>
                   </div>
-
+				  
                   <div class="catalogue_detail_input retail_input background_change_color" ng-show="fnShowField('labelColpick')">
                     <ul>
                       <li>
@@ -371,7 +391,7 @@ $_SESSION['currentpagevisit'] = 'catalogue-app.php';
                     </ul>
                   </div>
 
-                  <div class="retailpanel_detail_input retail_input" ng-show="fnShowField('imgHeadSubhead')">
+                  <div class="retailpanel_detail_input retail_input for_banner_only" ng-show="fnShowField('imgHeadSubhead')">
                     <ul ng-repeat="imgElem in currentComp.elements.element_array" ng-init="fetchProds(imgElem)">
                       <li>
                         <div upload-image current="imgElem" comp="currentComp" index="$index" ng-click="$parent.currImgIndex = $index;"></div>
@@ -386,12 +406,12 @@ $_SESSION['currentpagevisit'] = 'catalogue-app.php';
                           <input type="text" ng-model="imgElem.itemdesc" maxlength="20" placeholder="Maximum of 20 characters" />
                         </div>
                         <div>
-                          <label>Parent Category:</label>
+                          <label>Category:</label>
                           <p ng-show="!cumulativeCats.length">
                             No Categories Found.<br />
                             <small>To add or edit categories click on Add Products to go to the cart panel.</small>
                           </p>
-                          <select ng-show="cumulativeCats.length" ng-model="imgElem.itemcat" ng-options="cat.itemheading for cat in cumulativeCats track by cat.itemid" ng-change="fetchProds(imgElem)">
+							  <select name="itemcat" ng-show="cumulativeCats.length" ng-model="imgElem.itemcat" ng-options="cat.itemheading for cat in cumulativeCats track by cat.itemid" ng-change="fetchProds(imgElem)">
                             <option value="">Select</option>
                           </select>
                         </div>
@@ -408,9 +428,9 @@ $_SESSION['currentpagevisit'] = 'catalogue-app.php';
                     </ul>
                     <a class="make_app_next" href="#" style="background:#ffcc00; float: right; margin: 0;" ng-click="addMoreImages()" ng-if="currentComp.elements.element_array.length < imagesCountMap[currentComp.comp_type].count">Add More</a>
                   </div>
-
-                  <!-- <only cat and prods start> -->
-                  <div class="retailpanel_detail_input retail_input" ng-show="fnShowField('onlyCatWithProdDropdwn')">
+				  
+				  <!-- <only cat and prods start> -->
+                  <div class="retailpanel_detail_input retail_input other_than_banner" ng-show="fnShowField('onlyCatWithProdDropdwn')">
                     <ul ng-repeat="imgElem in currentComp.elements.element_array" ng-init="fetchProds(imgElem)" class="cart_component">
                       <li>
                       
@@ -420,11 +440,11 @@ $_SESSION['currentpagevisit'] = 'catalogue-app.php';
                             No Categories Found.<br />
                             <small>To add or edit categories click on Add Products to go to the cart panel.</small>
                           </p>
-                          <select name="itemcatagory" required="required" ng-required="true" ng-show="cumulativeCats.length" ng-model="imgElem.itemcat" ng-options="cat.itemheading for cat in cumulativeCats track by cat.itemid" ng-change="fetchProds(imgElem)">
+							  <select name="itemcatagory" required ng-show="cumulativeCats.length" ng-model="imgElem.itemcat" ng-options="cat.itemheading for cat in cumulativeCats track by cat.itemid" ng-change="fetchProds(imgElem)">
                             <option value="">Select</option>
                           </select>
                         </div>
-                        <div ng-show="imgElem.itemcat.itemid && (imgElem.itemcat.itemid !== '0') && cumulativeCats.length && !fnShowField('compWithCatsOnly')">
+							<div ng-show="imgElem.itemcat.itemid && (imgElem.itemcat.itemid !== '0') && cumulativeCats.length && !fnShowField('compWithCatsOnly')" class="cat_dependent_prod">
                           <label>Products:</label>
                           <img class="inline-loader" src="images/ajax-loader_new.gif" ng-show="!imgElem.loaded" />
                           <p ng-show="imgElem.loaded && !imgElem.prods.length">No Products Found.</p>
@@ -438,6 +458,7 @@ $_SESSION['currentpagevisit'] = 'catalogue-app.php';
                     <a class="make_app_next" href="#" style="background:#ffcc00; float: right; margin: 0;" ng-click="addMoreImages()" ng-if="currentComp.elements.element_array.length < imagesCountMap[currentComp.comp_type].count">Add More</a>
                   </div>
                   <!-- <only cat and prods end> -->
+
                   <div class="bannerEdit bannercropdiv" ng-show="fnShowField('imageUpload')">
                     <h2>
                       <a class="make_app_next" href="#" style="background:#ffcc00; float: right; margin: 0;" ng-click="addMoreImages()" ng-if="currentComp.elements.element_array.length < imagesCountMap[currentComp.comp_type].count">Add More</a>
@@ -457,8 +478,8 @@ $_SESSION['currentpagevisit'] = 'catalogue-app.php';
                   </div>
                   <div class="clear"></div>
                 </div>
-                <a class="make_app_next" href="" style="background:#ffcc00;" ng-click="postAppDtls()">Save &amp; Continue</a>
-                <a class="make_app_next addproduct" style="margin-right: 10px;" href="" ng-click="sendToOpencart()" ng-show="fnShowField('catProdSelect') || fnShowField('imgHeadSubhead') || fnShowField('onlyCatWithProdDropdwn')">Add Products</a>
+                <a class="make_app_next" href="" style="background:#ffcc00;" ng-click="postAppDtls()" ia-track="IA10100039">Save &amp; Continue</a>
+                <a class="make_app_next addproduct" style="margin-right: 10px;" href="" ng-click="sendToOpencart()" ng-show="fnShowField('catProdSelect') || fnShowField('imgHeadSubhead') || fnShowField('onlyCatWithProdDropdwn')" ia-track="IA10100038">Add Products</a>
                 <div class="clear"></div>
               </div>
             </div>
@@ -475,10 +496,11 @@ $_SESSION['currentpagevisit'] = 'catalogue-app.php';
               </span>
             </div>
             <div class="mid_right_box_body" ng-show="currentBlock === 4">
+              <form name="retail_additional_features">
               <div class="design_menu_box">
                 <div class="catalogue_add_feature feedbackform">
                   <div class="catalogue_input_group">
-                    <input type="checkbox" value="1" ng-model="appDtls.feedback_dtls.is_feedback" />
+						<input type="checkbox" value="1" ng-model="appDtls.feedback_dtls.is_feedback" name="is_feedback" class="is_feedback" />
                     <label for="feedback">Feedback Form</label>
                     <div class="clear"></div>
                   </div>
@@ -488,7 +510,7 @@ $_SESSION['currentpagevisit'] = 'catalogue-app.php';
                         <label>Email Id:</label>
                       </li>
                       <li class="fullLength">
-                        <input type="email" class="required-input" placeholder="Enter Email Id" ng-model="appDtls.feedback_dtls.feedback_email" />
+							<input type="email" class="required-input" name="feedback_email" placeholder="Enter Email Id" ng-model="appDtls.feedback_dtls.feedback_email" />
                         <div class="clear"></div>
                         <span>Enter email id to where you want your users to send their feedback.</span></li>
                       <div class="clear"></div>
@@ -509,7 +531,7 @@ $_SESSION['currentpagevisit'] = 'catalogue-app.php';
                 </div>
                 <div class="catalogue_add_feature contactus">
                   <div class="catalogue_input_group">
-                    <input type="checkbox" value="1" ng-model="appDtls.contact_details.is_contactus" />
+						<input type="checkbox" value="1" ng-model="appDtls.contact_details.is_contactus" name="is_contactus" class="is_contactus" />
                     <label for="contact">Contact Us</label>
                     <div class="clear"></div>
                   </div>
@@ -540,7 +562,7 @@ $_SESSION['currentpagevisit'] = 'catalogue-app.php';
                 </div>
                 <div class="catalogue_add_feature termsandcon">
                   <div class="catalogue_input_group">
-                    <input type="checkbox" value="1" ng-model="appDtls.tnc.is_tnc" />
+						<input type="checkbox" value="1" ng-model="appDtls.tnc.is_tnc" name="is_tnc" class="is_tnc" />
                     <label for="tandc">Terms &amp; Conditions</label>
                     <div class="clear"></div>
                   </div>
@@ -559,7 +581,7 @@ $_SESSION['currentpagevisit'] = 'catalogue-app.php';
                 </div>
                 <div class="catalogue_add_feature invoice">
                     <div class="catalogue_input_group">
-                        <input type="checkbox" value="1" ng-model="appDtls.order_dtls.is_order" />
+							<input type="checkbox" value="1" ng-model="appDtls.order_dtls.is_order" name="is_order" class="is_order" />
                         <label for="invoice">Send Order Confirmation Email To Your Users</label>
                         <div class="clear"></div>
                     </div>
@@ -573,7 +595,7 @@ $_SESSION['currentpagevisit'] = 'catalogue-app.php';
                         <ul>
                             <li><label>Choose Pack:</label></li>
                             <li class="fullLength">
-                                <select ng-model="appDtls.order_dtls.package">
+									<select ng-model="appDtls.order_dtls.package" name="package">
                                   <option value="">Select</option>
                                   <option value="1">200 EDM Pack (&#8377; 1000)</option>
                                   <option value="3">500 EDM Pack (&#8377; 2000)</option>
@@ -586,7 +608,7 @@ $_SESSION['currentpagevisit'] = 'catalogue-app.php';
                         <ul>
                             <li><label>Email Id:</label></li>
                             <li class="fullLength">
-                              <input type="email" class="required-input" placeholder="Enter Email Id" ng-model="appDtls.order_dtls.orderconfirm_email" />
+								  <input type="email" class="required-input" placeholder="Enter Email Id" ng-model="appDtls.order_dtls.orderconfirm_email" name="orderconfirm_email" />
                               <div class="clear"></div>
                               <span>Enter email id you want to add in order confirmation mail to your users.</span>
                             </li>
@@ -606,6 +628,7 @@ $_SESSION['currentpagevisit'] = 'catalogue-app.php';
                     </div>
                 </div> 
               </div>
+			  </form>
               <a class="make_app_next" href="" style="background:#ffcc00;" ng-click="postAppDtls()">Save &amp; Continue</a>
               <div class="clear"></div>
             </div>
@@ -663,7 +686,8 @@ $_SESSION['currentpagevisit'] = 'catalogue-app.php';
 
 <script src="js/require.js"></script>
 <script src="js/require.config.js"></script>
-<script src="js/main-catalogue.js?v=1"></script>
+<script src="js/main-catalogue.js?v=1.1"></script>
+<script type="text/javascript" src="js/trackuser.angular.js?v=1.1"></script>
 
 <!-- script src="js/retail-ug.js"></script -->
 

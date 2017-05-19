@@ -1,7 +1,7 @@
 <?php require_once('website_header.php');?> 
 <div class="brdcrm">
   <div class="big-cont mt0">
-    <div class="crm"> <a href="#">Home</a><span> >> </span><a href="#" class="active-crum">Careers</a> </div>
+    <div class="crm"> <a href="<?= $basicUrl;?>">Home</a><span> >> </span><a href="#" class="active-crum">Careers</a> </div>
   </div>
 </div>
 <div class="clear"></div>
@@ -23,7 +23,7 @@
 </div>
 <div class="career_box">
 	<div class="career_box_left">
-    	<img src="images/Growth.png">
+    	<img src="images/Growth.png" alt="Retailer App" title="Retailer App" />
     </div>
 	<div class="career_box_right">
     	<h2>The opportunity to grow and make a difference</h2>
@@ -33,7 +33,7 @@
 </div>
 <div class="career_box opp">
 	<div class="career_box_left">
-    	<img src="images/Freedom.png">
+    	<img src="images/Freedom.png" alt="Mobile Shopping" title="Mobile Shopping" />
     </div>
 	<div class="career_box_right">
     	<h2>Freedom to Act</h2>
@@ -44,7 +44,7 @@
 
 <div class="career_box">
 	<div class="career_box_left">
-    	<img src="images/Celebrating.png">
+    	<img src="images/Celebrating.png" alt="E Commerece App" title="E Commerece App" />
     </div>
 	<div class="career_box_right">
     	<h2>Celebrating Talent</h2>
@@ -55,7 +55,7 @@
 
 <div class="career_box opp">
 	<div class="career_box_left">
-    	<img src="images/Equal.png">
+    	<img src="images/Equal.png" alt=" Entnerprise Application" title="Entnerprise Application" />
     </div>
 	<div class="career_box_right">
     	<h2>Gender diversity and equal opportunity</h2>
@@ -66,7 +66,7 @@
 
 <div class="career_box">
 	<div class="career_box_left">
-    	<img src="images/Benefits.png">
+    	<img src="images/Benefits.png" alt="Real Estate App" title="Real Estate App" />
     </div>
 	<div class="career_box_right">
     	<h2>Benefits</h2>

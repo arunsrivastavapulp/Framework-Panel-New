@@ -31,7 +31,7 @@ if ((!empty($_SESSION['token'])) || (!empty($_SESSION['appid'])) || (!empty($_SE
 } else {
     $token = md5(rand(1000, 9999)); //you can use any encryption
     $_SESSION['token'] = $token;
-    $appidEdit = isset($_GET['appid']);
+    $appidEdit =  isset($_GET['appid']) ? $_GET['appid'] : '';
     $_SESSION['appid'] = $appidEdit;
 }
 
@@ -90,9 +90,9 @@ $appVersion = $apps->get_app_version(isset($_GET['appid']) ? $_GET['appid'] : ''
 						//date('d/m/Y',strtotime($app_part->next_paymentdate));?></span></p>
 						</div>
 						<div class="expire-button">
-							<a href="javascript:void(0);"  onclick="paypalForm()" class="renew-app">Renew App</a>
+							<a  ia-track="IA10100068" href="javascript:void(0);"  onclick="paypalForm()" class="renew-app">Renew App</a>
 						</div>
-						<div class="expire-cross"><a href="javascript:void(0);"><img alt="" src="image/expire-cross.png"></a></div>
+						<div class="expire-cross"><a ia-track="IA10100069" href="javascript:void(0);"><img alt="" src="image/expire-cross.png"></a></div>
 						<div class="clearfix"></div>
 					</div>
 					<?php }
@@ -124,9 +124,9 @@ $appVersion = $apps->get_app_version(isset($_GET['appid']) ? $_GET['appid'] : ''
 									<input type="hidden" id="app_name" value="<?php echo $app_details->summary;?>">				
 
 									<div class="expire-button">
-										<a href="javascript:void(0);"  onclick="reneueaddtocart();" class="renew-app">Renew App</a>
+										<a ia-track="IA10100068" href="javascript:void(0);"  onclick="reneueaddtocart();" class="renew-app">Renew App</a>
 									</div>
-									<div class="expire-cross"><a href="javascript:void();"><img alt="" src="image/expire-cross.png"></a></div>
+									<div class="expire-cross"><a ia-track="IA10100069" href="javascript:void();"><img alt="" src="image/expire-cross.png"></a></div>
 									<div class="clearfix"></div>
 								</div>
 								<?php	
@@ -147,9 +147,9 @@ $appVersion = $apps->get_app_version(isset($_GET['appid']) ? $_GET['appid'] : ''
 											<input type="hidden" id="app_name" value="<?php echo $app_details->summary;?>">				
 
 											<div class="expire-button">
-												<a href="javascript:void(0);"  onclick="reneueaddtocart();" class="renew-app">Renew App</a>
+												<a ia-track="IA10100068" href="javascript:void(0);"  onclick="reneueaddtocart();" class="renew-app">Renew App</a>
 											</div>
-											<div class="expire-cross"><a href="javascript:void(0);"><img alt="" src="image/expire-cross.png"></a></div>
+											<div class="expire-cross"><a ia-track="IA10100069" href="javascript:void(0);"><img alt="" src="image/expire-cross.png"></a></div>
 											<div class="clearfix"></div>
 										</div>
 										<?php
@@ -161,41 +161,41 @@ $appVersion = $apps->get_app_version(isset($_GET['appid']) ? $_GET['appid'] : ''
 						<div class="right_inner">
 							<div class="myapp_name_disc">
 
-								<?php if ($apppublished == 1) { ?>
-									<div class="rightButton" style="width:200px;"><a href="publish_android.php">Prepare Store Listing</a></div>
-									<?php } ?>
-									<div class="rightButton"><a href="support.php">Support</a></div>
-									<?php
-									$appHaveSplashIconCheck = $apps->appHaveSplashIconCheck($_SESSION['custid'], $appidEdit);
-									if ($appHaveSplashIconCheck['splashscreen_icon_check'] == 1) {
-											if(empty($_SESSION['cust_reseller_id'])){
-										if (($appType == 1)||($appType == 5)) {
-											?>
-											<div class="rightButton"><a href="app-complete.php">Publish</a></div>
-											<?php } else { ?>
-												<div class="rightButton"><a href="app-complete-retail.php?app_id=<?php echo isset($_GET['appid']) ? $_GET['appid'] : ''; ?>">Publish</a></div>
-												<?php
-											}
-										}
-											}
-										?>
-										<div class="myapp_name">
-											<h1> <?php
-												$appName = $apps->app_name(isset($_GET['appid']) ? $_GET['appid'] : '');
-												if ($appName['summary'] != '') {
-													echo $appName['summary'];
-												}
-												?></h1>
-												<div class="apps_preview_edit" style="float: left;">
-													<div class="apps_preview_edit_left">
-														<?php
-														$publishedappImage = $apps->publish_app_img(isset($_GET['appid']) ? $_GET['appid'] : '');
-														if ($publishedappImage != '') {
-															echo '<img src="' . $publishedappImage . '">';
-														} else {
-															echo '<img src="image/payment_app_icon.png">';
-														}
-														?>
+<?php if ($apppublished == 1) { ?>
+<div class="rightButton" style="width:200px;"><a ia-track="IA10100070" href="publish_android.php">Prepare Store Listing</a></div>
+<?php } ?>
+<div class="rightButton"><a  ia-track="IA10100071" href="support.php">Support</a></div>
+<?php
+$appHaveSplashIconCheck = $apps->appHaveSplashIconCheck($_SESSION['custid'], $appidEdit);
+if ($appHaveSplashIconCheck['splashscreen_icon_check'] == 1) {
+if(empty($_SESSION['cust_reseller_id'])){
+if (($appType == 1)||($appType == 5)) {
+?>
+<div class="rightButton"><a ia-track="IA10100072" href="app-complete.php">Publish</a></div>
+<?php } else { ?>
+<div class="rightButton"><a ia-track="IA10100072" href="app-complete-retail.php?app_id=<?php echo isset($_GET['appid']) ? $_GET['appid'] : ''; ?>">Publish</a></div>
+<?php
+}
+}
+}
+?>
+<div class="myapp_name">
+<h1> <?php
+$appName = $apps->app_name(isset($_GET['appid']) ? $_GET['appid'] : '');
+if ($appName['summary'] != '') {
+echo $appName['summary'];
+}
+?></h1>
+<div class="apps_preview_edit" style="float: left;">
+<div class="apps_preview_edit_left">
+<?php
+$publishedappImage = $apps->publish_app_img(isset($_GET['appid']) ? $_GET['appid'] : '');
+if ($publishedappImage != '') {
+echo '<img src="' . $publishedappImage . '">';
+} else {
+echo '<img src="image/payment_app_icon.png">';
+}
+?>
 
 													</div>
 													<div class="apps_preview_edit_right">
@@ -232,8 +232,8 @@ if($jumpto == 1 && $jumptoapp != 0)
 																		<?php } ?>
 																	</strong></p>
 																	<?php if ($appType == 1 || $appType == 5) { ?>
-																		<a href="javascript:void(0);" id="previewbutton">Preview</a>
-																		<a href="javascript:void(0);" id="editbutton">Edit</a>
+																		<a  ia-track="IA10100073" href="javascript:void(0);" id="previewbutton">Preview</a>
+																		<a ia-track="IA10100074" href="javascript:void(0);" id="editbutton">Edit</a>
 																		<?php } ?>
 																		<?php if ($appType == 2 || $appType == 3) {
 																			if($appVersion != '1.0')
@@ -245,7 +245,7 @@ if($jumpto == 1 && $jumptoapp != 0)
 																				$targetUrl='catalogue-app.php'; 
 																			}
 																			?>
-																			<a href="<?php echo $targetUrl; ?>?appid=<?php echo isset($_GET['appid']) ? $_GET['appid'] : ''; ?>" >Edit</a>
+																			<a  ia-track="IA10100074"  href="<?php echo $targetUrl; ?>?appid=<?php echo isset($_GET['appid']) ? $_GET['appid'] : ''; ?>" >Edit</a>
 																			<?php } ?>
 																		</div>
 																		<div class="clear"></div>
@@ -268,7 +268,7 @@ if($jumpto == 1 && $jumptoapp != 0)
 																				<select class="my-select" id="platform">
 																					<option value="1" data-img-src="image/android_icon.png">Android</option>
 																					<option value="2" data-img-src="image/windows_icon.png">iOS</option>
-																					<!-- <option value="3" data-img-src="image/apple_icon.png">Windows</option>-->
+																				 <option value="3" data-img-src="image/apple_icon.png">Wizard</option>
 																				</select>
 																				<span class="define_platform">Define platform for which you want the QR Code to redirect to.</span>
 																				<div class="clear"></div>
@@ -282,13 +282,13 @@ if($jumpto == 1 && $jumptoapp != 0)
 																				<div class="clear"></div>
 																			</div>
 																			<div class="generate_btn">
-																				<a href="javascript:void(0)" id="generateQR">Generate QR Code</a>
+																				<a ia-track="IA10100075" href="javascript:void(0)" id="generateQR">Generate QR Code</a>
 																			</div>
 																			<div class="clear"></div>
 																		</div>
 
 																		<div class="get_qrcode">
-																			<a>Get QR Code</a>
+																			<a ia-track="IA10100076" href="javascript:void(0);" >Get QR Code</a>
 																			<div class="clear"></div>
 																		</div>
 																	</div>
@@ -353,7 +353,7 @@ if($jumpto == 1 && $jumptoapp != 0)
 																					<span>'.$val->part_amount.'</span>
 																					<span></span>
 																					<span>'.$date->format('d/m/Y').'</span>
-																					<span><a class="pay-now"  href="javascript:void(0);" onclick="paypalForm()">Pay Now</a></span>
+																					<span><a ia-track="IA10100077" class="pay-now"  href="javascript:void(0);" onclick="paypalForm()">Pay Now</a></span>
 																				</li>';
 																				$total_amount2+=round($val->part_amount,2);
 
@@ -396,21 +396,21 @@ if($jumpto == 1 && $jumptoapp != 0)
 																<form action="export-app-details.php" id="user_user_data" method="post">
 																	<div class="download-data-block">
 
-																		<a class="download-data-cl-img" href="#"><img src="images/download-data-cl.png" alt=""></a>
+																		<a ia-track="IA10100078" class="download-data-cl-img" href="#"><img src="images/download-data-cl.png" alt=""></a>
 
 																		<div class="download-data-date">
 																			<label>Start Date</label>
 																			<input class="data-date" type="text" name="startdate1" value="" placeholder="Select Date">
 
-																			<label>End Date</label>
-																			<input class="data-date" type="text" name="enddate1" value="" placeholder="Select Date">
-																		</div>
-																		<input type="hidden" name="id" value="<?php echo $_REQUEST['appid'];?>">
-																		<div class="rightButton"><a class="downloaduserdata" href="javascript:void(0);" onclick="downloaduserdata()">Download User Data</a></div>
+<label>End Date</label>
+<input class="data-date" type="text" name="enddate1" value="" placeholder="Select Date">
+</div>
+<input type="hidden" name="id" value="<?php echo $_REQUEST['appid'];?>">
+<div class="rightButton"><a ia-track="IA10100079" class="downloaduserdata" href="javascript:void(0);" onclick="downloaduserdata()">Download User Data</a></div>
 
-																	</div>
-																</form>
-																<!-- end download user data -->
+</div>
+</form>
+<!-- end download user data -->
 
 																<?php
 
@@ -424,7 +424,7 @@ if($jumpto == 1 && $jumptoapp != 0)
 																	<form action="export-form-details.php" id="user_form_data" method="post">
 																		<div class="download-data-block">
 
-																			<a class="download-data-cl-img" href="#"><img src="images/download-data-cl.png" alt=""></a>
+																			<a ia-track="IA10100078" class="download-data-cl-img" href="#"><img src="images/download-data-cl.png" alt=""></a>
 
 																			<div class="download-data-date">
 																				<label>Select Form</label>
@@ -449,7 +449,7 @@ if($jumpto == 1 && $jumptoapp != 0)
 																				<input type="hidden" name="id" value="<?php echo $_REQUEST['appid'];?>">
 																			</div>
 
-																			<div class="rightButton"><a class="downloadformdata" href="javascript:void(0);" onclick="downloadformdata()">Download Form Data</a></div>
+<div class="rightButton"><a ia-track="IA10100080" class="downloadformdata" href="javascript:void(0);" onclick="downloadformdata()">Download Form Data</a></div>
 
 																		</div>
 																	</form>
@@ -474,39 +474,39 @@ if($jumpto == 1 && $jumptoapp != 0)
 																					<input type="text" disabled="disabled" class="uploaded_file_name" value="<?php echo isset($appName['ioscertificate']) ? $appName['ioscertificate'] : ''; ?>">
 																					<input type="hidden" name="check_certificate" id="check_certificate" value="<?php echo isset($appName['ioscertificate']) ? $appName['ioscertificate'] : ''; ?>">
 
-																					<a href="#" class="browse_btn">Browse</a>
-																					<input type="file" class="browse_input_btn" name="ios_file">
+<a ia-track="IA10100084" href="#" class="browse_btn">Browse</a>
+<input type="file" class="browse_input_btn" name="ios_file">
 
-																					<div class="ios-video">
-																						<a href="https://www.youtube.com/watch?v=_TDuXNE_i_o" target="_blank"><span>View Tutorial</span></a>
-																					</div>
+<div class="ios-video">
+<a href="https://www.youtube.com/watch?v=_TDuXNE_i_o" target="_blank"><span>View Tutorial</span></a>
+</div>
 
-																					<div class="clearfix"></div>
-																					<h3 class="phrase">Passphrase for Certificate</h3>
-																					<input type="text" class="uploaded_file_phrase" maxlength="50" name="pass_phrase" value="<?php echo isset($appName['ios_passphrase']) ? $appName['ios_passphrase'] : ''; ?>"/>
-																					<br/><br/><br/>
-																					<p id="error_ios"></p>
-																				</div>
+<div class="clearfix"></div>
+<h3 class="phrase">Passphrase for Certificate</h3>
+<input type="text" class="uploaded_file_phrase" maxlength="50" name="pass_phrase" value="<?php echo isset($appName['ios_passphrase']) ? $appName['ios_passphrase'] : ''; ?>"/>
+<br/><br/><br/>
+<p id="error_ios"></p>
+</div>
 
-																				<input type="hidden" name="app_id"  value="<?php echo isset($_GET['appid']) ? $_GET['appid'] : ''; ?>">
-																				<input type="hidden" name="type"  value="ios_notification_ppk_file">
-																				<input type="submit" name="submit" id="ios_save" value="Save">
-																			</form>
-																		</div>
-																		<div class="schedule_notification">
-																			<div class="schedule_new">
-																				<h2>Create Push Notification</h2>
-																				<p>Notifications are a great way to increase your engagement and your revenue. You can highlight new additions, drive traffic to offers or simply send a thank you to your customers. Plan your notifications well. The best notifications are simple clear and between 3-4 lines only. Your consumers device may not display more than 4 lines on a locked screen. You can add a URL so that when they click they can land on the screen with details. Remember you can send unlimited notifications but its best to limit to a maximum of 1 notification a week. No one likes to be spammed and spamming can result in the user deleting your app. </p>
-																				<a class="read_more">Read More...</a>
-																				<div class="clear"></div>
-																				<a class="right_btn" id="scheduleNew">Create New</a>
-																			</div>
-																			<?php
-																			if (count($notifications) > 0) {
-																				$x = 0;
-																				foreach ($notifications as $val) {
-																					$x++;
-																					?>
+<input type="hidden" name="app_id"  value="<?php echo isset($_GET['appid']) ? $_GET['appid'] : ''; ?>">
+<input type="hidden" name="type"  value="ios_notification_ppk_file">
+<input type="submit" name="submit" id="ios_save" value="Save">
+</form>
+</div>
+<div class="schedule_notification">
+<div class="schedule_new">
+<h2>Create Push Notification</h2>
+<p>Notifications are a great way to increase your engagement and your revenue. You can highlight new additions, drive traffic to offers or simply send a thank you to your customers. Plan your notifications well. The best notifications are simple clear and between 3-4 lines only. Your consumers device may not display more than 4 lines on a locked screen. You can add a URL so that when they click they can land on the screen with details. Remember you can send unlimited notifications but its best to limit to a maximum of 1 notification a week. No one likes to be spammed and spamming can result in the user deleting your app. </p>
+<a class="read_more">Read More...</a>
+<div class="clear"></div>
+<a ia-track="IA10100085" href="javascript:void(0)" class="right_btn" id="scheduleNew">Create New</a>
+</div>
+<?php
+if (count($notifications) > 0) {
+$x = 0;
+foreach ($notifications as $val) {
+$x++;
+?>
 
 																					<div class="sche_noti_body">
 																						<div class="notification_title">
@@ -532,8 +532,8 @@ if($jumpto == 1 && $jumptoapp != 0)
 																								echo isset($scheduledate) ? date('d-m-Y h:00 A', strtotime($scheduledate)) : '';
 																								?> | Time Zone - <?php echo $valtimezone;?></p>
 																								<p></p>
-																								<a class="right_btn1 createNotification">Edit</a>
-																								<a class="right_btn deleteNotification">Delete</a>
+																								<a ia-track="IA10100086" href="javascript:void(0)" class="right_btn1 createNotification">Edit</a>
+																								<a ia-track="IA10100087" href="javascript:void(0)" class="right_btn deleteNotification">Delete</a>
 																							</div>
 																							<div class="create_notification">
 																								<div class="create_notification_text">
@@ -593,120 +593,120 @@ if($jumpto == 1 && $jumptoapp != 0)
 																													$(".time1.<?php echo $x; ?>").val('<?php echo $timehour; ?>');
 																													$(".time2.<?php echo $x; ?>").val('<?php echo $time12; ?>');
 
-																												</script>
-																											</div>
-																										</div>
-																										<div class="clear"></div>
-																									</div>
-																									<div class="clear"></div>
-																									<div class="input_list">
-																										<div class="input_label">
-																											<label>Title *:</label>
-																										</div>
-																										<div class="input_box">
-																											<input type="text" placeholder="Title" class="pnotification_title" value="<?php echo isset($val['title']) ? $val['title'] : ''; ?>">
-																										</div>
-																									</div>
-																									<div class="clear"></div>
-																									<div class="input_list">
-																										<div class="input_label">
-																											<label>Description :</label>
-																										</div>
-																										<div class="input_box">
-																											<textarea class="pnotification_desc"><?php echo isset($val['message']) ? $val['message'] : ''; ?></textarea>
-																										</div>
-																									</div>
-																									<div class="notification_msg_left">Use notifications responsibly. Sending too many notifications, incorrect copy or sending confusing messages can lead to spam and result in the user disallowing notifications or even deleting your app. All the best</div>
-																									<div class="notification_btns">
-																										<a href="#" class="not-btn">Send Now</a>
-																										<a href="#" class="schdule_not">Schedule for Later</a>
-																										<p class="notification_msg">(Send now will ignore the Schedule time and Date)</p>
-																									</div>
-																									<input type="hidden" value="<?php echo isset($val['id']) ? $val['id'] : ''; ?>" class="current_id">
-																								</form>
-																							</div>
-																						</div>
-																						<?php
-																					}
-																				} else {
-																					?>
+</script>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="clear"></div>
+<div class="input_list">
+<div class="input_label">
+<label>Title *:</label>
+</div>
+<div class="input_box">
+<input type="text" placeholder="Title" class="pnotification_title" value="<?php echo isset($val['title']) ? $val['title'] : ''; ?>">
+</div>
+</div>
+<div class="clear"></div>
+<div class="input_list">
+<div class="input_label">
+<label>Description :</label>
+</div>
+<div class="input_box">
+<textarea class="pnotification_desc"><?php echo isset($val['message']) ? $val['message'] : ''; ?></textarea>
+</div>
+</div>
+<div class="notification_msg_left">Use notifications responsibly. Sending too many notifications, incorrect copy or sending confusing messages can lead to spam and result in the user disallowing notifications or even deleting your app. All the best</div>
+<div class="notification_btns">
+<a a-track="IA10100088" href="#" class="not-btn">Send Now</a>
+<a a-track="IA10100089" href="#" class="schdule_not">Schedule for Later</a>
+<p class="notification_msg">(Send now will ignore the Schedule time and Date)</p>
+</div>
+<input type="hidden" value="<?php echo isset($val['id']) ? $val['id'] : ''; ?>" class="current_id">
+</form>
+</div>
+</div>
+<?php
+}
+} else {
+?>
 
-																					<div class="sche_noti_body">
-																						<div class="notification_title">
-																							<h3>Title of the Notification</h3>
-																							<p class="title"><span>Status:</span>, Schedule Date: </p>
-																							<a class="right_btn createNotification">Edit</a>
-																							<a class="right_btn deleteNotification" style="display:none;">Delete</a>
-																						</div>
-																						<div class="create_notification">
-																							<div class="create_notification_text">
-																								<h4>Create New <span>(You can send unlimited number of notifications to your app users, but you are allowed to schedule (by date and time for the future) a maximum of 5 notifications at one time. Remember to check all fields, best practices and spelling check before you hit send. Once it a notification goes out its can’t be recalled. You can edit a notification any time before its sent)</span></h4>
-																								<a class="read_more">Read More...</a>
-																								<div class="clear"></div>
-																							</div>
-																							<form class="create_form">
-																								<div class="two_input">
-																									<div class="input_list">
-																										<div class="input_label">
-																											<label>Schedule :</label>
-																										</div>
-																										<div class="input_box">
-																											<input type="text" name="date" class="schdule_date" >
-																										</div>
-																									</div>
-																									<div class="input_list time">
-																										<div class="input_label">
-																											<label>Schedule Time</label>
-																										</div>
-																										<div class="input_box">
-																											<select class="time1">
-																												<option value="01">1:00</option>
-																												<option value="02">2:00</option>
-																												<option value="03">3:00</option>
-																												<option value="04">4:00</option>
-																												<option value="05">5:00</option>
-																												<option value="06">6:00</option>
-																												<option value="07">7:00</option>
-																												<option value="08">8:00</option>
-																												<option value="09">9:00</option>
-																												<option value="10">10:00</option>
-																												<option value="11">11:00</option>
-																												<option value="12">12:00</option>
-																											</select>
-																											<select class="time2">
-																												<option value="am">AM</option>
-																												<option value="pm">PM</option>
-																											</select>
-																											<select class="time3">
-																												<?php echo $opt1; ?>
-																											</select>
-																										</div>
-																									</div>
-																									<div class="clear"></div>
-																								</div>
-																								<div class="clear"></div>
-																								<div class="input_list">
-																									<div class="input_label">
-																										<label>Title *:</label>
-																									</div>
-																									<div class="input_box">
-																										<input type="text" placeholder="Title" class="pnotification_title" >
-																									</div>
-																								</div>
-																								<div class="clear"></div>
-																								<div class="input_list">
-																									<div class="input_label">
-																										<label>Description :</label>
-																									</div>
-																									<div class="input_box">
-																										<textarea class="pnotification_desc"></textarea>
-																									</div>
-																								</div>
-																								<div class="notification_msg_left">Use notifications responsibly. Sending too many notifications, incorrect copy or sending confusing messages can lead to spam and result in the user disallowing notifications or even deleting your app. All the best</div>
-																								<div class="notification_btns">
+<div class="sche_noti_body">
+<div class="notification_title">
+<h3>Title of the Notification</h3>
+<p class="title"><span>Status:</span>, Schedule Date: </p>
+<a ia-track="IA10100086" href="javascript:void(0)" class="right_btn createNotification">Edit</a>
+<a ia-track="IA10100087" href="javascript:void(0)" class="right_btn deleteNotification" style="display:none;">Delete</a>
+</div>
+<div class="create_notification">
+<div class="create_notification_text">
+<h4>Create New <span>(You can send unlimited number of notifications to your app users, but you are allowed to schedule (by date and time for the future) a maximum of 5 notifications at one time. Remember to check all fields, best practices and spelling check before you hit send. Once it a notification goes out its can’t be recalled. You can edit a notification any time before its sent)</span></h4>
+<a class="read_more">Read More...</a>
+<div class="clear"></div>
+</div>
+<form class="create_form">
+<div class="two_input">
+<div class="input_list">
+<div class="input_label">
+<label>Schedule :</label>
+</div>
+<div class="input_box">
+<input type="text" name="date" class="schdule_date" >
+</div>
+</div>
+<div class="input_list time">
+<div class="input_label">
+<label>Schedule Time</label>
+</div>
+<div class="input_box">
+<select class="time1">
+<option value="01">1:00</option>
+<option value="02">2:00</option>
+<option value="03">3:00</option>
+<option value="04">4:00</option>
+<option value="05">5:00</option>
+<option value="06">6:00</option>
+<option value="07">7:00</option>
+<option value="08">8:00</option>
+<option value="09">9:00</option>
+<option value="10">10:00</option>
+<option value="11">11:00</option>
+<option value="12">12:00</option>
+</select>
+<select class="time2">
+<option value="am">AM</option>
+<option value="pm">PM</option>
+</select>
+<select class="time3">
+<?php echo $opt1; ?>
+</select>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="clear"></div>
+<div class="input_list">
+<div class="input_label">
+<label>Title *:</label>
+</div>
+<div class="input_box">
+<input type="text" placeholder="Title" class="pnotification_title" >
+</div>
+</div>
+<div class="clear"></div>
+<div class="input_list">
+<div class="input_label">
+<label>Description :</label>
+</div>
+<div class="input_box">
+<textarea class="pnotification_desc"></textarea>
+</div>
+</div>
+<div class="notification_msg_left">Use notifications responsibly. Sending too many notifications, incorrect copy or sending confusing messages can lead to spam and result in the user disallowing notifications or even deleting your app. All the best</div>
+<div class="notification_btns">
 
-																									<a class="not-btn">Send Now</a>
-																									<a class="schdule_not">Schedule for Later</a>
+																									<a ia-track="IA10100088" href="javascript:void(0)" class="not-btn">Send Now</a>
+																									<a ia-track="IA10100089" href="javascript:void(0)" class="schdule_not">Schedule for Later</a>
 																									<p class="notification_msg">(Send now will ignore the Schedule time and Date)</p>
 																								</div>
 																							</form>
@@ -737,6 +737,7 @@ if($jumpto == 1 && $jumptoapp != 0)
 
            <?php
        }
+       
        ?>
        <div class="clear"></div>
 	   <?php if(empty($_SESSION['cust_reseller_id'])){?>
@@ -790,7 +791,7 @@ if($jumpto == 1 && $jumptoapp != 0)
        												</div>
        											</div>
        											<div class="addCartButton">
-       												<a class="mpackage" data-mpid="1" >Add to Cart</a>
+       												<a  ia-track="IA10100090" href="javascript:void(0)" class="mpackage" data-mpid="1" >Add to Cart</a>
 
        											</div>
 
@@ -842,7 +843,7 @@ if($jumpto == 1 && $jumptoapp != 0)
        																			</div>
        																		</div>
        																		<div class="addCartButton">
-       																			<a class="mpackage" data-mpid="2" >Add to Cart</a>
+       																			<a ia-track="IA10100091" href="javascript:void(0)" class="mpackage" data-mpid="2" >Add to Cart</a>
 
        																		</div>
        																	</div>
@@ -944,13 +945,13 @@ if($jumpto == 1 && $jumptoapp != 0)
        																																	<tr>
        																																		<td></td>
        																																		<td>
-       																																			<a class="mpackage" data-mpid="3" >Add to Cart</a>
+       																																			<a ia-track="IA10100092" href="javascript:void(0);" class="mpackage" data-mpid="3" >Add to Cart</a>
        																																		</td>
        																																		<td>
-       																																			<a class="mpackage" data-mpid="4" >Add to Cart</a>
+       																																			<a ia-track="IA10100093" href="javascript:void(0);" class="mpackage" data-mpid="4" >Add to Cart</a>
        																																		</td>
        																																		<td>
-       																																			<a class="mpackage" data-mpid="5" >Add to Cart</a>
+       																																			<a ia-track="IA10100094" href="javascript:void(0);" class="mpackage" data-mpid="5" >Add to Cart</a>
        																																		</td>
        																																	</tr>
        																																</table>
@@ -1055,13 +1056,13 @@ if($jumpto == 1 && $jumptoapp != 0)
        																																														<tr>
        																																															<td></td>
        																																															<td>
-       																																																<a class="mpackage" data-mpid="6" >Add to Cart</a>
+       																																																<a ia-track="IA10100095" href="javascript:void(0);" class="mpackage" data-mpid="6" >Add to Cart</a>
        																																															</td>
        																																															<td>
-       																																																<a class="mpackage" data-mpid="7" >Add to Cart</a>
+       																																																<a ia-track="IA10100096" href="javascript:void(0);" class="mpackage" data-mpid="7" >Add to Cart</a>
        																																															</td>
        																																															<td>
-       																																																<a class="mpackage" data-mpid="8" >Add to Cart</a>
+       																																																<a ia-track="IA10100097" href="javascript:void(0);" class="mpackage" data-mpid="8" >Add to Cart</a>
        																																															</td>
        																																														</tr>
        																																													</table>
@@ -1196,13 +1197,13 @@ if($jumpto == 1 && $jumptoapp != 0)
        																																																											<tr>
        																																																												<td></td>
        																																																												<td>
-       																																																													<a class="mpackage" data-mpid="9" >Add to Cart</a>
+       																																																													<a ia-track="IA10100098" href="javascript:void(0);" class="mpackage" data-mpid="9" >Add to Cart</a>
        																																																												</td>
        																																																												<td>
-       																																																													<a class="mpackage" data-mpid="10">Add to Cart</a>
+       																																																													<a ia-track="IA10100099" href="javascript:void(0);" class="mpackage" data-mpid="10">Add to Cart</a>
        																																																												</td>
        																																																												<td>
-       																																																													<a class="mpackage" data-mpid="11">Add to Cart</a>
+       																																																													<a ia-track="IA101000100" href="javascript:void(0);" class="mpackage" data-mpid="11">Add to Cart</a>
        																																																												</td>
        																																																											</tr>
        																																																										</table>
@@ -1261,7 +1262,7 @@ if($jumpto == 1 && $jumptoapp != 0)
 
 												$.ajax({
 													type: "POST",
-													url: 'modules/myapp/generateQRcodePL.php',
+													url: 'modules/myapp/generateQRcodePL1.php',
 													data: form_data,
 													success: function (response)
 													{
@@ -2029,5 +2030,6 @@ $(window).load(function () {
 						
 						
 					</script>
+					<script type="text/javascript" src="js/trackuser.jquery.js?v=1.1"></script>
 				</body>
 				</html>

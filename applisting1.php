@@ -91,8 +91,8 @@ if (!empty($_SESSION['username']) || !empty($_SESSION['custid'])) {
                 }
                 ?>
                 <?php if (empty($_SESSION['cust_reseller_id'])) { ?>
-            <li><a ia-track="IA10100015" href="myorders.php" >My Orders<i class="fa fa-truck"></i></a></li>
-            <li><a ia-track="IA1010007" href="themes.php" >Create New <i class="fa fa-rocket"></i></a></li>
+            <li><a href="myorders.php" ia-track="IA10100015">My Orders<i class="fa fa-truck"></i></a></li>
+            <li><a href="themes.php" ia-track="IA1010007">Create New <i class="fa fa-rocket"></i></a></li>
                 <?php } ?>
         </ul>
     </header>
@@ -153,14 +153,14 @@ if($jumpto == 1 && $jumptoapp != 0)
 							 $paltform = 'Content and M-Store';
 						}
                             echo ' <div class="apps_box">
-                        <a  ia-track="IA10100064" data-appid="' . $val['id'] . '" href="' . $file . '?appid=' . $val['id'] . '"><img src="' . $img . '"></a>
+                        <a href="' . $file . '?appid=' . $val['id'] . '"><img src="' . $img . '"></a>
                         <div class="apps_box_name">
-                            <h2><a ia-track="IA10100064" data-appid="' . $val['id'] . '" href="' . $file . '?appid=' . $val['id'] . '">' . stripslashes($val['summary']) . '</a></h2>
-                            <p><a ia-track="IA10100064" data-appid="' . $val['id'] . '"  href="' . $file . '?appid=' . $val['id'] . '">' . $paltform . '</a></p>
+                            <h2><a href="' . $file . '?appid=' . $val['id'] . '">' . stripslashes($val['summary']) . '</a></h2>
+                            <p><a href="' . $file . '?appid=' . $val['id'] . '">' . $paltform . '</a></p>
                         </div>
                         <div class="apps_box_download">
                          <div data-aapid="' . $val['id'] . '" class="downloadapp"><img src="images/app_download.png"></div>
-                             <a href="" ia-track="IA10100066" data-appid="' . $val['id'] . '" style="visibility: hidden;" id="zipUrl"></a>
+                             <a href="" style="visibility: hidden;" id="zipUrl"></a>
                         </div>
                         <div class="clear"></div>
                     </div>';
@@ -188,13 +188,13 @@ if($jumpto == 1 && $jumptoapp != 0)
 							 $paltform = 'Content and M-Store';
 						}
                             echo ' <div class="apps_box">
-                        <a ia-track="IA10100064" href="' . $file . '?appid=' . $val['id'] . '"><img src="' . $img . '"></a>
+                        <a href="' . $file . '?appid=' . $val['id'] . '"><img src="' . $img . '"></a>
                         <div class="apps_box_name">
-                            <h2><a  ia-track="IA10100064" data-appid="' . $val['id'] . '"  href="' . $file . '?appid=' . $val['id'] . '">' . stripslashes($val['summary']) . '</a></h2>
-                            <p><a ia-track="IA10100064" data-appid="' . $val['id'] . '" href="' . $file . '?appid=' . $val['id'] . '">' . $paltform . '</a></p>
+                            <h2><a href="' . $file . '?appid=' . $val['id'] . '">' . stripslashes($val['summary']) . '</a></h2>
+                            <p><a href="' . $file . '?appid=' . $val['id'] . '">' . $paltform . '</a></p>
                         </div>
                         <div class="apps_box_download">
-                        <div data-aapid="' . $val['id'] . '" class="deleteapp" ><a ia-track="IA10100064" data-appid="' . $val['id'] . '" href="javascript:void(0)"><img src="images/app_delete.png"></a></div>			
+                        <div data-aapid="' . $val['id'] . '" class="deleteapp" ><a href="javascript:void(0)"><img src="images/app_delete.png"></a></div>			
                         </div>
                         <div class="clear"></div> 
                     </div>';
@@ -388,7 +388,7 @@ if($jumpto == 1 && $jumptoapp != 0)
                                         </div>
                                     </div>
                                     <div class="addCartButton">
-                                        <a ia-track="IA10100090"  href="javascript:void(0);" class="mpackage" data-mpid="1" >Add to Cart</a>
+                                        <a class="mpackage" data-mpid="1" >Add to Cart</a>
 
                                     </div>
 
@@ -436,7 +436,7 @@ if($jumpto == 1 && $jumptoapp != 0)
                                         </div>
                                     </div>
                                     <div class="addCartButton">
-                                        <a ia-track="IA10100091"  href="javascript:void(0);" class="mpackage" data-mpid="2" >Add to Cart</a>
+                                        <a class="mpackage" data-mpid="2" >Add to Cart</a>
 
                                     </div>
                                 </div>
@@ -526,13 +526,13 @@ if($jumpto == 1 && $jumptoapp != 0)
                                             <tr>
                                                 <td></td>
                                                 <td>
-                                            <a ia-track="IA10100092"  href="javascript:void(0);" class="mpackage" data-mpid="3" >Add to Cart</a>
+                                            <a class="mpackage" data-mpid="3" >Add to Cart</a>
                                         </td>
                                                 <td>
-                                            <a ia-track="IA10100093"  href="javascript:void(0);" class="mpackage" data-mpid="4" >Add to Cart</a>
+                                            <a class="mpackage" data-mpid="4" >Add to Cart</a>
                                         </td>
                                                 <td>
-                                            <a ia-track="IA10100094"  href="javascript:void(0);" class="mpackage" data-mpid="5" >Add to Cart</a>
+                                            <a class="mpackage" data-mpid="5" >Add to Cart</a>
                                         </td>
                                             </tr>
                                         </table>
@@ -625,13 +625,13 @@ if($jumpto == 1 && $jumptoapp != 0)
                                             <tr>
                                                 <td></td>
                                                 <td>
-                                                        <a ia-track="IA10100095"  href="javascript:void(0);" class="mpackage" data-mpid="6" >Add to Cart</a>
+                                                        <a class="mpackage" data-mpid="6" >Add to Cart</a>
                                                     </td>
                                                 <td>
-                                                        <a ia-track="IA10100096"  href="javascript:void(0);"  class="mpackage" data-mpid="7" >Add to Cart</a>
+                                                        <a class="mpackage" data-mpid="7" >Add to Cart</a>
                                                     </td>
                                                 <td>
-                                                        <a ia-track="IA10100097"  href="javascript:void(0);" class="mpackage" data-mpid="8" >Add to Cart</a>
+                                                        <a class="mpackage" data-mpid="8" >Add to Cart</a>
                                                     </td>
                                             </tr>
                                         </table>
@@ -754,13 +754,13 @@ if($jumpto == 1 && $jumptoapp != 0)
                                             <tr>
                                                 <td></td>
                                                 <td>
-                                                        <a ia-track="IA10100098"  href="javascript:void(0);" class="mpackage" data-mpid="9" >Add to Cart</a>
+                                                        <a class="mpackage" data-mpid="9" >Add to Cart</a>
                                                     </td>
                                                 <td>
-                                                        <a ia-track="IA10100099"  href="javascript:void(0);" class="mpackage" data-mpid="10">Add to Cart</a>
+                                                        <a class="mpackage" data-mpid="10">Add to Cart</a>
                                                     </td>
                                                 <td>
-                                                        <a ia-track="IA101000100"  href="javascript:void(0);" class="mpackage" data-mpid="11">Add to Cart</a>
+                                                        <a class="mpackage" data-mpid="11">Add to Cart</a>
                                                     </td>
                                             </tr>
                                         </table>
@@ -897,6 +897,5 @@ if($jumpto == 1 && $jumptoapp != 0)
     }
    
     ?>
-	<script type="text/javascript" src="js/trackuser.jquery.js"></script>
 </body>
 </html>
